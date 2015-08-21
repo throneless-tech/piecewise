@@ -16,6 +16,7 @@
     - postgresql94-server
     - postgis2_94
     - nginx
+    - httpd-tools
     - uwsgi-plugin-python
     - git
     - python-pip
