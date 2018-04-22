@@ -63,7 +63,7 @@ database_user_group: postgres
 #       the database user. These can be safely left as the default, unless you desire to 
 #       change them.
 
-site_fqdn: 
+site_fqdn: 35.231.201.40
 # !REQUIRED!
 #
 # site_fqdn 
@@ -89,11 +89,11 @@ site_fqdn:
 # accessible to the Internet.
 #
 
-site_contact: email@your.org.com
-site_country: two letter county
-site_state: name of your state
-site_city: name of your city
-site_ou: name of your organization
+site_contact: critzo@opentechinstitute.org
+site_country: US
+site_state: DC
+site_city: Washington
+site_ou: Open Technology Institute
 # !REQUIRED!
 #
 # site_contact    These variables are provided to enable automatic generation of 
@@ -159,18 +159,18 @@ site_path: "{{ base_path }}/piecewise_web"
 # Save the geofiles you intend to use for your Piecewise aggregations of
 # M-Lab data in the folder: /local_customizations/geofiles/
 
-shape_file: CENSUS10_blkgrp_WGS.shp
+shape_file: WV-counties.shp
 # !REQUIRED!
 #
 # shape_file  The filename of the shapefile Piecewise should use for your aggregations.
 
-dbKey: geoid10
+dbKey: GEOID
 dbKeyDataType: string
 shape_projection: "EPSG:4326"
 geometry_type: MultiPolygon
-layer_name: seattle_blkgrpce10
-aggregation_name: "by_census_block"
-aggregation_stats_table_name: "block_statistics"
+layer_name: wv_counties
+aggregation_name: "by_wv_county"
+aggregation_stats_table_name: "county_statistics"
 # !REQUIRED!
 #
 # dbKey             The field name of the unique key in your shape file.
@@ -188,13 +188,13 @@ aggregation_stats_table_name: "block_statistics"
 # like to use in this Piecewise server. 
 
 map_coordinate_southwest: 
-  lat: 47.3630134401
-  lon: -122.6733398438
+  lat: 37.2015399
+  lon: -82.644413
 # !REQUIRED!
 #
 map_coordinate_northeast: 
-  lat: 47.8076208172
-  lon: -121.9509887695
+  lat: 40.638801
+  lon: -77.7189679
 # !REQUIRED!
 #
 # The coordinates above define the latitude and longitude for the southwest and 
@@ -205,8 +205,8 @@ map_coordinate_northeast:
 map_bounding_box: "{{ map_coordinate_southwest.lon }},{{ map_coordinate_southwest.lat }},{{ map_coordinate_northeast.lon }},{{ map_coordinate_northeast.lat }}"
 # You do not need to edit the value for map_bounding_box.
 
-map_data_start_date: "Jan 1 2017 00:00:00"
-map_data_end_date: "Mar 13 2017 00:00:00"
+map_data_start_date: "Jan 1 2015 00:00:00"
+map_data_end_date: "Jan 1 2018 00:00:00"
 # !REQUIRED!
 #
 # map_data_start_date   The range of dates for your server to get M-Lab NDT test data.
@@ -229,21 +229,21 @@ map_data_end_date: "Mar 13 2017 00:00:00"
 # 3.1 Website Geographic Information #
 ######################################
 
-topojson_file: seattle_census10_blockgroups.topojson
+topojson_file: WV-counties.json
 # !REQUIRED!
 #
 # topojson_file   The file name of a topojson format geo file that is 
 #                 - created using the shapefile defined above
 #                 - saved in the folder /local_customizations/geofiles/ 
 
-geoKey: GEOID10
+geoKey: GEOID
 # !REQUIRED!
 #
 # geoKey    The field name in your topojson file which corresponds to the unique key 
 #           in your shapefile. 
 #           This is typically the same as dbKey, but in CAPITAL LETTERS.
 
-mapscript_start_year: 2016
+mapscript_start_year: 2015
 mapscript_start_month: 1
 # # DEFAULT #
 #
@@ -278,8 +278,8 @@ mapscript_zoom_level: 11
 #
 # Sets the initial zoom level for the map display.
 
-mapscript_layer_name: "census_block_groups"
-mapscript_layer_name_pretty: "Census block groups"
+mapscript_layer_name: "wv_counties"
+mapscript_layer_name_pretty: "West Virginia, Counties"
 # !REQUIRED!
 #
 # These variables name the map layers on the website. 'mapscript_layer_name' is used as 
@@ -460,15 +460,13 @@ form_fields:
 ####################
 # The section below allows you to customize various text and other elements of the website.
 
-site_name: "Seattle Broadband Map"
+site_name: "West Virginia - M-Lab data by County"
 # #DEFAULT#
 #
 # Defines the HTML page title element
 
 intro_text: >
-  The City of Seattle is collecting information from residents about broadband 
-  experiences across the City. To contribute, please answer the following 
-  questions and then take our Broadband Speed Test:
+  West Virginia
 # #DEFAULT#
 #
 # Defines the heading text that precedes the HTML survey form, provided to users
@@ -476,8 +474,7 @@ intro_text: >
 
 consent_message: >
   I understand that the data collected from this test will be anonymized and aggregated 
-  for publication to the Broadband Map and 
-  <a href="https://data.seattle.gov" target="_blank">Data.Seattle.Gov</a>.
+  for publication to the Broadband Map.
 # #DEFAULT#
 #
 # Defines the message displayed next to the consent checkbox.
@@ -500,10 +497,10 @@ thank_you_message: >
 
 # 'next_action_' variables define the action items present to the user after they run the test.
 next_action_message: "What do you want to do next?"
-next_action_show_map_text: "View all results to-date on a map of Seattle"
+next_action_show_map_text: "View all results to-date on a map"
 next_action_learn_about_text: "Learn more about this test and how to improve your speed"
-next_action_learn_about_link: "https://www.seattle.gov/broadband-speed-test-about"
-next_action_social_share_text: "Share this test with your friends, colleagues, and neighbors"
+next_action_learn_about_link: "#"
+next_action_social_share_text: none
 # #DEFAULT#
 #
 
@@ -512,13 +509,13 @@ next_action_social_share_text: "Share this test with your friends, colleagues, a
 # If you set any of these to 'none', they will be excluded from the website.
 # If you don't want any social share options, set all of the items below to 'none'
 # and also set 'next_action_social_share_text' to 'none' (without quotes) above.
-social_share_twitter: "http://twitter.com/share?url=http://www.seattle.gov/broadband-speed-test&text=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test&via=CivicTechSea"
-social_share_gplus: "https://plus.google.com/share?url=http://www.seattle.gov/broadband-speed-test"
-social_share_facebook: "http://www.facebook.com/sharer/sharer.php?u=http://www.seattle.gov/broadband-speed-test"
-social_share_stumbleupon: "http://www.stumbleupon.com/submit?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test"
-social_share_reddit: "http://reddit.com/submit?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test"
-social_share_linkedin: "http://www.linkedin.com/shareArticle?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test&summary=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test&source=http://www.seattle.gov/broadband-speed-test"
-social_share_email: "mailto:?subject=Take%20the%20Seattle%20Broadband%20Speed Test&body=I%20just%20took%20the%20Seattle%20Broadband%20Speed%20Test,%20and%20you%20should%20too!%20Take%20the%20test%20and%20contribute%20to%20a%20map%20of%20broadband%20speeds%20across%20the%20city. http://www.seattle.gov/broadband-speed-test"
+social_share_twitter: none
+social_share_gplus: none
+social_share_facebook: none
+social_share_stumbleupon: none
+social_share_reddit: none
+social_share_linkedin: none
+social_share_email: none
 # #DEFAULT#
 #
 
@@ -538,7 +535,7 @@ icon_learn_link: "http://www.seattle.gov/broadband/broadband-speed-test/about-th
 # 'mapview_icon_' variables set the text values and '?' link on the mapview display
 mapview_icon_test_alt_text: "Take the Speed Test"
 mapview_icon_learn_alt_text: "Learn more about this test."
-mapview_icon_learn_link: "http://www.seattle.gov/broadband/broadband-speed-test/about-the-broadband-speed-test"
+mapview_icon_learn_link: "https://github.com/opentechinstitute/piecewise"
 # #DEFAULT#
 #
 
