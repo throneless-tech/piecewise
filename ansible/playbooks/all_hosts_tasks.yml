@@ -28,7 +28,6 @@
     state: latest
   with_items: 
     - ipaddress
-    - bigquery
 
 - name: Get the latest MaxMind CSV
   unarchive:
