@@ -63,7 +63,7 @@ database_user_group: postgres
 #       the database user. These can be safely left as the default, unless you desire to 
 #       change them.
 
-site_fqdn: 35.231.3.248 
+site_fqdn: 35.186.179.249
 # !REQUIRED!
 #
 # site_fqdn 
@@ -159,7 +159,7 @@ site_path: "{{ base_path }}/piecewise_web"
 # Save the geofiles you intend to use for your Piecewise aggregations of
 # M-Lab data in the folder: /local_customizations/geofiles/
 
-shape_file: WV-counties.shp
+shape_file: wv_counties.shp
 # !REQUIRED!
 #
 # shape_file  The filename of the shapefile Piecewise should use for your aggregations.
@@ -229,7 +229,7 @@ map_data_end_date: "Jan 1 2018 00:00:00"
 # 3.1 Website Geographic Information #
 ######################################
 
-topojson_file: WV-counties.json
+topojson_file: wv_counties.json
 # !REQUIRED!
 #
 # topojson_file   The file name of a topojson format geo file that is 
