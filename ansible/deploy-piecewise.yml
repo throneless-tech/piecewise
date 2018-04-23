@@ -7,7 +7,7 @@
       become_user: root
       when:
         - ansible_distribution == "Debian"
-        - ansible_distribution_major_version == "8"
+        - ansible_distribution_major_version == "8" or ansible_distribution_major_version == "9"
     - include: playbooks/rhel_hosts_tasks.yml
       become: true
       become_user: root
@@ -26,7 +26,7 @@
       become_user: root
       when:
         - ansible_distribution == "Debian"
-        - ansible_distribution_major_version == "8"
+        - ansible_distribution_major_version == "8" or ansible_distribution_major_version == "9"
     - include: playbooks/rhel_hosts_post_tasks.yml
       become: true
       become_user: root
