@@ -9,8 +9,20 @@ import time
 import sys
 import re
 
+# Gcloud Job Configuration Reference: https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs
 def make_request(query):
-    return { 'configuration' : { 'query' : { 'query' : query } } }
+    return { 'configuration' : 
+                { 'query' : 
+                    { 'query' : query, 
+                      'allowLargeResults' : True, 
+                      'destinationTable' : 
+                        { 'projectId' : 'mlab-sandbox',
+                          'datasetId' : 'critzo',
+                          'tableId' : 'pw-wv-counties'
+                        },
+                    } 
+                } 
+            }
 
 def ingest(config):
     engine = create_engine(config.database_uri)

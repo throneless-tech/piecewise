@@ -63,7 +63,7 @@ database_user_group: postgres
 #       the database user. These can be safely left as the default, unless you desire to 
 #       change them.
 
-site_fqdn: 35.186.179.249
+site_fqdn: 35.231.201.40
 # !REQUIRED!
 #
 # site_fqdn 
@@ -164,7 +164,7 @@ shape_file: wv_counties.shp
 #
 # shape_file  The filename of the shapefile Piecewise should use for your aggregations.
 
-dbKey: GEOID
+dbKey: geoid
 dbKeyDataType: string
 shape_projection: "EPSG:4326"
 geometry_type: MultiPolygon

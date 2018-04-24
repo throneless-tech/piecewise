@@ -10,6 +10,7 @@
     - postgis
     - postgresql-client
     - nginx
+    - uwsgi
     - uwsgi-plugin-python
     - git
     - python-pip

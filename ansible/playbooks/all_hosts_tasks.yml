@@ -28,6 +28,7 @@
     state: latest
   with_items: 
     - ipaddress
+    - google-api-python-client
 
 - name: Get the latest MaxMind CSV
   unarchive:
