@@ -22,8 +22,8 @@ function addLegend() {
 
 	legend.onAdd = function(map) {
 	    var div = L.DomUtil.create('div', 'info legend'),
-	        grades = [0, .5, 1, 4, 5];
-
+	        grades = [0, 3, 5, 10, 25];
+/*
 	    var i;
 		div.innerHTML = '';
 	    for ( i = grades.length - 1; i >= 0; i-- ) {
@@ -32,8 +32,14 @@ function addLegend() {
 				'"></i> ' + (i == grades.length ? '0' : grades[i]) + (grades[i - 1] ?
 				'&ndash;' + grades[i - 1] + ' Mbps<br/>' : '+ Mbps<br/>');
 	    }
-		div.innerHTML += '<i style="background: black; opacity: .25">' +
-		'</i>Datos insuficientes';
+		div.innerHTML += '<i style="background: black; opacity: .50">' +
+		'</i>Insufficient Data';
+*/		
+		div.innerHTML = '<i style="background:#bc0000;"></i> 0-3 Mbps<br/>' +
+				'<i style="background:#b75e00;"></i> 3-5 Mbps <br/>' +
+				'<i style="background:#ff8200;"></i> 5-10 Mbps<br/>' +
+				'<i style="background:#ffb05e;"></i> 10-25 Mbps<br/>' +
+				'<i style="background:#36BC18;"></i> 25+ Mbps<br/>'
 	    return div;
 	};
 
@@ -56,11 +62,11 @@ function addLegend() {
  * @returns {string} A string representing the color
  */
 function getPolygonColor(val) {
-    return val >= 5  ? '#00a802' :
-           val >= 4  ? '#ffd400' :
-           val >= 1  ? '#ff0400' :
-           val >= 0.5  ? '#680100' : 
-           val >= 0  ? '#260000' : '7f7f7f';
+    return val >= 25 ? '#36BC18' :
+           val >= 10  ? '#ffb05e' :
+           val >= 5  ? '#ff8200' :
+           val >= 3  ? '#b75e00' :
+           val >= 0   ? '#bc0000' : '#bc0000';
 }
 
 /**
@@ -105,10 +111,10 @@ function addControls() {
 		L.DomEvent.disableClickPropagation(sliderMonth);
 
 
-		labelMetric.innerHTML = 'Muéstrame';
+		labelMetric.innerHTML = 'Showing: ';
 		selectMetric.innerHTML = '<option value="download_median">' +
-			'Velocidades de descarga</option><option value="upload_median">' +
-			'Velocidades de carga</option>';
+			'Download Speeds</option><option value="upload_median">' +
+			'Upload Speeds</option>';
 		selectMetric.setAttribute('id', 'selectMetric');
 		selectMetric.setAttribute('class', 'form-control');
 
@@ -436,21 +442,21 @@ function seedLayerCache(year) {
  * @returns {string} Textual information for the popup
  */
 function makePopup(props) {
-	var popup = '<h3 class="league-gothic">Mediciones de Internet en '+ props.NAME_1 +', '+ props.NAME_2 +', en '+ $('#selectYear').val() + ' :</h3>'+
-		' <p><strong>Descargar ('+ Math.round(props.download_count * 10) / 10 +' muestras)</strong><br />'+
-		' Mediana: ' + Math.round(props.download_median * 10) / 10 + ' Mbps <br />' +
-		' Promedio: ' + Math.round(props.download_avg * 10) / 10 + ' Mbps <br />' +
-		' Máximo: ' + props.download_max + ' Mbps<br /><br />' +
-		' <strong>Subir ('+ Math.round(props.upload_count * 10) / 10 + ' muestras)</strong><br />' +
-		' Mediana: ' + Math.round(props.upload_median * 10) / 10 + ' Mbps <br />' +
-		' Promedio: ' + Math.round(props.upload_avg * 10) / 10 + ' Mbps <br/>' +
-		' Máximo: ' + props.upload_max + ' Mbps<br /><br />' +
-		'<strong>Tiempo promedio de ida y vuelta:</strong> ' + Math.round(props.rtt_avg) + ' ms <br/></p>';
+	var popup = '<h3 class="league-gothic">Internet Measurements '+ props.NAME +' county, in '+ $('#selectYear').val() + ' :</h3>'+
+		' <p><strong>Download ('+ Math.round(props.download_count * 10) / 10 +' samples)</strong><br />'+
+		' Median: ' + Math.round(props.download_median * 10) / 10 + ' Mbps <br />' +
+		' Average: ' + Math.round(props.download_avg * 10) / 10 + ' Mbps <br />' +
+		' Maximum: ' + props.download_max + ' Mbps<br /><br />' +
+		' <strong>Upload ('+ Math.round(props.upload_count * 10) / 10 + ' samples)</strong><br />' +
+		' Median: ' + Math.round(props.upload_median * 10) / 10 + ' Mbps <br />' +
+		' Average: ' + Math.round(props.upload_avg * 10) / 10 + ' Mbps <br/>' +
+		' Maximum: ' + props.upload_max + ' Mbps<br /><br />' +
+		'<strong>Average Round Trip Time:</strong> ' + Math.round(props.rtt_avg) + ' ms <br/></p>';
 		console.log(props);
 	return popup;
 }
 function makeBlankPopup() {
-        var popup = "<h3 class='league-gothic'>¡Esta área no tiene suficientes datos todavía!</h3><p>Ayuda a que nuestro mapa sea más preciso ejecutando <a id='testSpeedEmptyPrompt' href='index.html'>tu prueba</a> desde una dirección en esta área!</p>";
+        var popup = "<h3 class='league-gothic'>Not enough data in this area!</h3><p>Help improve this map by <a id='testSpeedEmptyPrompt' href='index.html'>running a test</a> from a location in this area!</p>";
 	return popup;
 }
 /**
