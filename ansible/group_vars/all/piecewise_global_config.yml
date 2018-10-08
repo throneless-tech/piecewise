@@ -465,9 +465,7 @@ site_name: "Stevens County, WA Broadband Map"
 # 'intro_text' defines the heading text that precedes the HTML survey form, provided to users
 # before they may take the test.
 intro_text: >
-  Stevens County is collecting information from residents about broadband 
-  experiences across the county. To contribute, please answer the following 
-  questions and then take our Broadband Speed Test.
+  Stevens County is collecting speed tests from residents across Eastern Washington.
 
 instructions_text: >
   The Measurement Lab (M-Lab) platform is run by the scientific community.
