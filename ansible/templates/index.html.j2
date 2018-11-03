@@ -92,56 +92,6 @@
 	        <div id="thankyou">
 	          <h3 class="league-gothic">{{ thank_you_heading }}</h3>
 	          <strong>{{ thank_you_message }}</strong><br /><br />
-	          <strong>{{ next_action_message }}</strong>
-	          <ul>
-	            <li><a href="#" onclick="showMap()">{{ next_action_show_map_text }}</a></li>
-	            <li><a href="{{ next_action_learn_about_link }}" target="_parent">{{ next_action_learn_about_text }}</a></li>
-	            <li><a href="#" onclick="showSocialShare()">{{ next_action_social_share_text }}</a></li>
-	          </ul>
-	          <div id="socialshare">
-	          <!-- Social Button HTML -->
-	          {% if social_share_twitter is not none -%}
-	          <!-- Twitter -->
-	            <a href="{{ social_share_twitter }}"" target="_blank" class="share-btn twitter">
-	            <i class="fa fa-twitter"></i>
-	            </a>
-	          {% endif %}
-	          {%- if social_share_gplus is not none -%}
-	          <!-- Google Plus -->
-	            <a href="{{ social_share_gplus }}" target="_blank" class="share-btn google-plus">
-	            <i class="fa fa-google-plus"></i>
-	            </a>
-	          {% endif %}
-	          {%- if social_share_facebook is not none -%}
-	          <!-- Facebook -->
-	            <a href="{{ social_share_facebook }}" target="_blank" class="share-btn facebook">
-	            <i class="fa fa-facebook"></i>
-	            </a>
-	          {% endif %}
-	          {%- if social_share_stumbleupon is not none -%}
-	          <!-- StumbleUpon (url, title) -->
-	            <a href="{{ social_share_stumbleupon }}" target="_blank" class="share-btn stumbleupon">
-	            <i class="fa fa-stumbleupon"></i>
-	            </a>
-	          {% endif %}
-	          {%- if social_share_reddit is not none -%}
-	          <!-- Reddit (url, title) -->
-	            <a href="{{ social_share_reddit }}" target="_blank" class="share-btn reddit">
-	            <i class="fa fa-reddit"></i>
-	            </a>
-	          {% endif %}
-	          {%- if social_share_linkedin is not none -%}
-	          <!-- LinkedIn -->
-	            <a href="{{ social_share_linkedin }}" target="_blank" class="share-btn linkedin">
-	            <i class="fa fa-linkedin"></i>
-	            </a>
-	          {% endif %}
-	          {%- if social_share_email is not none -%}
-	          <!-- Email -->
-	            <a href="{{ social_share_email }}" target="_blank" class="share-btn email">
-	            <i class="fa fa-envelope"></i>
-	            </a>
-	          {% endif -%}
 	          </div>
 	        </div> <!-- thankyou div -->
 	      </div>

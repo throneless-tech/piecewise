@@ -467,7 +467,7 @@ site_name: "Stevens County, WA Broadband Map"
 intro_text: >
   The Stevens County/Spokane Tribe Broadband Action Team (BAT), is collecting speed tests 
   from residents across Eastern Washington State as a part of their 
-  [Community Survey for High Speed Internet](https://wsu.co1.qualtrics.com/jfe/form/SV_3vEVov7Ezp37fAF).
+  <a href="https://wsu.co1.qualtrics.com/jfe/form/SV_3vEVov7Ezp37fAF">Community Survey for High Speed Internet</a>.
   This site provides a speed test from Measurement Lab to collect actual speeds of residents.
 
 instructions_text: >
@@ -499,25 +499,34 @@ thank_you_message: >
   Your test results will be combined with others and will appear on the map 
   at the end of the month.
 
+  <a href="https://wsu.co1.qualtrics.com/jfe/form/SV_3vEVov7Ezp37fAF">Return to the Stevens County/Spokane Tribe Broadband Action Team (BAT) Community Survey!</a>
+
 # 'next_action_' variables define the action items present to the user after they run the test.
 next_action_message: "What do you want to do next?"
 next_action_show_map_text: "View all results to-date on a map of Eastern Washington State"
 next_action_learn_about_text: "Learn more about this test and how to improve your speed"
 next_action_learn_about_link: "http://www.stevenscountywa.gov/speedtest/speedtest_faq.html"
-next_action_social_share_text: "Share this test with your friends, colleagues, and neighbors"
+next_action_social_share_text: none
 
 # 'social_share_' variables define the links to be used for social sharing actions.
 #
 # If you set any of these to 'none', they will be excluded from the website.
 # If you don't want any social share options, set all of the items below to 'none'
 # and also set 'next_action_social_share_text' to 'none' (without quotes) above.
-social_share_twitter: "http://twitter.com/share?url=https://stevenscountybroadband.net&text=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
-social_share_gplus: "https://plus.google.com/share?url=https://stevenscountybroadband.net/"
-social_share_facebook: "http://www.facebook.com/sharer/sharer.php?u=https://stevenscountybroadband.net/"
-social_share_stumbleupon: "http://www.stumbleupon.com/submit?url=https://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
-social_share_reddit: "http://reddit.com/submit?url=https://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
-social_share_linkedin: "http://www.linkedin.com/shareArticle?url=https://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test&summary=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test&source=http://www.co.stevens.wa.us/"
-social_share_email: "mailto:?subject=Take%20the%20Stevens%20County%20Broadband%20Speed Test&body=I%20just%20took%20the%20Stevens%20County%20Broadband%20Speed%20Test,%20and%20you%20should%20too!%20Take%20the%20test%20and%20contribute%20to%20a%20map%20of%20broadband%20speeds%20across%20the%20county. https://stevenscountybroadband.net/"
+social_share_twitter: none
+social_share_gplus: none
+social_share_facebook: none
+social_share_stumbleupon: none
+social_share_reddit: none
+social_share_linkedin: none
+social_share_email: none
+#social_share_twitter: "http://twitter.com/share?url=https://stevenscountybroadband.net&text=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
+#social_share_gplus: "https://plus.google.com/share?url=https://stevenscountybroadband.net/"
+#social_share_facebook: "http://www.facebook.com/sharer/sharer.php?u=https://stevenscountybroadband.net/"
+#social_share_stumbleupon: "http://www.stumbleupon.com/submit?url=https://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
+#social_share_reddit: "http://reddit.com/submit?url=https://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test"
+#social_share_linkedin: "http://www.linkedin.com/shareArticle?url=https://stevenscountybroadband.net/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test&summary=I%20tested%20my%20Internet%20speeds%20with%20the%20Stevens%20County%20Broadband%20Speed%20Test&source=http://www.co.stevens.wa.us/"
+#social_share_email: "mailto:?subject=Take%20the%20Stevens%20County%20Broadband%20Speed Test&body=I%20just%20took%20the%20Stevens%20County%20Broadband%20Speed%20Test,%20and%20you%20should%20too!%20Take%20the%20test%20and%20contribute%20to%20a%20map%20of%20broadband%20speeds%20across%20the%20county. https://stevenscountybroadband.net/"
 
 # 'icon_' and 'mapview_icon_' variables define the text accompanying the icons in the user interface
 #
