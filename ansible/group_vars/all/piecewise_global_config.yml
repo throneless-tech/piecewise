@@ -497,8 +497,7 @@ rtt_result_unit: "ms"
 thank_you_heading: "Thank you!"
 thank_you_message: >
   Your test results will be combined with others and will appear on the map 
-  at the end of the month.
-
+  at the end of the month.<br/><br/>
   <a href="https://wsu.co1.qualtrics.com/jfe/form/SV_3vEVov7Ezp37fAF">Return to the Stevens County/Spokane Tribe Broadband Action Team (BAT) Community Survey!</a>
 
 # 'next_action_' variables define the action items present to the user after they run the test.
