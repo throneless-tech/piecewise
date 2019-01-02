@@ -64,7 +64,7 @@ database_user_group: postgres
 #       change them.
 
 #site_fqdn: 172.104.26.100
-site_fqdn: pa.broadbandtest.us
+site_fqdn: mi.broadbandtest.us
 # !REQUIRED!
 #
 # site_fqdn 
@@ -90,11 +90,11 @@ site_fqdn: pa.broadbandtest.us
 # accessible to the Internet.
 #
 
-site_contact: critzo@opentechinstitute.org
+site_contact: mimoonshotprojectteam@merit.edu
 site_country: US
-site_state: District of Columbia
-site_city: Washington
-site_ou: Open Technology Institute
+site_state: Michigan
+site_city: Ann Arbor
+site_ou: Merit Network, inc.
 # !REQUIRED!
 #
 # site_contact    These variables are provided to enable automatic generation of 
@@ -161,7 +161,7 @@ site_path: "{{ base_path }}/piecewise_web"
 # Save the geofiles you intend to use for your Piecewise aggregations of
 # M-Lab data in the folder: /local_customizations/geofiles/
 
-shape_file: US_PA_2017_lower_house.shp 
+shape_file: cb_2017_26_bg_500k.shp
 
 # !REQUIRED!
 #
@@ -171,49 +171,32 @@ dbKey: geoid
 dbKeyDataType: string
 shape_projection: "EPSG:4326"
 geometry_type: MultiPolygon
-layer_name: pa_state_lower_house_districts
-aggregation_name: "pa_state_lower_house_districts"
-aggregation_stats_table_name: "pa_state_lower_house_districts_stats"
+layer_name: mi_house_districts
+aggregation_name: "mi_house_districts"
+aggregation_stats_table_name: "mi_house_districts_stats"
 
 ### Geolayers - change from single layer to multiple geolayer support using yaml struct
 #               similar to how the form fields are constructed.
 
 geolayers:
   1:
-    shape_file: US_PA_2017_lower_house.shp
+    shape_file: cb_2015_53_bg_500k.shp
     dbKey: geoid
     dbKeyDataType: string
     shape_projection: "EPSG:4326"
     geometry_type: MultiPolygon
-    layer_name: pa_state_lower_house_districts
-    aggregation_name: "pa_state_lower_house_districts"
-    aggregation_stats_table_name: "pa_state_lower_house_districts_stats"
-    topojson_file: pa_lower_house.topojson
+    layer_name: mi_house_districts
+    aggregation_name: "mi_house_districts"
+    aggregation_stats_table_name: "mi_house_districts_stats"
+    topojson_file: mi_censusblocks.topojson
     geoKey: GEOID
-    mapscript_layer_name: "pa_state_lower_house"
-    mapscript_layer_name_pretty: "Pennsylvania State Lower House Districts"
-    mapscript_json_type: "topojson"
-
-  2:  
-    shape_file: US_PA_2017_upper_house.shp 
-    dbKey: geoid
-    dbKeyDataType: string
-    shape_projection: "EPSG:4326"
-    geometry_type: MultiPolygon
-    layer_name: pa_state_upper_house_districts
-    aggregation_name: "pa_state_upper_house_districts"
-    aggregation_stats_table_name: "pa_state_upper_house_districts_stats"
-    topojson_file: pa_upper_house.topojson
-    geoKey: GEOID
-    mapscript_layer_name: "pa_state_upper_house"
-    mapscript_layer_name_pretty: "Pennsylvania State Upper House Districts"
+    mapscript_layer_name: "mi_house"
+    mapscript_layer_name_pretty: "Michigan State House Districts"
     mapscript_json_type: "topojson"
 
 asn_map:
   1:
-    Cantv: "AS8048 CANTV Servicios, Venezuela"
-  2:
-    CIX: "AS265641 TELECOMUNICACIONES ROCARLI C.A (CIX BROADBAND)"
+    Merit: "AS237 Merit Network, inc."
 
 # !REQUIRED!
 #
@@ -230,17 +213,14 @@ asn_map:
 ##############################################
 # Variables in this section define the geographic area and date range you would
 # like to use in this Piecewise server. 
+map_coordinate_southwest:
+  lat: 41.61
+  lon: -90.47
 
-map_coordinate_southwest: 
-  lat: 39.7197989
-  lon: -80.519895
-# !REQUIRED!
-#
-map_coordinate_northeast: 
-  lat: 42.516072
-  lon: -74.6895018
-# !REQUIRED!
-#
+map_coordinate_northeast:
+  lat: 47.59
+  lon: -82.34
+
 # The coordinates above define the latitude and longitude for the southwest and 
 # northeast corners of a bounding box, defining the region from which you are 
 # interested in pulling M-Lab NDT data.
@@ -273,7 +253,7 @@ map_data_end_date: "Dec 31 2055 00:00:00"
 # 3.1 Website Geographic Information #
 ######################################
 
-topojson_file: pa_lower_house.topojson
+topojson_file: mi_censusblocks.topojson
 # !REQUIRED!
 #
 # topojson_file   The file name of a topojson format geo file that is 
@@ -287,8 +267,8 @@ geoKey: GEOID
 #           in your shapefile. 
 #           This is typically the same as dbKey, but in CAPITAL LETTERS.
 
-mapscript_layer_name: "pa_state_lower_house"
-mapscript_layer_name_pretty: "Pennsylvania State Lower House Districts"
+mapscript_layer_name: "mi_house"
+mapscript_layer_name_pretty: "Michigan State House Districts"
 # !REQUIRED!
 #
 # These variables name the map layers on the website. 'mapscript_layer_name' is used as 
@@ -301,7 +281,7 @@ mapscript_json_type: "topojson"
 # In the future, support for other types of geodata, such as the geojson format may be
 # included in Piecewise. Currently, the mapscript json type should always be 'topojson'. 
 
-mapscript_start_year: 2018
+mapscript_start_year: 2019
 mapscript_start_month: 1
 # # DEFAULT #
 #
@@ -340,7 +320,8 @@ mapscript_zoom_level: 8
 # on the website map controls. 
 # # DEFAULT #
 mapscript_month_names: 
-   1: 2018
+  1: 2019
+#   1: 2018
 #   2: 2017
 #   3: 2016
 #   4: 2015
@@ -425,6 +406,83 @@ form_fields:
         e_work: "Work"
         f_other: "Other location"
 
+  2:
+    household_num:
+      field_type: select_list
+      db_type: String
+      page: 1
+      name: household_num
+      id: household_num
+      text: "How many people live in your home?"
+      options:
+        default: "------"
+        1: "1"
+        2: "2"
+        3: "3"
+        4: "4"
+        5: "5"
+        6: "6"
+        7: "7"
+        8: "8"
+        9: "9"
+        10: "9+"
+
+  3:
+    minor_num:
+      field_type: select_list
+      db_type: String
+      page: 1
+      name: minor_num
+      id: minor_num
+      text: "How many of those living in your home are under age 18?"
+      options:
+        default: "------"
+        1: "1"
+        2: "2"
+        3: "3"
+        4: "4"
+        5: "5"
+        6: "6"
+        7: "7"
+        8: "8"
+        9: "9"
+        10: "9+"
+  4:
+    home_owner:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: home_owner
+      id: home_owner
+      text: "Does your family own the place where you live?"
+      options:
+        default: "------"
+        1: "Yes"
+        2: "No"
+
+  5:
+    paid_subscription:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: paid_subscription
+      id: paid_subscription
+      text: "Does anyone in your home pay a cable company, phone company, or another internet service provider to provide internet service for your home?"
+      options:
+        default: "------"
+        1: "Yes"
+        2: "No"
+
+  6:
+    service_type:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: service_type
+      id: service_type
+      text: 
+
+
   2: 
     service_at_home:
       field_type: select_list
@@ -454,26 +512,6 @@ form_fields:
         e_no_interest: "Do not want the internet"
         f_mobile_only: "Only have a mobile"
 
-  4:
-    household_num:
-      field_type: select_list
-      db_type: String
-      page: 1
-      name: household_num
-      id: household_num
-      text: "If testing from your home, how many people in your household use the internet?"
-      options:
-        default: "------"
-        1: "1"
-        2: "2"
-        3: "3"
-        4: "4"
-        5: "5"
-        6: "6"
-        7: "7"
-        8: "8"          
-        9: "9"
-        10: "10+" 
 
   5:
     household_type:
