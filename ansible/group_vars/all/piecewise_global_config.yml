@@ -23,16 +23,16 @@ project_name: piecewise
 #
 # project_name  
 #       The name of your forked repository. This is likely 'piecewise', unless you have renamed
-#       the repository after forking it from https://github.com/opentechinsstute.org/piecewise
+#       the repository after forking it from https://github.com/m-lab/piecewise
 # TO DO: may no longer be needed. confirm.
 #
 
-remote: https://github.com/opentechinstitute
+remote: https://github.com/m-lab
 # !REQUIRED!
 #
 # remote  
 #       The URL where your repository is available. You can use any valid git remote. 
-#       For example: https://github.com/opentechinstitute 
+#       For example: https://github.com/m-lab 
 # TO DO: may no longer be needed. confirm.
 
 piecewise_commit: master
@@ -299,6 +299,7 @@ mapscript_month_names:
    1: 2016
    2: 2017
    3: 2018
+   4: 2019
 #  1: enero
 #  2: febrero
 #  3: marzo
@@ -379,21 +380,29 @@ form_fields:
       text: "Who is your Internet Service Provider?"
       options:
         a_default: "------"
-        b_airpipe-wireless: "AirPipe Wireless"
-        c_att: "AT&amp;T"
-        d_century-link: "CenturyLink"
-        e_comcast: "Comcast / Xfinity"
-        f_charter: "Charter / Spectrum"
-        g_dash-wireless: "Dash Wireless"
-        h_desert-winds-wireless: "Desert Winds Wireless"
+        b_seymour-channels: "Adept LLP (Seymour Channels)s"
+        c_airpipe-wireless: "Air-Pipe (Wired or Wireless - WOW)"
+        d_att: "AT&amp;T"
+        e_century-link: "CenturyLink"
+        f_charter: "Charter (Spectrum)"
+        g_comcast: "Comcast (Xfinity)"
+        h_dash-wireless: "Dash Wireless"
         i_dish-net: "DishNet"
-        j_ecliptixnet-wireless: "Ecliptixnet Wireless"
-        k_excede-wild-blue: "Excede/WildBlue"
-        l_hughes-net: "HughesNet"
-        m_ptera-wireless: "Ptera Wireless"
-        n_seymour-channels: "Seymour Channels"
-        o_startouch: "Startouch"
-        p_verizon: "Verizon"
+        j_ecliptixnet-wireless: "Ecliptixnet"
+        k_eltopia: "Eltopia"
+        l_fatbeam: "Fatbeam"
+        m_frontier: "Frontier"
+        n_hughes-net: "HughesNet"
+        o_internet_express_desert-winds-wireless: "Internet Express (Desert Winds Wireless)"
+        p_nci_datacom: "NCI Datacom"
+        r_odessa_office_equipment: "Odessa Office Equipment"
+        s_pend_oreille_valley_network: "Pend Oreille Valley Network (POVN)"
+        t_ptera-wireless: "Ptera Wireless"
+        u_sprint: "Sprint"
+        v_startouch: "Startouch"
+        w_sttx: "STTX (Spokane Tribal Telecom Exchange)"
+        x_verizon: "Verizon"
+        y_excede-wild-blue: "Wild Blue/Excede"
         q_other: "Other"
       required: yes
   2:
@@ -467,7 +476,7 @@ site_name: "Stevens County, WA Broadband Map"
 intro_text: >
   The Stevens County/Spokane Tribe Broadband Action Team (BAT), is collecting speed tests 
   from residents across Eastern Washington State as a part of their 
-  <a href="https://wsu.co1.qualtrics.com/jfe/form/SV_3vEVov7Ezp37fAF">Community Survey for High Speed Internet</a>.
+  <a href="https://wsu.co1.qualtrics.com/jfe/form/SV_5mRBRjOpcFFiFUN">Community Survey for High Speed Internet</a>.
   This site provides a speed test from Measurement Lab to collect actual speeds of residents.
 
 instructions_text: >
@@ -498,7 +507,7 @@ thank_you_heading: "Thank you!"
 thank_you_message: >
   Your test results will be combined with others and will appear on the map 
   at the end of the month.<br/><br/>
-  <a href="https://wsu.co1.qualtrics.com/jfe/form/SV_3vEVov7Ezp37fAF">Return to the Stevens County/Spokane Tribe Broadband Action Team (BAT) Community Survey!</a>
+  <a href="https://wsu.co1.qualtrics.com/jfe/form/SV_5mRBRjOpcFFiFUN">Return to the Stevens County/Spokane Tribe Broadband Action Team (BAT) Community Survey!</a>
 
 # 'next_action_' variables define the action items present to the user after they run the test.
 next_action_message: "What do you want to do next?"
