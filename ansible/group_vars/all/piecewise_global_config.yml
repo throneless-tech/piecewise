@@ -480,170 +480,219 @@ form_fields:
       db_type: String
       name: service_type
       id: service_type
-      text: 
-
-
-  2: 
-    service_at_home:
-      field_type: select_list
-      page: 1
-      db_type: String
-      name: service_at_home
-      id: service_at_home
-      text: "If you're not testing from your home, Do you have internet service at home?"
+      text: "What type of internet service is at your home?"
       options:
-        a_default: "------"
-        b_home_serv_yes: "Yes"
-        c_home_serv_no: "No"
-
-  3: 
-    no_serv_reason:
-      field_type: select_list
-      db_type: String
-      page: 1
-      name: no_serv_reason
-      id: no_serv_reason
-      text: "If you do not have internet service at home, why not?"
-      options:
-        a_default: "------"
-        b_cost: "Cost"
-        c_no_device: "Do not have a computer/device"
-        d_no_expertise: "Do not know how to use it"
-        e_no_interest: "Do not want the internet"
-        f_mobile_only: "Only have a mobile"
-
-
-  5:
-    household_type:
-      field_type: select_list
-      page: 1
-      db_type: String
-      name: household_type
-      id: household_type
-      text: "What type of household do you live in?"
-      options:
-        a_default: "------"
-        b_apartment_building: "Apartment Building"
-        c_single_fam_home: "Single-family home"
-        d_multi_fam_home: "Multi-family home"
-        e_other: "Other"
-
-  6:
-    household_type_other:
-      field_type: text
-      page: 1
-      db_type: String
-      name: household_type_other
-      id: household_type_other
-      text: "If you selected 'other', please describe your household type:"
+        default: "------"
+        1: "Service such as DSL, cable, or fiber option service"
+        2: "Satellite"
+        3: "Mobile phone, celluar data or cellular hotspot"
+        4: "Another type of fixed wireless internet service"
+        5: "I don't have internet access at home"
+        6: "I don't know"
 
   7:
-    isp_user:
-      field_type: text
-      page: 2
-      db_type: String
-      name: isp_user
-      id: isp_user
-      text: "What company provides your internet service at home?"
-
-  8:
-    service_type:
-      field_type: select_list
-      page: 2
-      db_type: String
-      name: service_type
-      id: service_type
-      text: "What type of internet service is it?"
-      options:
-        a_default: "------"
-        b_mobile: "Mobile (cellular)"
-        c_dsl: "DSL"
-        d_cable: "Cable"
-        e_wireless_isp: "Wireless/WISP"
-        f_satellite: "Satellite"
-        g_fiber: "Fiber"
-
-  9:
     download_speed:
       field_type: select_list
-      page: 2
+      page: 1
       db_type: String
       name: download_speed
       id: download_speed
-      text: "What is the download speed of your internet service subscription?"
+      text: "What is the download speed of your home internet service subscription?"
       options:
-        a_default: "------"
-        b_10_mbps: "10 Mbps"
-        c_25_mbps: "25 Mbps"
-        d_50_mbps: "50 Mbps"
-        e_100_mbps: "100+ Mbps"
-        f_other: "Other"  
+        default: "------"
+        1: "Less than 3 Mbps"
+        2: "3 mbps - 10 Mbps"
+        3: "10 Mbps - 25 Mbps"
+        4: "25 Mbps - less than 100 Mbps"
+        5: "Greater than 100 Mbps"
+        6: "I don't have internet access at home"
+        7: "I don't know"
 
-  10:
-    other_download:
-      field_type: text
-      page: 2
-      db_type: String
-      name: other_download
-      id: other_download
-      text: "Other download speed (if not listed above):"              
-
-  11:
+  8:
     upload_speed:
       field_type: select_list
-      page: 2
+      page: 1
       db_type: String
       name: upload_speed
       id: upload_speed
-      text: "What is the upload speed of your internet service subscription?"
+      text: "What is the advertised upload speed of your home internet subscription?"
       options:
-        a_default: "------"
-        b_1_mbps: "1 Mbps"
-        c_3_mbps: "3 Mbps"
-        d_10_mbps: "10 Mbps"
-        e_25_mbps: "25 Mbps"
-        f_50_mbps: "50 Mbps"
-        g_100_mbps: "100+ Mbps"
-        h_other: "Other"
+        default: "------"
+        1: "Less than 1 Mbps"
+        2: "1 Mbps - 3 Mbps"
+        3: "3 Mbps - 6 Mbps"
+        4: "Over 6 Mbps"
+        5: "I don't have internet access at home"
+        6: "I don't know"
 
-  12:
-    other_upload:
-      field_type: text
-      db_type: String
-      name: other_upload
-      id: other_upload
-      text: "Other upload speed (if not listed above):"
-
-  13:
+  9:
     service_cost:
       field_type: select_list
-      page: 2
+      page: 1
       db_type: String
       name: service_cost
       id: service_cost
-      text: "How much does it cost per month?"
+      text: "How much does your home internet service cost per month?"
       options:
-        a_default: "------"
-        b_less_than_25: "Less than $25"
-        c_bet_25_50: "$25-50"
-        d_bet_50_75: "$50-75"
-        e_bet_75_100: "$75-100"
-        f_100_plus: "$100+"
-        g_dont_know: "I don't know"
+        default: "------"
+        1: "Less than $10"
+        2: "$10 - $25"
+        3: "$26 - $50"
+        4: "$51 - $75"
+        5: "$76 - $100"
+        6: "$101 - $150"
+        7: "More than $151"
+
+  10:
+    service_bundle:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: service_bundle
+      id: service_bundle
+      text: "Is your home internet access is bundled, if yes - what is included?"
+      options:
+        default: "------"
+        1: "Internet AND cable or satellite TV"
+        2: "Internet AND home phone"
+        3: "Internet AND cell phone"
+        4: "Internet AND cable or satellite TV AND a home phone"
+        5: "Internet AND cable or satellite TV AND a cell phone"
+        6: "Internet AND cable or satellite TV AND a home phone AND a cell phone"
+  11:
+    survey_wifi:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_wifi
+      id: survey_wifi
+      text: "Are you current using Wi-Fi to complete this survey?"
+      options:
+        default: "------"
+        1: "Yes"
+        2: "No"
+
+  12:
+    survey_at_home:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_at_home
+      id: survey_at_home
+      text: "If you are not doing this survey at home - why?"
+      options:
+        default: "------"
+        1: "I don’t have Internet access at home"
+        2: "I'm at someone else's home"
+        3: "I don't have time at home"
+        4: "Another reason"
+
+  13:
+    household_income:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: household_income
+      id: household_income
+      text: "Last year (2018) what was your total household income from all sources, before taxes? (optional)"
+      required: no
+      options:
+        default: "------"
+        1: "Less than $10,000"
+        2: "$10,000 to under $20,000"
+        3: "$20,000 to under $30,000"
+        4: "$30,000 to under $40,000"
+        5: "$40,000 to under $50,000"
+        6: "$50,000 to under $75,000"
+        7: "$75,000 to under $100,000"
+        8: "$100,000 to under $150,000"
+        9: "$150,000 or more"
+  14:
+    education_level:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: education_level
+      id: education_level
+      text: "What is the highest level of education of any adult in your home? (optional)"
+      required: no
+      options:
+        default: "------"
+        1: "High school incomplete"
+        2: "Completed grade 12 or GED"
+        3: "Technical, trade or vocational school AFTER high school"
+        4: "Some college, no 4-year degree (includes associate degree)"
+        5: "College graduate (B.S., B.A., or other 4-year degree)"
+        6: "Post-graduate training (toward a Masters/Ph.D., Law or Medical school)"
+
+  15:
+    service_satisfaction:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: service_satisfaction
+      id: service_satisfaction
+      text: "On a scale of 1-5 (5 being most satisfied) - how satisfied are you with your home Internet service?"
+      options:
+        default: "------"
+        1: "Do not have home internet service"
+        2: "Very dissatisfied"
+        3: "Dissatisfied"
+        4: "Neutral"
+        5: "Satisfied"
+        6: "Very satisfied"
+
+  16:
+    survey_address:
+      field_type: text
+      page: 1
+      db_type: String
+      name: survey_address
+      id: survey_address
+      text: "Street Address (optional)"
+      size: 3
+      required: no
+
+  17:
+    survey_email_address:
+      field_type: text
+      page: 1
+      db_type: String
+      name: survey_email_address
+      id: survey_email_address
+      text: "Email Address(optional)"
+      size: 1
+      required: no
+
 
 ####################
 # 3.3 Website Text #
 ####################
 # The section below allows you to customize various text and other elements of the website.
 
-site_name: "Pennsylvania Broadband Mapping Initiative"
+site_name: "Citizen Enabled Advances in Broadband Availability Data"
 # #DEFAULT#
 #
 # Defines the HTML page title element
 
 intro_text: >
-  Taking part in the Pennsylvania Broadband Mapping Initiative? 
-  Check your Internet speed in roughly 30 seconds!
+  At least 381,000 households in Michigan do not
+  have access to broadband – primarily because
+  low returns on investment in rural areas are not
+  conducive to for-profit deployment.  Educators
+  have been talking about the “digital divide”
+  for two decades, and while some progress has been
+  made in closing the gap, inequities persist in
+  communities across the country.  In 2009, the
+  Federal Communication Commission’s Broadband
+  Task Force reported that approximately 70% of
+  teachers assign homework requiring access to
+  broadband - what does this mean for the 5 million
+  households with school-age children that do not
+  have high-speed Internet service at home?  A
+  consistent challenge nationally is understanding
+  where and what speeds and attributes broadband is
+  currently available.
 
 instructions_text: >
   The Measurement Lab (M-Lab) platform is run by the scientific community.
@@ -652,7 +701,7 @@ instructions_text: >
   of measures of different facets of your Internet connection. The information published
   includes each device’s IP address, but does not include personal identifying information
   about you as an Internet user.
-    
+
 # #DEFAULT#
 #
 # Defines the heading text that precedes the HTML survey form, provided to users
