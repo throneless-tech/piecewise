@@ -1,48 +1,36 @@
 ---
 - hosts: all
   tasks:
-    ## Run setup tasks for supported hosts, per host OS
-    - include: playbooks/debian_hosts_tasks.yml
+    - include_tasks: playbooks/debian_hosts_tasks.yml
       become: true
       become_user: root
-      when:
-        - ansible_distribution == "Debian"
-        - ansible_distribution_major_version == "8"
-    - include: playbooks/debian9_hosts_tasks.yml
+      when: (ansible_facts['distribution'] == "Debian" and ansible_facts['distribution_major_version'] == "8")
+    - include_tasks: playbooks/debian9_hosts_tasks.yml
       become: true
       become_user: root
-      when:
-        - ansible_distribution == "Debian"
-        - ansible_distribution_major_version == "9"
-    - include: playbooks/rhel_hosts_tasks.yml
+      when: (ansible_facts['distribution'] == "Debian" and ansible_facts['distribution_major_version'] == "9")
+    - include_tasks: playbooks/rhel_hosts_tasks.yml
       become: true
       become_user: root
-      when:
-        - ansible_distribution == "CentOS" or ansible_distribution == "RedHat"
-        - ansible_distribution_major_version == "7"
+      when: ((ansible_facts['distribution'] == "CentOS" or ansible_facts['distribution'] == "RedHat") and ansible_facts['distribution_major_version'] == "7")
+    - include_tasks: playbooks/all_hosts_tasks.yml
+      become: true
+      become_user: root
+    - include_tasks: playbooks/debian_hosts_post_tasks.yml
+      become: true
+      become_user: root
+      when: (ansible_facts['distribution'] == "Debian" and ansible_facts['distribution_major_version'] == "8")
+    - include_tasks: playbooks/debian9_hosts_post_tasks.yml
+      become: true
+      become_user: root
+      when: (ansible_facts['distribution'] == "Debian" and ansible_facts['distribution_major_version'] == "9")
+    - include_tasks: playbooks/rhel_hosts_post_tasks.yml
+      become: true
+      become_user: root
+      when: ((ansible_facts['distribution'] == "CentOS" or ansible_facts['distribution'] == "RedHat") and ansible_facts['distribution_major_version'] == "7"
+    - include_tasks: playbooks/ubuntu18_hosts_tasks.yml
+      become: true
+      become_user: root
+      when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_major_version'] == "18")
 
-    ## Run all hosts tasks common regardless of host OS
-    - include: playbooks/all_hosts_tasks.yml
-      become: true
-      become_user: root
-    
-    ## Run follow up tasks for supported hosts, per host OS
-    - include: playbooks/debian_hosts_post_tasks.yml
-      become: true
-      become_user: root
-      when:
-        - ansible_distribution == "Debian"
-        - ansible_distribution_major_version == "8"
-    - include: playbooks/debian9_hosts_post_tasks.yml
-      become: true
-      become_user: root
-      when:
-        - ansible_distribution == "Debian"
-        - ansible_distribution_major_version == "9"
-    - include: playbooks/rhel_hosts_post_tasks.yml
-      become: true
-      become_user: root
-      when:
-        - ansible_distribution == "CentOS" or ansible_distribution == "RedHat"
-        - ansible_distribution_major_version == "7"
 

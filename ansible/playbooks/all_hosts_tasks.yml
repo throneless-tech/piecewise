@@ -25,7 +25,7 @@
 - name: Get the latest MaxMind CSV
   unarchive:
     remote_src: yes
-    src: http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNum2.zip
+    src: https://geolite.maxmind.com/download/geoip/database/GeoLite2-ASN-CSV.zip
     dest: /opt/
     creates: /opt/GeoIPASNum2.csv
 

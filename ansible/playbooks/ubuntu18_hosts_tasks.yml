@@ -1,6 +1,6 @@
 ---
 ## Install base packages
-- name: Update apt and install packages for Debian hosts
+- name: Update apt and install packages for Ubuntu hosts
   apt:
     update_cache: yes
     name: "{{ item }}"
@@ -15,6 +15,7 @@
     - python-psycopg2
     - python-dev
     - python-pip
+    - python-setuptools
     - gdal-bin
     - unzip
     - python-apt
@@ -47,39 +48,39 @@
 #    state: present
 #    default_release: jessie-backports
 
-## Deploy configs specfic to Debian 9 systems
-- name: Deploy configs for Debian 9 systems
+## Deploy configs specfic to Ubuntu 9 systems
+- name: Deploy configs for Ubuntu systems
   copy:
-    src: "files/debian8/"
+    src: "files/ubuntu18/"
     dest: /
     owner: root
     group: root
 
 ## Fix Postgres config file permissions
-- name: Fix postgres configuration permissions for Debian systems
+- name: Fix postgres configuration permissions for Ubuntu systems
   file:
-    path: /etc/postgresql/9.4/main/pg_hba.conf
+    path: /etc/postgresql/10/main/pg_hba.conf
     state: file
     owner: "{{ database_user }}"
     group: "{{ database_user_group }}"
     mode: 0640
 
-## NGINX configs for Debian
-- name: For Debian development systems, create the nginx default site for Piecewise
+## NGINX configs for Ubuntu
+- name: For Ubuntu development systems, create the nginx default site for Piecewise
   template:
     src: "templates/nginx_development_default.j2"
     dest: /etc/nginx/sites-available/default
   when: 
     - env == "development"
 
-- name: For Debian production systems, create the nginx default site for Piecewise
+- name: For Ubuntu production systems, create the nginx default site for Piecewise
   template:
     src: "templates/nginx_production_default.j2"
     dest: /etc/nginx/sites-available/default
   when: 
     - env == "production"
 
-- name: Create a link to enable the nginx default site if Debian 
+- name: Create a link to enable the nginx default site if Ubuntu 
   file:
     src: "/etc/nginx/sites-available/default"
     dest: "/etc/nginx/sites-enabled/default"
