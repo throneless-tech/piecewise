@@ -189,12 +189,12 @@ aggregation_stats_table_name: "county_stats"
 # like to use in this Piecewise server. 
 
 map_coordinate_southwest: 
-  lat: 47.7909
-  lon: -118.3991
+  lat: 44.114955
+  lon: -121.40410
 
 map_coordinate_northeast: 
-  lat: 49.0007
-  lon: -117.4325
+  lat: 49.0024
+  lon: -112.8787
 # !REQUIRED!
 #
 # The coordinates above define the latitude and longitude for the southwest and 
