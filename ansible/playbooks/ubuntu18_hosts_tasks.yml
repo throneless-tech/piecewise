@@ -6,6 +6,7 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - apache2-utils
     - postgresql
     - postgis
     - postgresql-client

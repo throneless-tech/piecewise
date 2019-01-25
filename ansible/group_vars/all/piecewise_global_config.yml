@@ -8,7 +8,7 @@
 # Required fields are indicated with the text "# !REQUIRED!" just below the variable name.
 # If a field is marked Required, you must enter a value or change the default value.
 
-env: production
+env: development
 # !REQUIRED!
 #
 # env   Instructs Ansible whether this is a server/VM in development or in production.
@@ -46,7 +46,7 @@ piecewise_commit: master
 git_repo: "{{ remote }}/{{ project_name }}.git"
 # TO DO: may no longer be needed. confirm.
 
-bigquery_project_num: 581276032543
+bigquery_project_num: mlab-piecewise
 # !REQUIRED!
 #
 # bigquery_project_num
@@ -63,7 +63,6 @@ database_user_group: postgres
 #       the database user. These can be safely left as the default, unless you desire to 
 #       change them.
 
-#site_fqdn: 172.104.26.100
 site_fqdn: mi.broadbandtest.us
 # !REQUIRED!
 #
