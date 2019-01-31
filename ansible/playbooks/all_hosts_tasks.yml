@@ -130,6 +130,7 @@
   template:
     src: "templates/collector_wsgi.py.j2"
     dest: "{{ base_path }}/collector/collector/wsgi.py"
+  debugger: on_failed
 
 - name: Restart uwsgi so piecewise config is detected
   service:
