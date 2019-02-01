@@ -354,10 +354,9 @@ def append_extra_data():
     {% for item, field in form_fields.items() | sort -%}
         {%- for attr, vals in field.items() -%}
             {% if vals['field_type'] == 'select_list' %}
-                {%- set num_opts = vals.options.items() | length -%}
                 {{ vals['name'] }}_types = [
-                {%- for opt, items in vals.options.items() | sort -%}
-                    {%- for k, v in items.items() -%}'{{ k }}'{%- if opt < num_opts -%}, {% endif -%}{%- endfor -%}
+                {%- for opt, i in vals['options'].items() | sort -%}
+                   '{{ i }}'{% if not loop.last %}, {% endif %}
                 {%- endfor -%}]
             {% else -%}
             {% endif -%}
