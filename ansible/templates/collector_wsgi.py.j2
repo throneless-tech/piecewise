@@ -350,19 +350,18 @@ def admin_extra_data():
 
 @app.route("/collect", methods=['GET'])
 def append_extra_data():
-{% set select_list_params %}
-    {% for item, field in form_fields.items() | sort -%}
-        {%- for attr, vals in field.items() -%}
-            {% if vals['field_type'] == 'select_list' %}
-                {{ vals['name'] }}_types = [
-                {%- for opt, i in vals['options'].items() | sort -%}
-                   '{{ i }}'{% if not loop.last %}, {% endif %}
-                {%- endfor -%}]
-            {% else -%}
-            {% endif -%}
-        {%- endfor -%}
-    {%- endfor %}
-{% endset %}
+{% set select_list_params -%}
+{% for item, field in form_fields.items() | sort -%}
+{%- for attr, vals in field.items() -%}
+{%- if vals['field_type'] == 'select_list' %}
+    {{ vals['name'] }}_types = [
+  {%- for opt, i in vals['options'].items() | sort -%}
+  "{{ i }}"{% if not loop.last %}, {% endif %}
+  {%- endfor -%}]
+{% endif -%}
+  {%- endfor -%}
+  {%- endfor -%}
+{% endset -%}
 
     {{ select_list_params }}
 
