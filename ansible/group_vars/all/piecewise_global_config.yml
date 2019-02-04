@@ -702,7 +702,7 @@ next_action_message: "What do you want to do next?"
 next_action_show_map_text: "View all results to-date on a map of Michigan"
 next_action_learn_about_text: "Learn more about this test and how to improve your speed"
 next_action_learn_about_link: "https://broadbandtest.us/"
-# next_action_social_share_text: none
+next_action_social_share_text: "Share this test with your friends and neighbors"
 # #DEFAULT#
 #
 
@@ -711,12 +711,12 @@ next_action_learn_about_link: "https://broadbandtest.us/"
 # If you set any of these to 'none', they will be excluded from the website.
 # If you don't want any social share options, set all of the items below to 'none'
 # and also set 'next_action_social_share_text' to 'none' (without quotes) above.
-social_share_twitter: "none"
+social_share_twitter: "https://twitter.com/meritnetwork?lang=en"
 social_share_gplus: "none" #"https://plus.google.com/share?url=http://www.seattle.gov/broadband-speed-test"
-social_share_facebook: "none"
+social_share_facebook: "https://www.facebook.com/meritnetwork/"
 social_share_stumbleupon: "none" #"http://www.stumbleupon.com/submit?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test"
 social_share_reddit: "none" #"http://reddit.com/submit?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test"
-social_share_linkedin: "none" #"http://www.linkedin.com/shareArticle?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test&summary=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test&source=http://www.seattle.gov/broadband-speed-test"
+social_share_linkedin: "https://www.linkedin.com/company/merit-network"
 social_share_email: "none" #"mailto:?subject=Take%20the%20Seattle%20Broadband%20Speed Test&body=I%20just%20took%20the%20Seattle%20Broadband%20Speed%20Test,%20and%20you%20should%20too!%20Take%20the%20test%20and%20contribute%20to%20a%20map%20of%20broadband%20speeds%20across%20the%20city. http://www.seattle.gov/broadband-speed-test"
 # #DEFAULT#
 #
