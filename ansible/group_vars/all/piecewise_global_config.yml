@@ -590,11 +590,15 @@ form_fields:
       text: "If you are not doing this survey at home - why?"
       options:
         a_default:
-            "------"
-        b_no_access: "I don’t have Internet access at home"
-        c_someone_elses_home: "I'm at someone else's home"
-        d_no_time_at_home: "I don't have time at home"
-        e_other_reason: "Another reason"
+          "------"
+        b_no_access:
+          "I don't have Internet access at home"
+        c_someone_elses_home:
+          "I amm at someone elses home"
+        d_no_time_at_home:
+          "I do not have time at home"
+        e_other_reason:
+          "Another reason"
   13:
     household_income:
       field_type: select_list
@@ -630,10 +634,10 @@ form_fields:
             "------"
         b_high_school_incomplete: "High school incomplete"
         c_completed_12_or_GED: "Completed grade 12 or GED"
-        d_tech_trade_voc: Technical, trade or vocational school AFTER high school"
+        d_tech_trade_voc: "Technical, trade or vocational school AFTER high school"
         e_some_college: "Some college, no 4-year degree (includes associate degree)"
         f_college_grad: "College graduate (B.S., B.A., or other 4-year degree)"
-        g_post_grad: Post-graduate training (toward a Masters/Ph.D., Law or Medical school)"
+        g_post_grad: "Post-graduate training (toward a Masters/Ph.D., Law or Medical school)"
   15:
     service_satisfaction:
       field_type: select_list
