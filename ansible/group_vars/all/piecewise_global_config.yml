@@ -396,7 +396,7 @@ form_fields:
       db_type: String
       name: test_loc
       id: test_loc
-      text: "Are you testing from your home, a business, or a community institution like a school or library?"
+      text: "Where are you completing this survey from?"
       options:
         a_default: "------"
         b_home: "Home"
@@ -411,7 +411,7 @@ form_fields:
       page: 1
       name: household_num
       id: household_num
-      text: "How many people live in your home?"
+      text: "Including yourself, how many people live in your home?"
       options:
         a_default: "------"
         b_one: "1"
@@ -425,35 +425,25 @@ form_fields:
         j_nine: "9"
         k_nineplus: "9+"
   3:
-    minor_num:
+    household_minor_num:
       field_type: select_list
       db_type: String
       page: 1
-      name: minor_num
-      id: minor_num
-      text: "How many of those living in your home are under age 18?"
+      name: household_minor_num
+      id: household_minor_num
+      text: "Including yourself, how many of those living in your home are under the age of 18?"
       options:
         a_default: "------"
-        b_1:
-          "1"
-        c_2:
-          "2"
-        d_3:
-          "3"
-        e_4:
-          "4"
-        f_5:
-          "5"
-        g_6:
-          "6"
-        h_7:
-          "7"
-        i_8:
-          "8"
-        j_9:
-          "9"
-        k_10:
-          "9+"
+        b_1: "1"
+        c_2: "2"
+        d_3: "3"
+        e_4: "4"
+        f_5: "5"
+        g_6: "6"
+        h_7: "7"
+        i_8: "8"
+        j_9: "9"
+        k_10: "9+"
   4:
     home_owner:
       field_type: select_list
@@ -461,12 +451,13 @@ form_fields:
       db_type: String
       name: home_owner
       id: home_owner
-      text: "Does your family own the place where you live?"
+      text: "Does your family own or rent the place where you live?"
       options:
-        a_default:
-            "------"
-        b_yes: "Yes"
-        c_no: "No"
+        a_default: "------"
+        b_yes: "Own"
+        c_no: "Rent"
+        d_unknown: "Don't know"
+## TODO - change when question list is updated.
   5:
     paid_subscription:
       field_type: select_list
@@ -476,8 +467,7 @@ form_fields:
       id: paid_subscription
       text: "Does anyone in your home pay a cable company, phone company, or another internet service provider to provide internet service for your home?"
       options:
-        a_default:
-            "------"
+        a_default: "------"
         b_yes: "Yes"
         c_no: "No"
   6:
@@ -487,52 +477,32 @@ form_fields:
       db_type: String
       name: service_type
       id: service_type
-      text: "What type of internet service is at your home?"
-      options:
-        a_default:
-            "------"
-        b_dsl_cable_fiber: 
-            "Service such as DSL, cable, or fiber option service"
-        c_satellite: "Satellite"
-        d_mobile: "Mobile phone, celluar data or cellular hotspot"
-        e_fixed_wireless: "Another type of fixed wireless internet service"
-        f_no_access: "I don't have internet access at home"
-        g_dont_know: "I don't know"
-  7:
-    download_speed:
-      field_type: select_list
-      page: 1
-      db_type: String
-      name: download_speed
-      id: download_speed
-      text: "What is the download speed of your home internet service subscription?"
-      options:
-        a_default:
-            "------"
-        b_<_3: "Less than 3 Mbps"
-        c_3_10: "3 mbps - 10 Mbps"
-        d_10_25: "10 Mbps - 25 Mbps"
-        e_25_100: "25 Mbps - less than 100 Mbps"
-        f_>100: "Greater than 100 Mbps"
-        g_no_access: "I don't have internet access at home"
-        h_dont_know: "I don't know"
-  8:
-    upload_speed:
-      field_type: select_list
-      page: 1
-      db_type: String
-      name: upload_speed
-      id: upload_speed
-      text: "What is the advertised upload speed of your home internet subscription?"
+      text: "To the best of your knowledge, what type of internet service is at your home?"
       options:
         a_default: "------"
-        b_<_1: "Less than 1 Mbps"
-        c_1_3: "1 Mbps - 3 Mbps"
-        d_3_6: "3 Mbps - 6 Mbps"
-        e_>_6: "Over 6 Mbps"
-        f_no_access: "I don't have internet access at home"
-        g_dont_know: "I don't know"
-  9:
+        b_dsl_cable_fiber: "DSL, cable, or fiber optic service"
+        c_satellite: "Satellite"
+        d_mobile: "Mobile data plan or cellular hotspot"
+        e_fixed_wireless: "Fixed wireless"
+        f_shared_wifi: "Share neighbors wifi"
+        g_no_access: "I don't have internet access at home"
+        h_unknown: "Don't know"
+## TODO - does piecewise support checkboxes?
+  7:
+    home_usage_problems:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: home_usage_problems
+      id: home_usage_problems
+      text: "Do you have problems using the internet at home to do any of the following? (Check any that apply)"
+      options:
+        default: "------"
+        homework: "Homework (if applicable)"
+        uploading: "Uploading / sharing video"
+        streaming: "Watching / streaming video"
+        gaming: "Gaming"
+  8:
     service_cost:
       field_type: select_list
       page: 1
@@ -541,8 +511,7 @@ form_fields:
       id: service_cost
       text: "How much does your home internet service cost per month?"
       options:
-        a_default:
-            "------"
+        a_default: "------"
         b_<_10: "Less than $10"
         c_10_25: "$10 - $25"
         d_26_50: "$26 - $50"
@@ -550,95 +519,37 @@ form_fields:
         f_76_100: "$76 - $100"
         g_101_150: "$101 - $150"
         h_>_151: "More than $151"
-  10:
+        i_no_service: "We do not have home subscription"
+  9:
     service_bundle:
       field_type: select_list
       page: 1
       db_type: String
       name: service_bundle
       id: service_bundle
-      text: "Is your home internet access is bundled, if yes - what is included?"
+      text: "If you know, is your home Internet access bundled with other services (check any that apply)"
       options:
-        a_default:
-            "------"
-        b_internet_cable_sat: "Internet AND cable or satellite TV"
-        c_internet_home_phone: "Internet AND home phone"
-        d_internet_cell_phone: "Internet AND cell phone"
-        e_internet_cable_sat_home_phone: "Internet AND cable or satellite TV AND a home phone"
-        f_internet_cable_sat_cell_phone: "Internet AND cable or satellite TV AND a cell phone"
-        g_internet_cable_sat_home_phone_cell_phone: "Internet AND cable or satellite TV AND a home phone AND a cell phone"
-  11:
+        a_default: "------"
+        b_no_bundle: "Not bundled"
+        c_cable_sat: "Cable or satellite TV"
+        d_home_phone: "Home phone"
+        e_cell_phone: "Cell phone"
+        f_home_security: "Home security"
+        g_unknown: "Don't know"
+  10:
     survey_wifi:
       field_type: select_list
       page: 1
       db_type: String
       name: survey_wifi
       id: survey_wifi
-      text: "Are you current using Wi-Fi to complete this survey?"
+      text: "Are you currently using Wi-Fi to complete this survey?"
       options:
-        a_default:
-            "------"
+        a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  12:
-    survey_at_home:
-      field_type: select_list
-      page: 1
-      db_type: String
-      name: survey_at_home
-      id: survey_at_home
-      text: "If you are not doing this survey at home - why?"
-      options:
-        a_default:
-          "------"
-        b_no_access:
-          "I don't have Internet access at home"
-        c_someone_elses_home:
-          "I amm at someone elses home"
-        d_no_time_at_home:
-          "I do not have time at home"
-        e_other_reason:
-          "Another reason"
-  13:
-    household_income:
-      field_type: select_list
-      page: 1
-      db_type: String
-      name: household_income
-      id: household_income
-      text: "Last year (2018) what was your total household income from all sources, before taxes? (optional)"
-      required: no
-      options:
-        a_default:
-            "------"
-        b_<_10K: "Less than $10,000"
-        c_10K_20K: "$10,000 to under $20,000"
-        d_20K_30K: "$20,000 to under $30,000"
-        e_30K_40K: "$30,000 to under $40,000"
-        f_40K_50K: "$40,000 to under $50,000"
-        g_50K_75K: "$50,000 to under $75,000"
-        h_75K_100K: "$75,000 to under $100,000"
-        i_100K_150K: "$100,000 to under $150,000"
-        j_>_150K: "$150,000 or more"
-  14:
-    education_level:
-      field_type: select_list
-      page: 1
-      db_type: String
-      name: education_level
-      id: education_level
-      text: "What is the highest level of education of any adult in your home? (optional)"
-      required: no
-      options:
-        a_default:
-            "------"
-        b_high_school_incomplete: "High school incomplete"
-        c_completed_12_or_GED: "Completed grade 12 or GED"
-        d_tech_trade_voc: "Technical, trade or vocational school AFTER high school"
-        e_some_college: "Some college, no 4-year degree (includes associate degree)"
-        f_college_grad: "College graduate (B.S., B.A., or other 4-year degree)"
-        g_post_grad: "Post-graduate training (toward a Masters/Ph.D., Law or Medical school)"
-  15:
+        d_unknown: "Don't know"
+  11:
     service_satisfaction:
       field_type: select_list
       page: 1
@@ -647,15 +558,23 @@ form_fields:
       id: service_satisfaction
       text: "On a scale of 1-5 (5 being most satisfied) - how satisfied are you with your home Internet service?"
       options:
-        a_default:
-            "------"
+        a_default: "------"
         b_no_service: "Do not have home internet service"
         c_very_dissatisfied: "Very dissatisfied"
         d_dissatisfied: "Dissatisfied"
         e_neutral: "Neutral"
         f_satisfied: "Satisfied"
         g_very_satisfied: "Very satisfied"
-  16:
+  12:
+    survey_uid_username:
+      field_type: text
+      page: 1
+      db_type: String
+      name: survey_uid_username
+      id: survey_uid_username
+      text: "School ID or username"
+      required: yes
+  13:
     survey_address:
       field_type: text
       page: 1
@@ -665,7 +584,7 @@ form_fields:
       text: "Street Address (optional)"
       size: 3
       required: no
-  17:
+  14:
     survey_email_address:
       field_type: text
       page: 1
@@ -675,7 +594,43 @@ form_fields:
       text: "Email Address(optional)"
       size: 1
       required: no
-
+  15:
+    education_level:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: education_level
+      id: education_level
+      text: "If you know, and are willing to share - what is the highest level of education of any adult in your home? (optional)"
+      required: no
+      options:
+        a_default: "------"
+        b_high_school_incomplete: "High school incomplete"
+        c_completed_12_or_GED: "Completed grade 12 or GED"
+        d_tech_trade_voc: "Technical, trade or vocational school AFTER high school"
+        e_some_college: "Some college, no 4-year degree (includes associate degree)"
+        f_college_grad: "College graduate (B.S., B.A., or other 4-year degree)"
+        g_post_grad: "Post-graduate training (toward a Masters/Ph.D., Law or Medical school)"
+  16:
+    household_income:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: household_income
+      id: household_income
+      text: "If you know, and are willing to share - Last year (2018) what was your total household income from all sources, before taxes? (optional)"
+      required: no
+      options:
+        a_default: "------"
+        b_<_10K: "Less than $10,000"
+        c_10K_20K: "$10,000 to under $20,000"
+        d_20K_30K: "$20,000 to under $30,000"
+        e_30K_40K: "$30,000 to under $40,000"
+        f_40K_50K: "$40,000 to under $50,000"
+        g_50K_75K: "$50,000 to under $75,000"
+        h_75K_100K: "$75,000 to under $100,000"
+        i_100K_150K: "$100,000 to under $150,000"
+        j_>_150K: "$150,000 or more"
 
 ####################
 # 3.3 Website Text #
@@ -744,10 +699,10 @@ thank_you_message: >
 
 # 'next_action_' variables define the action items present to the user after they run the test.
 next_action_message: "What do you want to do next?"
-next_action_show_map_text: "View all results to-date on a map of Pennsylvania"
+next_action_show_map_text: "View all results to-date on a map of Michigan"
 next_action_learn_about_text: "Learn more about this test and how to improve your speed"
 next_action_learn_about_link: "https://broadbandtest.us/"
-next_action_social_share_text: none
+# next_action_social_share_text: none
 # #DEFAULT#
 #
 
