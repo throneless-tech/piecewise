@@ -457,20 +457,7 @@ form_fields:
         b_yes: "Own"
         c_no: "Rent"
         d_unknown: "Don't know"
-## TODO - change when question list is updated.
   5:
-    paid_subscription:
-      field_type: select_list
-      page: 1
-      db_type: String
-      name: paid_subscription
-      id: paid_subscription
-      text: "Does anyone in your home pay a cable company, phone company, or another internet service provider to provide internet service for your home?"
-      options:
-        a_default: "------"
-        b_yes: "Yes"
-        c_no: "No"
-  6:
     service_type:
       field_type: select_list
       page: 1
@@ -488,7 +475,7 @@ form_fields:
         g_no_access: "I don't have internet access at home"
         h_unknown: "Don't know"
 ## TODO - does piecewise support checkboxes?
-  7:
+  6:
     home_usage_problems:
       field_type: select_list
       page: 1
@@ -502,7 +489,7 @@ form_fields:
         uploading: "Uploading / sharing video"
         streaming: "Watching / streaming video"
         gaming: "Gaming"
-  8:
+  7:
     service_cost:
       field_type: select_list
       page: 1
@@ -520,7 +507,7 @@ form_fields:
         g_101_150: "$101 - $150"
         h_>_151: "More than $151"
         i_no_service: "We do not have home subscription"
-  9:
+  8:
     service_bundle:
       field_type: select_list
       page: 1
@@ -536,7 +523,7 @@ form_fields:
         e_cell_phone: "Cell phone"
         f_home_security: "Home security"
         g_unknown: "Don't know"
-  10:
+  9:
     survey_wifi:
       field_type: select_list
       page: 1
@@ -549,7 +536,7 @@ form_fields:
         b_yes: "Yes"
         c_no: "No"
         d_unknown: "Don't know"
-  11:
+  10:
     service_satisfaction:
       field_type: select_list
       page: 1
@@ -565,7 +552,7 @@ form_fields:
         e_neutral: "Neutral"
         f_satisfied: "Satisfied"
         g_very_satisfied: "Very satisfied"
-  12:
+  11:
     survey_uid_username:
       field_type: text
       page: 1
@@ -574,7 +561,7 @@ form_fields:
       id: survey_uid_username
       text: "School ID or username"
       required: yes
-  13:
+  12:
     survey_address:
       field_type: text
       page: 1
@@ -584,7 +571,7 @@ form_fields:
       text: "Street Address (optional)"
       size: 3
       required: no
-  14:
+  13:
     survey_email_address:
       field_type: text
       page: 1
@@ -594,7 +581,7 @@ form_fields:
       text: "Email Address(optional)"
       size: 1
       required: no
-  15:
+  14:
     education_level:
       field_type: select_list
       page: 1
@@ -611,7 +598,7 @@ form_fields:
         e_some_college: "Some college, no 4-year degree (includes associate degree)"
         f_college_grad: "College graduate (B.S., B.A., or other 4-year degree)"
         g_post_grad: "Post-graduate training (toward a Masters/Ph.D., Law or Medical school)"
-  16:
+  15:
     household_income:
       field_type: select_list
       page: 1
