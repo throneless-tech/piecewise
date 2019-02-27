@@ -27,7 +27,7 @@
 }
 
 #progress-meter .ready {
-  cursor: pointer;	
+  cursor: pointer;
 }
 
 #progress-meter .progress {
@@ -65,4 +65,86 @@
 
 .metric-value {
   color: blue;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-field > .field-container:first-of-type {
+  margin-bottom: 1rem;
+  font-size: 18px;
+}
+
+.form-field > .field-container:last-of-type {
+  margin-bottom: 2rem;
+}
+
+.field-container {
+  width: 100% !important;
+  color: #304c58 !important;
+  font-weight: bold;
+  height: auto !important;
+  margin-left: 0 !important;
+}
+
+select.form-control {
+  color: #777;
+  box-sizing: border-box;
+  padding: .72em .9em .65em;
+  border-radius: 2px;
+  border: 1px solid #d6d8d9;
+  line-height: 1.4em;
+  background-color: #fafafa !important;
+  font-family: inherit;
+  height: auto;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -webkit-appearance: none;
+  font-size: inherit;
+  width: 100%;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDYgMTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRpdGxlPnNlbGVjdC0tYXJyb3dzPC90aXRsZT48cGF0aCBkPSJNMS4xNDIgOC42ODNMMi4zMSA5Ljc1cy4zNS4zOC42OS4zOGMuMzQgMCAuNjg5LS4zNzkuNjg5LS4zNzlsMS4xNjktMS4wNjhhLjY5LjY5IDAgMCAxIC45NDMuMDA2LjYyLjYyIDAgMCAxIC4wMDYuOTA1TDMuNDcgMTEuODE3QS42NzEuNjcxIDAgMCAxIDMgMTJhLjY3MS42NzEgMCAwIDEtLjQ2OS0uMTgzTC4xOTMgOS41OTRhLjYyLjYyIDAgMCAxIC4wMDYtLjkwNS42OS42OSAwIDAgMSAuOTQzLS4wMDZ6bTAtNS4zNjZBLjY5LjY5IDAgMCAxIC4yIDMuMzExYS42Mi42MiAwIDAgMS0uMDA2LS45MDVMMi41My4xODNBLjY3MS42NzEgMCAwIDEgMyAwYy4xNzEgMCAuMzQxLjA2LjQ2OS4xODNsMi4zMzggMi4yMjNhLjYyLjYyIDAgMCAxLS4wMDYuOTA1LjY5LjY5IDAgMCAxLS45NDMuMDA2TDMuNjg4IDIuMjVTMy4zNCAxLjg3IDMgMS44N2MtLjM0IDAtLjY5LjM4LS42OS4zOEwxLjE0MiAzLjMxN3oiIGZpbGw9IiM1MjVGN0YiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==);
+  background-repeat: no-repeat;
+  background-size: 6px;
+  background-position: right 1.2em top 55%;
+}
+
+input {
+  border: 1px solid #d6d8d9 !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+  padding: .72em .9em .65em !important;
+  height: 42px !important;
+}
+
+select:focus, input:focus {
+  border-color: #00babc !important;
+  box-shadow: none !important;
+}
+
+summary {
+  border-bottom: 1px solid #00babc;
+  cursor: pointer;
+  list-style: none;
+  font-size: 22px;
+  font-weight: bold;
+  color: #304c58;
+  padding: 14px 0;
+}
+
+summary::before {
+  content: "+";
+  color: #00babc;
+  font-size: 24px;
+  margin: 0 1rem;
+}
+
+details[open] summary::before {
+  content: "-";
+}
+
+details p {
+  margin-left: 1rem;
 }
