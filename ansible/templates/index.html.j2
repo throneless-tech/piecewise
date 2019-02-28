@@ -36,12 +36,67 @@
       <p>{{ instructions_text }}</p>
     </div>
   </div>
+  <div id="faq">
+    <details>
+  <summary>How will my data be shared?</summary>
+  <p>The Measurement Lab (M-Lab) platform is run by the scientific community. We make all test results publicly available via the MeasurementLab.net website to help promote Internet research. M-Lab's Network Diagnostic Tool collects a number of measures of different facets of your Internet connection. The information published includes each device’s IP address, but does not include personal identifying information about you as an Internet user.</p>
+</details>
+<details>
+  <summary>How will my information be secured?</summary>
+  <p>The Quello Center and Merit Network will be responsible for data management related to this project. Data will be maintained and archived in a secure and password-protected repository at servers at Michigan State University. Data and metadata will be provided in accordance with the Data Documentation Initiative (DDI) standard for the social, behavioral, and economic sciences. All data will be made available in a format that protects anonymity and confidentiality. </p>
+</details>
+<details>
+  <summary>What is the Michigan Broadband Speed Test?</summary>
+  <p><strong>NEED CONTENT</strong></p>
+</details>
+<details>
+  <summary>How does the Broadband Speed Test work?</summary>
+  <p>The Michigan Broadband Speed Test utilizes the open source test and servers provided by Measurement Lab (M-Lab), a consortium of public interest groups, academic institutions and industry partners, providing an open platform dedicated to Internet performance measurement. When you start a test, your browser opens a connection to the closest M-Lab server. It then exchanges with the server a synthetic stream of data, generated solely for the purpose of measuring your connection at that time. During the test, the server collects around 100 low-level metrics. When the test is completed, the user is shown three of the most accessible measurements: download speed, upload speed, and minimum round trip time.</p>
+</details>
+<details>
+  <summary>Why does this test show different results than other tests like speedtest.net?</summary>
+  <p>Different network measurement tests sometimes show variance in results due to factors such as the methodology of the test. Both <a href="https://speedtest.net">speedtest.net</a> and M-Lab's tests are valid measurements but have different methods and instrumentation which account for the difference in measurements.</p>
+
+  <p>In both M-Lab's NDT test and Ookla's <a href="https://speedtest.net">speedtest.net</a> test, there is a client and a server component. The client is the test running in your browser in both cases. Ookla's servers are always within the ISP's last mile network, while M-Lab's servers are always in transit data centers, outside of any ISP last mile network. The FCC (and their measurement consultant SamKnows) refer to this difference as "on-net" and "off-net" measurement. You can learn more about this difference at this link: <a href="http://samknows.com/infrastructure">http://samknows.com/infrastructure.</a></p>
+
+<p>The <a href="https://speedtest.net">speedtest.net</a> test is an on-net measurement of your connection's performance to the edge of your ISP's network, and M-Lab's test is an off-net measurement of your connection's performance through your ISP's network to one of M-Lab's servers in a Seattle Internet exchange point. M-Lab's methodology is based on the rationale that consumers request content from the Internet which could be anywhere in the world, most of which is outside their ISP's network. By tracing the performance over the full path of the your broadband connection to the global Internet, M-Lab measures the performance of your connection across interconnected networks, which is closer to the way you access the Internet everyday.</p>
+</details>
+<details>
+  <summary>What data does this test collect, and how will it be used?</summary>
+  <p>Before you take the test, you will be asked for your location and some basic information about your connection. You can also share what speeds are advertised under your current contract. This data will be stored in a private database, combined with other results, and published to the map and to data.seattle.gov in anonymized form.</p>
+
+<p>This test does not collect information about your other Internet traffic, such as your emails, web searches, etc., or any personally identifiable information. The data it sends across your network is synthetic - meaning it does not come from your device or other applications you are operating - and will be used for measurement only. The speed test data is submitted to M-Lab in aggregated form to assure that the anonymity of users is protected.</p>
+</details>
+<details>
+  <summary>What do these results mean?</summary>
+  <p>Your speed test results show the actual upload and download speeds you are experiencing at the time you take the test. Results can vary due to the device you are using, your operating system, the browser you use, the time of day you take the test, whether you are using WiFi or a wired connection, the number of devices connected to the same signal at once, and many other factors. You can take this test as many times as you like, from as many devices and locations as you like. If the speeds you are receiving do not match up to your expectations, you have a number of options.</p>
+</details>
+<details>
+  <summary>What can I do if I want faster internet?</summary>
+  <p>To improve your speed, you can:
+    <ul>
+      <li><strong>Assess your usage.</strong> By reducing the number of devices connected to your network at the same time, shifting your peak usage away from peak hours (e.g. downloading large files after midnight), and closing programs that run in the background (common examples include Dropbox and desktop clients), you can improve performance on a single device.
+      </li>
+      <li><strong>Check your equipment.</strong> By switching from a wireless to a wired connection, resetting your router, or updating your WiFi router or network card, you may be able to improve performance significantly.</li>
+      <li><strong>Upgrade your plan, or switch providers.</strong> Many households have an option of two and in some cases three Internet Service Providers. Using data submitted for this test, consumers may be able to see which providers are available in their area.</li>
+  </ul>
+</p>
+</details>
+<details>
+  <summary>What can I do if I believe my Internet Service Provider is not delivering the speeds it promises?</summary>
+  <p>First, we suggest you take the steps above to ensure that your test results are a more accurate measurement of the capacity that is being delivered to your home. Then, contact your Internet Service Provider (ISP) directly and ask them to resolve any issues. If you believe your ISP is violating federal Open Internet rules, you can file a complaint with the Federal Communications Commission (FCC). The FCC is the only body that is authorized to regulate and oversee Internet Service Providers. You can find more information about the FCC's Open Internet rules, and the complaint form, <a href="https://consumercomplaints.fcc.gov/hc/en-us/articles/204231404-Open-Internet">here.</a></p>
+</details>
+<details>
+  <summary>How can I learn more?</summary>
+  <p><strong>NEED CONTENT</strong></p>
+</details>
+  </div>
   <div id="sidebar">
     <form action="/collector/collect" method="get" id="collector">
       <div id="extra-data" class="ndt-related">
         <div class="container" id="all-form-fields">
           {% for item, field in form_fields.items() -%}
-            {% for attr, vals in field.items() -%}    
+            {% for attr, vals in field.items() -%}
           <div class="form-field" id="container-{{ vals['id'] }}">
             <div class="field-container">
               {{ vals['text'] }}
@@ -58,7 +113,7 @@
             {% endif -%}
             </div>
           </div>
-            {% endfor -%} 
+            {% endfor -%}
           {% endfor -%}
         </div>
         <div class="container" id="consent-text">
