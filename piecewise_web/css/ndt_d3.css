@@ -181,19 +181,23 @@ details h3 {
   width: 100% !important;
 }
 
+#consent-text {
+  margin-bottom: 3rem;
+}
+
 #consent-text p {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
 }
 
 #consent-text p input[type="checkbox"] {
-  height: none;
-  width: none;
+  height: auto !important;
+  width: auto !important;
 }
 
 #consent-text p > * {
-  margin: 0 1rem 0 0;
+  margin: 0 1rem 0 0 !important;
 }
 
 @media (max-width: 1440px) {

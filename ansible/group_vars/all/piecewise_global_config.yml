@@ -560,7 +560,7 @@ form_fields:
         i_no_service: "We do not have home subscription"
   12:
     service_bundle:
-      field_type: select_list
+      field_type: checkbox
       page: 1
       db_type: String
       name: service_bundle
@@ -597,12 +597,12 @@ form_fields:
       text: "On a scale of 1-5 (5 being most satisfied) - how satisfied are you with your home Internet service?"
       options:
         a_default: "------"
-        b_no_service: "Do not have home internet service"
-        c_very_dissatisfied: "Very dissatisfied"
-        d_dissatisfied: "Dissatisfied"
-        e_neutral: "Neutral"
-        f_satisfied: "Satisfied"
-        g_very_satisfied: "Very satisfied"
+        b_no_service: "0 - Do not have home internet service"
+        c_very_dissatisfied: "1 - Very dissatisfied"
+        d_dissatisfied: "2 - Dissatisfied"
+        e_neutral: "3 - Neutral"
+        f_satisfied: "4 - Satisfied"
+        g_very_satisfied: "5 - Very satisfied"
   15:
     survey_uid_username:
       field_type: text
