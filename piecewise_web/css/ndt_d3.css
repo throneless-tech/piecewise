@@ -166,12 +166,34 @@ details[open] summary::before {
   content: "-";
 }
 
-details p {
+details p, details h3 {
   margin-left: 1rem;
+}
+
+details h3 {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 #extra-data {
   width: 100% !important;
+}
+
+#consent-text p {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#consent-text p input[type="checkbox"] {
+  height: none;
+  width: none;
+}
+
+#consent-text p > * {
+  margin: 0 1rem 0 0;
 }
 
 @media (max-width: 1440px) {
