@@ -619,7 +619,7 @@ form_fields:
       db_type: String
       name: survey_address
       id: survey_address
-      text: "Street Address (optional)"
+      text: "Street Address (Optional)"
       size: 3
       required: no
   17:
@@ -629,7 +629,7 @@ form_fields:
       db_type: String
       name: survey_email_address
       id: survey_email_address
-      text: "Email Address(optional)"
+      text: "Email Address (Optional)"
       size: 1
       required: no
   18:
@@ -639,7 +639,7 @@ form_fields:
       db_type: String
       name: education_level
       id: education_level
-      text: "If you know, and are willing to share - what is the highest level of education of any adult in your home? (optional)"
+      text: "If you know, and are willing to share - what is the highest level of education of any adult in your home? (Optional)"
       required: no
       options:
         a_default: "------"
@@ -656,7 +656,7 @@ form_fields:
       db_type: String
       name: household_income
       id: household_income
-      text: "If you know, and are willing to share - Last year (2018) what was your total household income from all sources, before taxes? (optional)"
+      text: "If you know, and are willing to share - Last year (2018) what was your total household income from all sources, before taxes? (Optional)"
       required: no
       options:
         a_default: "------"
