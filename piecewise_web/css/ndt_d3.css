@@ -171,10 +171,11 @@ details p, details h3 {
 }
 
 details h3 {
-  font-weight: bold;
-  font-size: 20px;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  font-weight: bold !important;
+  font-size: 20px !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+  color: #304c58 !important;
 }
 
 #extra-data {
@@ -196,8 +197,12 @@ details h3 {
   width: auto !important;
 }
 
-#consent-text p > * {
+#consent-text p > *:not(a) {
   margin: 0 1rem 0 0 !important;
+}
+
+#consent-text p > a {
+  margin-left: .5rem !important;
 }
 
 @media (max-width: 1440px) {
