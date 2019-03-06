@@ -39,8 +39,8 @@ html, body {
 .field-container {
   width: 44%;
   height: 3em;
-  float: left; 
-  margin-left: 1em; 
+  float: left;
+  margin-left: 1em;
   margin-right: 1em;
 }
 
@@ -281,10 +281,6 @@ span.ui-slider-handle.ui-state-default.ui-corner-all:focus {
 
 .league-gothic {
 	font-family: 'league_gothicregular';
-}
-
-#take-test {
-  display: none;
 }
 
 .icon-speed {

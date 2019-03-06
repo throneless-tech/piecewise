@@ -713,10 +713,10 @@ $(function() {
       $('#testSpeed, #exploreMap').toggle();
    });
 */
-  $('#isp_user, #connection_type, #cost_of_service, #data_acknowledgement').change(function() {
-    var formState = validateExtraDataForm();
-    $('#take-test').toggle(formState);
-  });
+  // $('#isp_user, #connection_type, #cost_of_service, #data_acknowledgement').change(function() {
+  //   var formState = validateExtraDataForm();
+  //   $('#take-test').toggle(formState);
+  // });
 });
 
 function uncheckAcknowledgement(){
@@ -765,6 +765,26 @@ function validateExtraDataForm() {
 }
 
 $( document ).ready(function() {
+
+  let consent = document.getElementById('data_acknowledgement');
+  let takeTest = document.getElementById('take-test');
+
+  takeTest.setAttribute('onclick', '');
+  takeTest.classList.add('disabled');
+
+  consent.addEventListener('change', function() {
+    console.log('test')
+    if (consent.checked) {
+      consent.parentElement.classList.add('pseudo-checked');
+      takeTest.setAttribute('onclick', 'runTest()');
+      takeTest.classList.remove('disabled');
+      return;
+    }
+
+    takeTest.classList.add('disabled');
+    consent.parentElement.classList.remove('pseudo-checked');
+  });
+
   window.fhandler = new formWatcher();
   $("select#test_loc").change(function() {
         var selected = $('select#test_loc').find('option:selected');
@@ -969,14 +989,3 @@ $( document ).ready(function() {
   });
 
 });
-
-let consent = document.getElementById('data_acknowledgement');
-
-consent.addEventListener('change', function() {
-  if (consent.checked) {
-    consent.parentElement.classList.add('pseudo-checked');
-    return;
-  }
-
-  consent.parentElement.classList.remove('pseudo-checked');
-})
