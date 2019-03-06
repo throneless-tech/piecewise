@@ -396,6 +396,7 @@ form_fields:
       db_type: String
       name: test_loc
       id: test_loc
+      class: ''
       text: "Where are you completing this survey from?"
       options:
         a_default: "------"
@@ -411,6 +412,7 @@ form_fields:
       page: 1
       name: household_num
       id: household_num
+      class: ''
       text: "Including yourself, how many people live in your home?"
       options:
         a_default: "------"
@@ -431,6 +433,7 @@ form_fields:
       page: 1
       name: household_minor_num
       id: household_minor_num
+      class: ''
       text: "Including yourself, how many of those living in your home are under the age of 18?"
       options:
         a_default: "------"
@@ -451,6 +454,7 @@ form_fields:
       db_type: String
       name: home_owner
       id: home_owner
+      class: ''
       text: "Does your family own or rent the place where you live?"
       options:
         a_default: "------"
@@ -464,6 +468,7 @@ form_fields:
       db_type: String
       name: service_type
       id: service_type
+      class: ''
       text: "To the best of your knowledge, what type of internet service is at your home?"
       options:
         a_default: "------"
@@ -481,6 +486,7 @@ form_fields:
       db_type: String
       name: usage_homework
       id: usage_homework
+      class: 'cb-usage'
       text: "Does the quality or speed of your internet connection make it difficult to do homework?"
       options:
         a_default: "------"
@@ -494,6 +500,7 @@ form_fields:
       db_type: String
       name: usage_work
       id: usage_work
+      class: 'cb-usage'
       text: "Does the quality or speed of your internet connection make it difficult to do work?"
       options:
         a_default: "------"
@@ -507,6 +514,7 @@ form_fields:
       db_type: String
       name: usage_video
       id: usage_video
+      class: 'cb-usage'
       text: "Does the quality or speed of your internet connection make it difficult to share or upload video?"
       options:
         a_default: "------"
@@ -520,6 +528,7 @@ form_fields:
       db_type: String
       name: usage_stream_video
       id: usage_stream_video
+      class: 'cb-usage'
       text: "Does the quality or speed of your internet connection make it difficult to stream video?"
       options:
         a_default: "------"
@@ -533,6 +542,7 @@ form_fields:
       db_type: String
       name: usage_gaming
       id: usage_gaming
+      class: 'cb-usage'
       text: "Does the quality or speed of your internet connection make it difficult to do online gaming?"
       options:
         a_default: "------"
@@ -547,6 +557,7 @@ form_fields:
       db_type: String
       name: service_cost
       id: service_cost
+      class: ''
       text: "How much does your home internet service cost per month?"
       options:
         a_default: "------"
@@ -559,41 +570,105 @@ form_fields:
         h_>_151: "More than $151"
         i_no_service: "We do not have home subscription"
   12:
-    service_bundle:
-      field_type: checkbox
+    service_bundle_not_bundled:
+      field_type: select_list
       page: 1
       db_type: String
-      name: service_bundle
-      id: service_bundle
-      text: "If you know, is your home Internet access bundled with other services (check any that apply)"
+      name: service_bundle_not_bundled
+      id: service_bundle_not_bundled
+      class: 'cb-service-bundle'
+      text: "Is your home Internet access bundled with other services?"
       options:
         a_default: "------"
-        b_no_bundle: "Not bundled"
-        c_cable_sat: "Cable or satellite TV"
-        d_home_phone: "Home phone"
-        e_cell_phone: "Cell phone"
-        f_home_security: "Home security"
-        g_unknown: "Don't know"
+        b_yes: "Yes"
+        c_no: "No"
   13:
+    service_bundle_cable_satellite:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: service_bundle_cable_satellite
+      id: service_bundle_cable_satellite
+      class: 'cb-service-bundle'
+      text: "If you know, is your home Internet access bundled with cable or satellite TV service?"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  14:
+    service_bundle_home_phone:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: service_bundle_home_phone
+      id: service_bundle_home_phone
+      class: 'cb-service-bundle'
+      text: "If you know, is your home Internet access bundled with home phone service?"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  15:
+    service_bundle_cell_phone:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: service_bundle_cell_phone
+      id: service_bundle_cell_phone
+      class: 'cb-service-bundle'
+      text: "If you know, is your home Internet access bundled with cell phone service?"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  16:
+    service_bundle_home_security:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: service_bundle_home_security
+      id: service_bundle_home_security
+      class: 'cb-service-bundle'
+      text: "If you know, is your home Internet access bundled with home security service?"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  17:
+    service_bundle_unknown:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: service_bundle_unknown
+      id: service_bundle_unknown
+      class: 'cb-service-bundle'
+      text: "If you know, is your home Internet access bundled with home other services?"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  18:
     survey_wifi:
       field_type: select_list
       page: 1
       db_type: String
       name: survey_wifi
       id: survey_wifi
+      class: ''
       text: "Are you currently using Wi-Fi to complete this survey?"
       options:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
         d_unknown: "Don't know"
-  14:
+  19:
     service_satisfaction:
       field_type: select_list
       page: 1
       db_type: String
       name: service_satisfaction
       id: service_satisfaction
+      class: ''
       text: "On a scale of 1-5 (5 being most satisfied) - how satisfied are you with your home Internet service?"
       options:
         a_default: "------"
@@ -603,42 +678,46 @@ form_fields:
         e_neutral: "3 - Neutral"
         f_satisfied: "4 - Satisfied"
         g_very_satisfied: "5 - Very satisfied"
-  15:
+  20:
     survey_uid_username:
       field_type: text
       page: 1
       db_type: String
       name: survey_uid_username
       id: survey_uid_username
+      class: ''
       text: "School ID or username"
       required: yes
-  16:
+  21:
     survey_address:
       field_type: text
       page: 1
       db_type: String
       name: survey_address
       id: survey_address
+      class: ''
       text: "Street Address (Optional)"
       size: 3
       required: no
-  17:
+  22:
     survey_email_address:
       field_type: text
       page: 1
       db_type: String
       name: survey_email_address
       id: survey_email_address
+      class: ''
       text: "Email Address (Optional)"
       size: 1
       required: no
-  18:
+  23:
     education_level:
       field_type: select_list
       page: 1
       db_type: String
       name: education_level
       id: education_level
+      class: ''
       text: "If you know, and are willing to share - what is the highest level of education of any adult in your home? (Optional)"
       required: no
       options:
@@ -649,13 +728,14 @@ form_fields:
         e_some_college: "Some college, no 4-year degree (includes associate degree)"
         f_college_grad: "College graduate (B.S., B.A., or other 4-year degree)"
         g_post_grad: "Post-graduate training (toward a Masters/Ph.D., Law or Medical school)"
-  19:
+  24:
     household_income:
       field_type: select_list
       page: 1
       db_type: String
       name: household_income
       id: household_income
+      class: ''
       text: "If you know, and are willing to share - Last year (2018) what was your total household income from all sources, before taxes? (Optional)"
       required: no
       options:
