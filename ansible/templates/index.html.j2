@@ -30,6 +30,7 @@
 </div>
 
 <div id="welcome-container">
+  <img src="images/banner.jpg" alt="" class="banner">
   <div id="header">
     <div id="intro">
       <p>{{ intro_text }}</p>
@@ -110,9 +111,9 @@
           {% endfor -%}
         </div>
         <div class="container" id="consent-text">
-        <p>
+        <label>
           <span class="required">*</span> <input type="checkbox" name="data_acknowledgement" id="data_acknowledgement" value="yes" /> {{ consent_message }}
-        </p>
+        </label>
         </div>
         <input name="latitude" id="latitude" type="hidden" />
         <input name="longitude" id="longitude" type="hidden" />

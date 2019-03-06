@@ -222,10 +222,50 @@ details h3 {
 }
 
 .checkbox-label {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    color: #243840;
+    font-weight: 300;
 }
+
 label input[type="checkbox"] {
     flex: 0 0 2em;
+}
+
+input[type="checkbox"] {
+  visibility: hidden;
+}
+
+#consent-text p {
+  position: relative;
+}
+
+#consent-text label::before,
+.checkbox-label::before {
+    content: "";
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: calc(50% - 8px);
+    height: 16px;
+    width: 16px;
+    border: 1px solid #243840;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    color: white;
+    cursor: pointer;
+}
+
+#consent-text label::before {
+  left: 1.5rem;
+}
+
+#consent-text label.pseudo-checked::before,
+.checkbox-label.pseudo-checked::before {
+  border: 1px solid #00babc;
+  background: #00babc;
+  content: "✓";
 }
