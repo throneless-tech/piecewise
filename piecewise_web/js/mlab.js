@@ -1,3 +1,81 @@
+// Objec to handle the faux checkboxes
+var formWatcher = function() {
+    this.classMap = [
+      '.cb-usage',
+      '.cb-service-bundle'
+    ];
+
+    this.activate();
+}
+
+formWatcher.prototype = {
+  activate() {
+    // Build for each class
+    this.classMap.forEach(function(selector) {
+      // Get the dom nodes and setup vars
+      var collection = document.querySelectorAll(selector),
+          groupLabel = collection[0].title,
+          newNode    = this.createBoxes(groupLabel, collection);
+
+      // Iterate the collection and hide them
+      collection.forEach(function(node) {
+        node.parentElement.parentElement.classList.add('hidden');
+      });
+
+      var targetPosition = collection[0].parentElement.parentElement;
+
+      // Insert the checkboxes
+      targetPosition.parentNode.insertBefore(newNode, targetPosition);
+    }.bind(this));
+  },
+
+  // Create the checkbox list
+  createBoxes(label, nodeList) {
+    var fragment  = document.createDocumentFragment(),
+        container = document.createElement('div'),
+        labelCont = document.createElement('div');
+
+    container.classList.add('form-field');
+    labelCont.classList.add('field-container');
+    labelCont.innerText = label;
+    container.append(labelCont);
+
+    nodeList.forEach(function(node) {
+      container.append(this.buildCheckbox(node));
+    }.bind(this));
+
+    fragment.append(container);
+    return fragment;
+  },
+
+  // Build an individual checkbox
+  buildCheckbox(element) {
+    var fragment  = document.createDocumentFragment(),
+        container = document.createElement('label'),
+        checkbox  = document.createElement('input');
+
+      checkbox.type = "checkbox";
+
+    container.innerText = element.parentElement.parentElement.querySelector('.field-container').innerText;
+    container.classList.add('checkbox-label');
+
+    // Attach the event listener for state change
+    checkbox.addEventListener('change', function(e) {
+      if (this.checked) {
+        element.querySelector('option[value="b_yes"]').selected = 'selected'; // Update the main element
+        return;
+      }
+      element.querySelector('option[value="c_no"]').selected = 'selected';
+    });
+
+    container.prepend(checkbox);
+    fragment.append(container);
+    checkbox.dispatchEvent(new Event('change')); // Fire an initial change event to set everything to 'no'
+
+    return fragment;
+  }
+}
+
 // purely launch workaround for #114
 function getCurrentValues() {
 	var currentMetricOption = $('#selectMetric option:selected').text();
@@ -34,13 +112,13 @@ function addLegend() {
 	    }
 		div.innerHTML += '<i style="background: black; opacity: .50">' +
 		'</i>Insufficient Data';
-*/		
+*/
 		div.innerHTML = '<i style="background:#bc0000;"></i> 0-3 Mbps<br/>' +
 				'<i style="background:#b75e00;"></i> 3-5 Mbps ' +
 				'(FCC Minimum for "Broadband" UPLOAD Speed) <br/>' +
 				'<i style="background:#ff8200;"></i> 5-10 Mbps<br/>' +
 				'<i style="background:#ffb05e;"></i> 10-25 Mbps<br/>' +
-				'<i style="background:#36BC18;"></i> ' + 
+				'<i style="background:#36BC18;"></i> ' +
 				'25+ Mbps (FCC Minimum for "Broadband" DOWNLOAD Speed)<br/>'
 	    return div;
 	};
@@ -685,6 +763,7 @@ function validateExtraDataForm() {
 }
 
 $( document ).ready(function() {
+	window.fhandler = new formWatcher();
 	$("select#test_loc").change(function() {
         var selected = $('select#test_loc').find('option:selected');
 		if ( selected[0].value == 'b_home' ) {
@@ -843,7 +922,7 @@ $( document ).ready(function() {
 				$('div#container-household_type_other').removeClass('hidden')
 				$('div#container-household_type_other').addClass('displayed')
 			}
-		}	
+		}
 		else if (selected[0].value != 'e_other') {
 			if ($('div#container-household_type_other').hasClass('displayed')) {
 				$('div#container-household_type_other').removeClass('displayed')
