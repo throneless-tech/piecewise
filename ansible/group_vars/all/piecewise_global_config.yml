@@ -398,6 +398,7 @@ form_fields:
       id: test_loc
       class: ''
       text: "Where are you completing this survey from?"
+      title: "Where are you completing this survey from?"
       options:
         a_default: "------"
         b_home: "Home"
@@ -414,6 +415,7 @@ form_fields:
       id: household_num
       class: ''
       text: "Including yourself, how many people live in your home?"
+      title: "Including yourself, how many people live in your home?"
       options:
         a_default: "------"
         b_one: "1"
@@ -435,6 +437,7 @@ form_fields:
       id: household_minor_num
       class: ''
       text: "Including yourself, how many of those living in your home are under the age of 18?"
+      title: "Including yourself, how many of those living in your home are under the age of 18?"
       options:
         a_default: "------"
         b_1: "1"
@@ -456,6 +459,7 @@ form_fields:
       id: home_owner
       class: ''
       text: "Does your family own or rent the place where you live?"
+      title: "Does your family own or rent the place where you live?"
       options:
         a_default: "------"
         b_yes: "Own"
@@ -470,6 +474,7 @@ form_fields:
       id: service_type
       class: ''
       text: "To the best of your knowledge, what type of internet service is at your home?"
+      title: "To the best of your knowledge, what type of internet service is at your home?"
       options:
         a_default: "------"
         b_dsl_cable_fiber: "DSL, cable, or fiber optic service"
@@ -487,12 +492,12 @@ form_fields:
       name: usage_homework
       id: usage_homework
       class: 'cb-usage'
-      text: "Does the quality or speed of your internet connection make it difficult to do homework?"
+      text: "Homework (if applicable)"
+      title:  "Do you have problems using the internet at home to do any of the following? (Check any that apply)"
       options:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-        d_na: "N/A"
   7:
     usage_work:
       field_type: select_list
@@ -501,12 +506,12 @@ form_fields:
       name: usage_work
       id: usage_work
       class: 'cb-usage'
-      text: "Does the quality or speed of your internet connection make it difficult to do work?"
+      text: "Work (if applicable)"
+      title:  "Do you have problems using the internet at home to do any of the following? (Check any that apply)"
       options:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-        d_na: "N/A"
   8:
     usage_video:
       field_type: select_list
@@ -515,12 +520,12 @@ form_fields:
       name: usage_video
       id: usage_video
       class: 'cb-usage'
-      text: "Does the quality or speed of your internet connection make it difficult to share or upload video?"
+      text: "Uploading/Sharing video"
+      title:  "Do you have problems using the internet at home to do any of the following? (Check any that apply)"
       options:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-        d_na: "N/A"
   9:
     usage_stream_video:
       field_type: select_list
@@ -529,12 +534,12 @@ form_fields:
       name: usage_stream_video
       id: usage_stream_video
       class: 'cb-usage'
-      text: "Does the quality or speed of your internet connection make it difficult to stream video?"
+      text: "Watching/streaming video"
+      title:  "Do you have problems using the internet at home to do any of the following? (Check any that apply)"
       options:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-        d_na: "N/A"
   10:
     usage_gaming:
       field_type: select_list
@@ -543,13 +548,12 @@ form_fields:
       name: usage_gaming
       id: usage_gaming
       class: 'cb-usage'
-      text: "Does the quality or speed of your internet connection make it difficult to do online gaming?"
+      text: "Gaming"
+      title:  "Do you have problems using the internet at home to do any of the following? (Check any that apply)"
       options:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-        d_na: "N/A"
-
   11:
     service_cost:
       field_type: select_list
@@ -559,6 +563,7 @@ form_fields:
       id: service_cost
       class: ''
       text: "How much does your home internet service cost per month?"
+      title: "How much does your home internet service cost per month?"
       options:
         a_default: "------"
         b_<_10: "Less than $10"
@@ -577,7 +582,8 @@ form_fields:
       name: service_bundle_not_bundled
       id: service_bundle_not_bundled
       class: 'cb-service-bundle'
-      text: "Is your home Internet access bundled with other services?"
+      text: "Not bundled"
+      title: "If you know, is your home Internet access bundled with other services? (check any that apply)"
       options:
         a_default: "------"
         b_yes: "Yes"
@@ -590,7 +596,8 @@ form_fields:
       name: service_bundle_cable_satellite
       id: service_bundle_cable_satellite
       class: 'cb-service-bundle'
-      text: "If you know, is your home Internet access bundled with cable or satellite TV service?"
+      text: "Cable or satellite TV"
+      title: "If you know, is your home Internet access bundled with other services? (check any that apply)"
       options:
         a_default: "------"
         b_yes: "Yes"
@@ -603,7 +610,8 @@ form_fields:
       name: service_bundle_home_phone
       id: service_bundle_home_phone
       class: 'cb-service-bundle'
-      text: "If you know, is your home Internet access bundled with home phone service?"
+      text: "Home phone"
+      title: "If you know, is your home Internet access bundled with other services? (check any that apply)"
       options:
         a_default: "------"
         b_yes: "Yes"
@@ -616,7 +624,8 @@ form_fields:
       name: service_bundle_cell_phone
       id: service_bundle_cell_phone
       class: 'cb-service-bundle'
-      text: "If you know, is your home Internet access bundled with cell phone service?"
+      text: "Cell phone"
+      title: "If you know, is your home Internet access bundled with other services? (check any that apply)"
       options:
         a_default: "------"
         b_yes: "Yes"
@@ -629,7 +638,8 @@ form_fields:
       name: service_bundle_home_security
       id: service_bundle_home_security
       class: 'cb-service-bundle'
-      text: "If you know, is your home Internet access bundled with home security service?"
+      text: "Home security"
+      title: "If you know, is your home Internet access bundled with other services? (check any that apply)"
       options:
         a_default: "------"
         b_yes: "Yes"
@@ -642,7 +652,8 @@ form_fields:
       name: service_bundle_unknown
       id: service_bundle_unknown
       class: 'cb-service-bundle'
-      text: "If you know, is your home Internet access bundled with home other services?"
+      text: "Don't know"
+      title: "If you know, is your home Internet access bundled with other services? (check any that apply)"
       options:
         a_default: "------"
         b_yes: "Yes"
@@ -656,6 +667,7 @@ form_fields:
       id: survey_wifi
       class: ''
       text: "Are you currently using Wi-Fi to complete this survey?"
+      title: "Are you currently using Wi-Fi to complete this survey?"
       options:
         a_default: "------"
         b_yes: "Yes"
@@ -670,6 +682,7 @@ form_fields:
       id: service_satisfaction
       class: ''
       text: "On a scale of 1-5 (5 being most satisfied) - how satisfied are you with your home Internet service?"
+      title: "On a scale of 1-5 (5 being most satisfied) - how satisfied are you with your home Internet service?"
       options:
         a_default: "------"
         b_no_service: "0 - Do not have home internet service"
@@ -687,6 +700,7 @@ form_fields:
       id: survey_uid_username
       class: ''
       text: "School ID or username"
+      title: "School ID or username"
       required: yes
   21:
     survey_address:
@@ -697,6 +711,7 @@ form_fields:
       id: survey_address
       class: ''
       text: "Street Address (Optional)"
+      title: "Street Address (Optional)"
       size: 3
       required: no
   22:
@@ -708,6 +723,7 @@ form_fields:
       id: survey_email_address
       class: ''
       text: "Email Address (Optional)"
+      title: "Email Address (Optional)"
       size: 1
       required: no
   23:
@@ -719,6 +735,7 @@ form_fields:
       id: education_level
       class: ''
       text: "If you know, and are willing to share - what is the highest level of education of any adult in your home? (Optional)"
+      title: "If you know, and are willing to share - what is the highest level of education of any adult in your home? (Optional)"
       required: no
       options:
         a_default: "------"
@@ -737,6 +754,7 @@ form_fields:
       id: household_income
       class: ''
       text: "If you know, and are willing to share - Last year (2018) what was your total household income from all sources, before taxes? (Optional)"
+      title: "If you know, and are willing to share - Last year (2018) what was your total household income from all sources, before taxes? (Optional)"
       required: no
       options:
         a_default: "------"

@@ -102,13 +102,13 @@
             </div>
             <div class="field-container">
             {% if vals['field_type'] == 'select_list' -%}
-            <select id="{{ vals['id'] }}" name="{{ vals['name'] }}" class="form-control {{ vals['class'] }}">
+            <select id="{{ vals['id'] }}" name="{{ vals['name'] }}" class="form-control {{ vals['class'] }}" title="{{ vals['title'] }}">
               {% for opt, item in vals.options.items() | sort -%}
                 <option value="{{ opt }}"{%- if opt == 'default' %} selected {%- endif -%}>{{ item }}</option>
               {%- endfor -%}
               </select>
             {% elif vals['field_type'] == 'text' -%}
-            <input id="{{ vals['id'] }}" type="text" name="{{ vals['name'] }}" class="form-control {{ vals['class'] }}"{%- if vals['size'] is defined %} size="{{ vals['size'] }}"{%- endif -%}/>
+            <input id="{{ vals['id'] }}" type="text" name="{{ vals['name'] }}" class="form-control {{ vals['class'] }}"{%- if vals['size'] is defined %} size="{{ vals['size'] }}"{%- endif -%} title="{{ vals['title'] }}" />
             {% elif vals['field_type'] == 'checkbox' %}
                 {% for opt, item in vals.options.items() | sort -%}
                     <input type="checkbox" value="{{ vals['id'] }}[{{ opt }}]"{%- if opt == 'default' %} selected {%- endif -%}>{{ item }}</input>
