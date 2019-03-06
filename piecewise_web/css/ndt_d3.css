@@ -171,10 +171,11 @@ details p, details h3 {
 }
 
 details h3 {
-  font-weight: bold;
-  font-size: 20px;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  font-weight: bold !important;
+  font-size: 20px !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+  color: #304c58 !important;
 }
 
 #extra-data {
@@ -196,8 +197,12 @@ details h3 {
   width: auto !important;
 }
 
-#consent-text p > * {
+#consent-text p > *:not(a) {
   margin: 0 1rem 0 0 !important;
+}
+
+#consent-text p > a {
+  margin-left: .5rem !important;
 }
 
 @media (max-width: 1440px) {
@@ -210,4 +215,57 @@ details h3 {
   #faq {
     width: 100%;
   }
+}
+
+.hide {
+    display: none;
+}
+
+.checkbox-label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #243840;
+    font-weight: 300;
+}
+
+label input[type="checkbox"] {
+    flex: 0 0 2em;
+}
+
+input[type="checkbox"] {
+  visibility: hidden;
+}
+
+#consent-text p {
+  position: relative;
+}
+
+#consent-text label::before,
+.checkbox-label::before {
+    content: "";
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: calc(50% - 8px);
+    height: 16px;
+    width: 16px;
+    border: 1px solid #243840;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    color: white;
+    cursor: pointer;
+}
+
+#consent-text label::before {
+  left: 1.5rem;
+}
+
+#consent-text label.pseudo-checked::before,
+.checkbox-label.pseudo-checked::before {
+  border: 1px solid #00babc;
+  background: #00babc;
+  content: "✓";
 }
