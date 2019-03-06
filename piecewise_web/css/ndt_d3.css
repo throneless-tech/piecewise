@@ -238,8 +238,10 @@ input[type="checkbox"] {
   visibility: hidden;
 }
 
-#consent-text p {
+#consent-text label {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 #consent-text label::before,
@@ -268,4 +270,59 @@ input[type="checkbox"] {
   border: 1px solid #00babc;
   background: #00babc;
   content: "✓";
+}
+
+.banner {
+  width: 100%;
+  height: auto;
+}
+
+.logos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  margin: 2rem auto;
+}
+
+.logos img {
+  width: 300px;
+}
+
+#icons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#take-test {
+  display: block !important;
+  width: 100%;
+}
+
+.button-label {
+  padding: 1rem 2rem;
+  border: 1px solid #243840;
+  color: #243840;
+  font-weight: 300 !important;
+  transition: all 120ms linear;
+  text-transform: uppercase;
+  font-size: 18px !important;
+  margin: 36px 0 0 0 !important;
+}
+
+#take-test .button-label {
+  margin-top: 0 !important;
+}
+
+.button-label:hover,
+.button-label:focus {
+  background: #243840;
+  color: white;
+}
+
+.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
 }
