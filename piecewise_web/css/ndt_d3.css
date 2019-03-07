@@ -273,6 +273,7 @@ input[type="checkbox"] {
 }
 
 .banner {
+  display: block;
   width: 100%;
   height: auto;
 }
@@ -289,8 +290,6 @@ input[type="checkbox"] {
 .logos img {
   width: 180px;
 }
-
-
 
 @media (max-width: 960px) {
   .logos img {
@@ -344,4 +343,11 @@ input[type="checkbox"] {
   cursor: not-allowed;
   pointer-events: none;
   opacity: 0.5;
+}
+
+@media (max-width: 1440px) {
+  .banner {
+    width: 960px;
+    margin: 0 auto;
+  }
 }
