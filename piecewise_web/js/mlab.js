@@ -773,7 +773,6 @@ $( document ).ready(function() {
   takeTest.classList.add('disabled');
 
   consent.addEventListener('change', function() {
-    console.log('test')
     if (consent.checked) {
       consent.parentElement.classList.add('pseudo-checked');
       takeTest.setAttribute('onclick', 'runTest()');
