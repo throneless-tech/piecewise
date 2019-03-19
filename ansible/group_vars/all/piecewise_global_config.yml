@@ -781,7 +781,7 @@ form_fields:
         d_tech_trade_voc: "Technical, trade or vocational school AFTER high school"
         e_some_college: "Some college, no 4-year degree (includes associate degree)"
         f_college_grad: "College graduate (B.S., B.A., or other 4-year degree)"
-        g_post_grad: "Post-graduate training (toward a Masters/Ph.D., Law or Medical school)"
+        g_post_grad: "Post-graduate training (Masters/Ph.D., Law or Medical school)"
   27:
     household_income:
       field_type: select_list
