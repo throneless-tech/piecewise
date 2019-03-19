@@ -525,7 +525,7 @@ function seedLayerCache(year) {
  * @returns {string} Textual information for the popup
  */
 function makePopup(props) {
-  var popup = '<h3 class="league-gothic">Internet Measurements in PA, lower house district '+ props.NAME +', in '+ $('#selectYear').val() + ' :</h3>'+
+  var popup = '<h3 class="league-gothic">Internet Measurements in MI, house district '+ props.NAME +', in '+ $('#selectYear').val() + ' :</h3>'+
     ' <p><strong>Download ('+ Math.round(props.download_count * 10) / 10 +' samples)</strong><br />'+
     ' Median: ' + Math.round(props.download_median * 10) / 10 + ' Mbps <br />' +
     ' Average: ' + Math.round(props.download_avg * 10) / 10 + ' Mbps <br />' +
@@ -627,7 +627,9 @@ function runTest() {
   $('#icons').addClass('hidden');
   $('#header').removeClass('initial');
   $('#header').addClass('hidden');
-  window.scrollTo(0, 0);
+
+  let test_container_offset = $('#test-container').offset();
+  window.scrollTo(test_container_offset.left, test_container_offset.top);
 }
 function showMap() {
   $('#icons img').removeClass('selected');
