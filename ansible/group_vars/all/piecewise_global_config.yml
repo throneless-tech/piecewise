@@ -179,7 +179,7 @@ aggregation_stats_table_name: "mi_house_districts_stats"
 
 geolayers:
   1:
-    shape_file: cb_2015_53_bg_500k.shp
+    shape_file: cb_2017_26_bg_500k.shp
     dbKey: geoid
     dbKeyDataType: string
     shape_projection: "EPSG:4326"
@@ -280,7 +280,7 @@ mapscript_json_type: "topojson"
 # In the future, support for other types of geodata, such as the geojson format may be
 # included in Piecewise. Currently, the mapscript json type should always be 'topojson'.
 
-mapscript_start_year: 2019
+mapscript_start_year: 2017
 mapscript_start_month: 1
 # # DEFAULT #
 #
@@ -319,17 +319,18 @@ mapscript_zoom_level: 8
 # on the website map controls.
 # # DEFAULT #
 mapscript_month_names:
-  1: 2019
-#   1: 2018
-#   2: 2017
-#   3: 2016
-#   4: 2015
-#   5: 2014
-#   6: 2013
-#   7: 2012
-#   8: 2011
-#   9: 2010
-#   10: 2009
+  1: Jan
+  2: Feb
+  3: Mar
+  4: Apr
+  5: May
+  6: Jun
+  7: Jul
+  8: Aug
+  9: Sep
+  10: Oct
+  11: Nov
+  12: Dec
 
 ####################
 # 3.2 Website Form #
@@ -795,8 +796,9 @@ instructions_text: >
 # before they may take the test.
 
 consent_message: >
-  I agree to the <a href="http://www.measurementlab.net/privacy/">M-Lab privacy policy</a>,
-  which includes retention and publication of IP addresses, in addition to speed test results.
+  I agree to the <a href="http://www.measurementlab.net/privacy/">M-Lab privacy policy</a>, and
+  the <a href="MinimalRiskConsentDocumentsubmittedtoIRB.html">research participant consent form</a>, which includes retention and publication
+  of IP addresses, in addition to speed test results.
 # #DEFAULT#
 #
 # Defines the message displayed next to the consent checkbox.
@@ -832,12 +834,11 @@ next_action_social_share_text: "Share this test with your friends and neighbors"
 # If you don't want any social share options, set all of the items below to 'none'
 # and also set 'next_action_social_share_text' to 'none' (without quotes) above.
 social_share_twitter: "https://twitter.com/meritnetwork?lang=en"
-social_share_gplus: "none" #"https://plus.google.com/share?url=http://www.seattle.gov/broadband-speed-test"
 social_share_facebook: "https://www.facebook.com/meritnetwork/"
-social_share_stumbleupon: "none" #"http://www.stumbleupon.com/submit?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test"
-social_share_reddit: "none" #"http://reddit.com/submit?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test"
+social_share_stumbleupon: none #"http://www.stumbleupon.com/submit?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test"
+social_share_reddit: "http://reddit.com/submit?url=http://mi.broadbandtest.us/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Michigan%20Moonshot%20Broadband%20Speed%20Test"
 social_share_linkedin: "https://www.linkedin.com/company/merit-network"
-social_share_email: "none" #"mailto:?subject=Take%20the%20Seattle%20Broadband%20Speed Test&body=I%20just%20took%20the%20Seattle%20Broadband%20Speed%20Test,%20and%20you%20should%20too!%20Take%20the%20test%20and%20contribute%20to%20a%20map%20of%20broadband%20speeds%20across%20the%20city. http://www.seattle.gov/broadband-speed-test"
+social_share_email: "mailto:?subject=Help%20bring%20internet%20to%20rural%20Michigan&body=Help%20connect%20rural%20Michigan%20to%20the%20internet%21%20Please%20consider%20completing%20this%20%2A2-minute%2A%20survey%20https%3A//mi.broadbandtest.us%20to%20add%20your%20connectivity%20availability%20to%20the%20Michigan%20Moonshot%20Citizen%20Scientist%20database.%0A%0A%20%20More%20than%20380%2C000%20homes%20in%20rural%20Michigan%20do%20not%20have%20access%20to%20broadband.%20%20Accurate%20connectivity%20data%20is%20the%20first%20step%20in%20assessing%20community%20needs%20and%20building%20support%20for%20funding%20sources.%20Current%20FCC%20data%20aggregation%20processes%20may%20misrepresent%20broadband%20availability.%20These%20can%20be%20overcome%20by%20collecting%20consumer-sourced%20data%20through%20surveys%20such%20as%20this%20one.%0A%0ALearn%20more%20about%20the%20Michigan%20Moonshot%20here%20https%3A//www.merit.edu/services/collaboration/moonshot/."
 # #DEFAULT#
 #
 
