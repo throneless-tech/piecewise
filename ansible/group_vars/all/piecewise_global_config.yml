@@ -391,6 +391,17 @@ mapscript_month_names:
 
 form_fields:
   1:
+    survey_uid_username:
+      field_type: text
+      page: 1
+      db_type: String
+      name: survey_uid_username
+      id: survey_uid_username
+      class: ''
+      text: "If this survey was assigned as part of a homework assignment, enter your school ID or username."
+      title: "If this survey was assigned as part of a homework assignment, enter your school ID or username."
+      required: yes
+  2:
     test_location:
       field_type: select_list
       page: 1
@@ -407,7 +418,7 @@ form_fields:
         d_library: "Library"
         e_work: "Work"
         f_other: "Other location"
-  2:
+  3:
     household_num:
       field_type: select_list
       db_type: String
@@ -429,7 +440,7 @@ form_fields:
         i_eight: "8"
         j_nine: "9"
         k_nineplus: "9+"
-  3:
+  4:
     household_minor_num:
       field_type: select_list
       db_type: String
@@ -451,7 +462,7 @@ form_fields:
         i_8: "8"
         j_9: "9"
         k_10: "9+"
-  4:
+  5:
     home_owner:
       field_type: select_list
       page: 1
@@ -466,7 +477,7 @@ form_fields:
         b_yes: "Own"
         c_no: "Rent"
         d_unknown: "Don't know"
-  5:
+  6:
     service_type:
       field_type: select_list
       page: 1
@@ -485,7 +496,7 @@ form_fields:
         f_shared_wifi: "Share neighbors wifi"
         g_no_access: "I don't have internet access at home"
         h_unknown: "Don't know"
-  6:
+  7:
     usage_homework:
       field_type: select_list
       page: 1
@@ -499,7 +510,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  7:
+  8:
     usage_work:
       field_type: select_list
       page: 1
@@ -513,7 +524,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  8:
+  9:
     usage_video:
       field_type: select_list
       page: 1
@@ -527,7 +538,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  9:
+  10:
     usage_stream_video:
       field_type: select_list
       page: 1
@@ -541,7 +552,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  10:
+  11:
     usage_gaming:
       field_type: select_list
       page: 1
@@ -555,7 +566,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  11:
+  12:
     service_cost:
       field_type: select_list
       page: 1
@@ -575,7 +586,7 @@ form_fields:
         g_101_150: "$101 - $150"
         h_>_151: "More than $151"
         i_no_service: "We do not have home subscription"
-  12:
+  13:
     service_bundle_not_bundled:
       field_type: select_list
       page: 1
@@ -589,7 +600,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  13:
+  14:
     service_bundle_cable_satellite:
       field_type: select_list
       page: 1
@@ -603,7 +614,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  14:
+  15:
     service_bundle_home_phone:
       field_type: select_list
       page: 1
@@ -617,7 +628,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  15:
+  16:
     service_bundle_cell_phone:
       field_type: select_list
       page: 1
@@ -631,7 +642,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  16:
+  17:
     service_bundle_home_security:
       field_type: select_list
       page: 1
@@ -645,7 +656,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  17:
+  18:
     service_bundle_unknown:
       field_type: select_list
       page: 1
@@ -659,7 +670,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  18:
+  19:
     survey_wifi:
       field_type: select_list
       page: 1
@@ -674,7 +685,7 @@ form_fields:
         b_yes: "Yes"
         c_no: "No"
         d_unknown: "Don't know"
-  19:
+  20:
     service_satisfaction:
       field_type: select_list
       page: 1
@@ -692,17 +703,6 @@ form_fields:
         e_neutral: "3 - Neutral"
         f_satisfied: "4 - Satisfied"
         g_very_satisfied: "5 - Very satisfied"
-  20:
-    survey_uid_username:
-      field_type: text
-      page: 1
-      db_type: String
-      name: survey_uid_username
-      id: survey_uid_username
-      class: ''
-      text: "School ID or username"
-      title: "School ID or username"
-      required: yes
   21:
     survey_address:
       field_type: text
