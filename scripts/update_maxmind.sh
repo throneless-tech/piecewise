@@ -7,7 +7,7 @@ unzip GeoIPASNum2.zip
 
 SQL="
 	TRUNCATE maxmind
-	COPY maxmind (ip_low, ip_high, label) FROM '/tmp/GeoIPASNum2.csv' WITH (FORMAT csv, HEADER false, encoding 'latin1')
+	COPY maxmind (ip_low, ip_high, label) FROM '/opt/GeoIPASNum2.csv' WITH (FORMAT csv, HEADER false, encoding 'latin1')
 	UPDATE maxmind SET ip_range = int8range(ip_low, ip_high)
 "
 
