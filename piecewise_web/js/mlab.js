@@ -667,7 +667,7 @@ $( window ).resize(function() {
 
 $(function() {
 /* Sets initial status on load for various divs */
-  $('#testSpeed, #approx-loc, #ndt-div, #ndt-results, #desktop-legend, .info.legend.leaflet-control, .leaflet-bottom.leaflet-left, .info.controls.leaflet-control, #mapview-icons, #socialshare, .leaflet-top.leaflet-left, .leaflet-top.leaflet-right, .leaflet-control-layers').addClass('hidden');
+  $('#testSpeed, #approx-loc, #ndt-div, #ndt-results, #desktop-legend, .info.legend.leaflet-control, .leaflet-bottom.leaflet-left, .info.controls.leaflet-control, #mapview-icons, .leaflet-top.leaflet-left, .leaflet-top.leaflet-right, .leaflet-control-layers').addClass('hidden');
   $('#container-test_loc').addClass('displayed');
   $('#container-service_at_home, #container-no_serv_reason, #container-household_num, #container-household_type, #container-household_type_other, #container-isp_user, #container-service_type, #container-download_speed, #container-other_download, #container-upload_speed, #container-other_upload, #container-service_cost').addClass('hidden');
   //$('.leaflet-top.leaflet-right').attr('id','layers-box');
