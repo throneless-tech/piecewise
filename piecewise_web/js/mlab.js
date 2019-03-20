@@ -525,8 +525,7 @@ function seedLayerCache(year) {
  * @returns {string} Textual information for the popup
  */
 function makePopup(props) {
-  var popup = '<h3 class="league-gothic">Internet Measurements in MI, house district '+ props.NAME +', in '+ $('#selectYear').val() + ' :</h3>'+
-    ' <p><strong>Download ('+ Math.round(props.download_count * 10) / 10 +' samples)</strong><br />'+
+  var popup = '<p><strong>Download ('+ Math.round(props.download_count * 10) / 10 +' samples)</strong><br />'+
     ' Median: ' + Math.round(props.download_median * 10) / 10 + ' Mbps <br />' +
     ' Average: ' + Math.round(props.download_avg * 10) / 10 + ' Mbps <br />' +
     ' Maximum: ' + props.download_max + ' Mbps<br /><br />' +
