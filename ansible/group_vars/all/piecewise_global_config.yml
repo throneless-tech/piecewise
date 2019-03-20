@@ -869,11 +869,11 @@ next_action_social_share_text: "Share this test with your friends and neighbors"
 # If you set any of these to 'none', they will be excluded from the website.
 # If you don't want any social share options, set all of the items below to 'none'
 # and also set 'next_action_social_share_text' to 'none' (without quotes) above.
-social_share_twitter: "https://twitter.com/meritnetwork?lang=en"
-social_share_facebook: "https://www.facebook.com/meritnetwork/"
+social_share_twitter: "https://twitter.com/home?status=Check%20your%20broadband%20speed%20with%20the%20Michigan%20Moonshot%20Speed%20Test https%3A//mi.broadbandtest.us/"
+social_share_facebook: "https://www.facebook.com/sharer/sharer.php?u=https%3A//www.merit.edu/services/moonshot/"
 social_share_stumbleupon: none #"http://www.stumbleupon.com/submit?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test"
 social_share_reddit: "http://reddit.com/submit?url=http://mi.broadbandtest.us/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Michigan%20Moonshot%20Broadband%20Speed%20Test"
-social_share_linkedin: "https://www.linkedin.com/company/merit-network"
+social_share_linkedin: "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.merit.edu/services/moonshot/&title=Michigan%20Moonshot&summary=Check%20your%20broadband%20speed%20with%20the%20Michigan%20Moonshot%20Speed%20Test.%20Learn%20more%20about%20the%20Michigan%20Moonshot%20Citizen%20Scientist%20project.&source=Merit%20Network,%20inc."
 social_share_email: "mailto:?subject=Help%20bring%20internet%20to%20rural%20Michigan&body=Help%20connect%20rural%20Michigan%20to%20the%20internet%21%20Please%20consider%20completing%20this%20%2A2-minute%2A%20survey%20https%3A//mi.broadbandtest.us%20to%20add%20your%20connectivity%20availability%20to%20the%20Michigan%20Moonshot%20Citizen%20Scientist%20database.%0A%0A%20%20More%20than%20380%2C000%20homes%20in%20rural%20Michigan%20do%20not%20have%20access%20to%20broadband.%20%20Accurate%20connectivity%20data%20is%20the%20first%20step%20in%20assessing%20community%20needs%20and%20building%20support%20for%20funding%20sources.%20Current%20FCC%20data%20aggregation%20processes%20may%20misrepresent%20broadband%20availability.%20These%20can%20be%20overcome%20by%20collecting%20consumer-sourced%20data%20through%20surveys%20such%20as%20this%20one.%0A%0ALearn%20more%20about%20the%20Michigan%20Moonshot%20here%20https%3A//www.merit.edu/services/collaboration/moonshot/."
 # #DEFAULT#
 #
