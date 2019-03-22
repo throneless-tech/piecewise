@@ -511,7 +511,7 @@ class _AverageRTT(Statistic):
 
     @property
     def postgres_columns(self):
-        return [Column('sumrtt', BigInteger), Column('countrtt', Integer)]
+        return [Column('sumrtt', BigInteger), Column('countrtt', BigInteger)]
 
 class _MedianRTT(Statistic):
     label = "MedianRTT"
@@ -537,7 +537,7 @@ class _DownloadCount(Statistic):
 
     @property
     def postgres_columns(self):
-        return [Column('download_count', Integer)]
+        return [Column('download_count', BigInteger)]
 
     def build_query_to_populate(self, query, full_table, aggregate_table):
         insert_columns = [aggregate_table.c.download_count]
@@ -594,7 +594,7 @@ class _UploadCount(Statistic):
 
     @property
     def postgres_columns(self):
-        return [Column('upload_count', Integer)]
+        return [Column('upload_count', BigInteger)]
 
     def build_query_to_populate(self, query, full_table, aggregate_table):
         insert_columns = [aggregate_table.c.upload_count]
@@ -651,7 +651,7 @@ class _DownloadMin(Statistic):
 
     @property
     def postgres_columns(self):
-        return [Column('download_min', Integer)]
+        return [Column('download_min', BigInteger)]
 
     def build_query_to_populate(self, query, full_table, aggregate_table):
         insert_columns = [aggregate_table.c.download_min]
@@ -670,7 +670,7 @@ class _DownloadMax(Statistic):
 
     @property
     def postgres_columns(self):
-        return [Column('download_max', Integer)]
+        return [Column('download_max', BigInteger)]
 
     def build_query_to_populate(self, query, full_table, aggregate_table):
         insert_columns = [aggregate_table.c.download_max]
@@ -689,7 +689,7 @@ class _UploadMin(Statistic):
 
     @property
     def postgres_columns(self):
-        return [Column('upload_min', Integer)]
+        return [Column('upload_min', BigInteger)]
 
     def build_query_to_populate(self, query, full_table, aggregate_table):
         insert_columns = [aggregate_table.c.upload_min]
@@ -708,7 +708,7 @@ class _UploadMax(Statistic):
 
     @property
     def postgres_columns(self):
-        return [Column('upload_max', Integer)]
+        return [Column('upload_max', BigInteger)]
 
     def build_query_to_populate(self, query, full_table, aggregate_table):
         insert_columns = [aggregate_table.c.upload_max]
