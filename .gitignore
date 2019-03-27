@@ -1,4 +1,5 @@
-.vagrant/
 *.pyc
 *.retry
+.DS_Store
+.vagrant/
 venv/
