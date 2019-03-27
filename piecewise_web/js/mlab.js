@@ -525,8 +525,7 @@ function seedLayerCache(year) {
  * @returns {string} Textual information for the popup
  */
 function makePopup(props) {
-  var popup = '<h3 class="league-gothic">Internet Measurements in PA, lower house district '+ props.NAME +', in '+ $('#selectYear').val() + ' :</h3>'+
-    ' <p><strong>Download ('+ Math.round(props.download_count * 10) / 10 +' samples)</strong><br />'+
+  var popup = '<p><strong>Download ('+ Math.round(props.download_count * 10) / 10 +' samples)</strong><br />'+
     ' Median: ' + Math.round(props.download_median * 10) / 10 + ' Mbps <br />' +
     ' Average: ' + Math.round(props.download_avg * 10) / 10 + ' Mbps <br />' +
     ' Maximum: ' + props.download_max + ' Mbps<br /><br />' +
@@ -627,7 +626,9 @@ function runTest() {
   $('#icons').addClass('hidden');
   $('#header').removeClass('initial');
   $('#header').addClass('hidden');
-  window.scrollTo(0, 0);
+
+  let test_container_offset = $('#test-container').offset();
+  window.scrollTo(test_container_offset.left, test_container_offset.top);
 }
 function showMap() {
   $('#icons img').removeClass('selected');
@@ -665,7 +666,7 @@ $( window ).resize(function() {
 
 $(function() {
 /* Sets initial status on load for various divs */
-  $('#testSpeed, #approx-loc, #ndt-div, #ndt-results, #desktop-legend, .info.legend.leaflet-control, .leaflet-bottom.leaflet-left, .info.controls.leaflet-control, #mapview-icons, #socialshare, .leaflet-top.leaflet-left, .leaflet-top.leaflet-right, .leaflet-control-layers').addClass('hidden');
+  $('#testSpeed, #approx-loc, #ndt-div, #ndt-results, #desktop-legend, .info.legend.leaflet-control, .leaflet-bottom.leaflet-left, .info.controls.leaflet-control, #mapview-icons, .leaflet-top.leaflet-left, .leaflet-top.leaflet-right, .leaflet-control-layers').addClass('hidden');
   $('#container-test_loc').addClass('displayed');
   $('#container-service_at_home, #container-no_serv_reason, #container-household_num, #container-household_type, #container-household_type_other, #container-isp_user, #container-service_type, #container-download_speed, #container-other_download, #container-upload_speed, #container-other_upload, #container-service_cost').addClass('hidden');
   //$('.leaflet-top.leaflet-right').attr('id','layers-box');

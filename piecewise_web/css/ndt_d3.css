@@ -285,8 +285,8 @@ input[type="checkbox"] {
   align-items: center;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
   margin: 2rem auto;
   max-width: calc(80% - 2em);
 }
@@ -297,7 +297,7 @@ input[type="checkbox"] {
 }
 
 @media (max-width: 960px) {
-  .logos     { justify-content: space-between; }
+  .logos     { flex-wrap: wrap; }
   .logos img { margin: 1em 2em; }
 }
 

@@ -18,10 +18,14 @@ html, body {
 }
 
 #map {
-	height: 100%;
-	width: 100%;
-	margin: 0;
-	padding: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  bottom: 0;
+  z-index: 4;
 }
 
 #sidebar {
@@ -1079,7 +1083,6 @@ a.leaflet-popup-close-button {
   left: 0;
   right: 0;
   top: 0;
-  bottom: 0;
 }
 #test-container {
   background:#fff;
