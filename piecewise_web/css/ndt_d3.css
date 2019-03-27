@@ -292,8 +292,7 @@ input[type="checkbox"] {
 }
 
 .logos img {
-  margin: 0.75em 1em;
-  max-width: 40%;
+  width: 180px;
 }
 
 @media (max-width: 960px) {
