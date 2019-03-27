@@ -1335,3 +1335,31 @@ a.leaflet-popup-close-button {
       display:none !important;
   }
 }
+
+
+/*
+ * Warning overlay for map view(s)
+ */
+.map-warning {
+ background: rgba(255,255,255,0.75);
+ left: 0;
+ margin: 0;
+ max-width: calc(100% - 70px - 20px);
+ padding: 1em;
+ position: absolute;
+ top: 0;
+ width: 100%;
+ z-index: 6;
+}
+.map-warning.hidden { display: none; }
+.map-warning p {
+  font-size: 14px;
+  line-height: 1.125;
+  margin: 0;
+  padding: 0;
+}
+.map-warning p + p { margin-top: 0.5em; }
+
+@media(min-width: 500px) {
+  .map-warning { max-width: calc(100% - 110px - 20px); }
+}

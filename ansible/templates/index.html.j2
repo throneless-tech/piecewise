@@ -262,20 +262,22 @@ function success(position) {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200) {
 				currentLoc = JSON.parse(xhr.responseText);
-				console.log("Location received");
+				console_log("Location received");
 
 				// currentLocText.text(currentLoc.address.road + currentLoc.address.neighbourhood + currentLoc.address.suburb + currentLoc.address.city + currentLoc.address.state);
 				$('#mobile-container').append('<div id="mobile-approx-loc"></div>')
 				$('#approx-loc, #mobile-approx-loc').append("<p>Searching from:</p><p>" + currentLoc.address.road + ", " + currentLoc.address.city + ", " + currentLoc.address.state + "</p>");
 			} else {
-				console.log('Location lookup failed');
+				console_log('Location lookup failed');
 			}
 		}
 	};
 }
 
 function error(error) {
-	document.getElementById('msg').innerHTML = 'ERROR(' + error.code + '): ' + error.message;
+  // For some users, errors are thrown when they (or their browser, automatically) deny
+  // geolocation. We should update this to properly present/report this and other errors.
+	//document.getElementById('msg').innerHTML = 'ERROR(' + error.code + '): ' + error.message;
 }
 
 function getNdtServer () {
@@ -289,9 +291,9 @@ function getNdtServer () {
 			if (xhr.status === 200) {
 				ndtServer = JSON.parse(xhr.responseText).fqdn;
 				ndtServerIp = JSON.parse(xhr.responseText).ip;
-				console.log('Using M-Lab Server ' + ndtServer);
+				console_log('Using M-Lab Server ' + ndtServer);
 			} else {
-				console.log('M-Lab NS lookup failed.');
+				console_log('M-Lab NS lookup failed.');
 			}
 		}
 	};
@@ -299,8 +301,12 @@ function getNdtServer () {
 </script>
 
 <div id="map">
-  <div id="mapview-icons">
-</div>
+  <div id="mapview-icons"></div>
+
+  <div class="map-warning hidden">
+    <p><strong>Due to high-volume processing, we are unable to display region data at this time.</strong></p>
+    <p>Please check back soon, or <a href="#" class="map-warning__reload">reload this page to try again</a>.</p>
+  </div>
 
 <script>
   // This is the Piecewise mapping script.
@@ -416,7 +422,7 @@ function getNdtServer () {
   	      currentMonth = currentMonth - 1;
   	      currentMonth = currentMonth < 10 ? '0' + currentMonth : currentMonth;
   	    }
-  	    console.log("No data for current year/month, using last month instead.");
+  	    console_log("No data for current year/month, using last month instead.");
   	  }
     }
   });
@@ -474,6 +480,8 @@ for (var geoLayer in geoLayers) {
   setupLayer(geoLayer);
 }
 </script>
+
+</div>
 
 </body>
 </html>
