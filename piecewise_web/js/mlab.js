@@ -1,3 +1,26 @@
+/*
+ * Check query string for debug param.
+ * Ideally only used to toggle logging.
+ */
+function is_debug() {
+  return (window.location.href.indexOf('?debug=') != -1);
+}
+
+
+/*
+ * Safely log to console, maybe.
+ * Some browsers don't support console.log() and
+ * calling it will lead them to crash.
+ */
+function console_log() {
+  // Bail if not debug
+  if (! is_debug()) return;
+
+  // Check for and pass (expand) our args to console.log
+  'console' in window && console.log.apply(null, arguments);
+}
+
+
 // Objec to handle the faux checkboxes
 var formWatcher = function() {
     this.classMap = [
@@ -86,7 +109,7 @@ function getCurrentValues() {
   var currentMonthOption = $('#sliderMonth').slider("value");
   // apply index to month array
   currentMonthOption = monthNames[currentMonthOption -1];
-  console.log(currentMetricOption, currentYearOption, currentMonthOption);
+  console_log(currentMetricOption, currentYearOption, currentMonthOption);
   $('#mobile-only-text').remove();
   $('.metricControls').before('<p id="mobile-only-text">Showing <span class="metric">' + currentMetricOption + '</span> from <span class="mobiledate">' + currentMonthOption + ". " + currentYearOption + '</span></p>');
 };
@@ -319,10 +342,10 @@ function updateLayers(e, mode) {
  */
 function getLayerData(url, callback) {
   if ( geoJsonCache[url] ) {
-    console.log('Using cached version of ' + url);
+    console_log('Using cached version of ' + url);
     callback(geoJsonCache[url]);
   } else {
-    console.log('Fetching and caching ' + url);
+    console_log('Fetching and caching ' + url);
     $.get(url, function(resp) {
       // If we're dealing with a TopoJSON file, convert it to GeoJSON
       if ('topojson' == url.split('.').pop()) {
@@ -333,6 +356,7 @@ function getLayerData(url, callback) {
         geojson.features = omnivore.topojson.parse(resp);
         resp = geojson;
       }
+
       geoJsonCache[url] = resp;
       callback(resp);
     }, 'json');
@@ -382,6 +406,11 @@ function setPolygonLayer(layer, year, month, metric, mode, resolution) {
 
   getLayerData(dataUrl, function(response) {
     var lookup = {};
+
+    if (response.features.length <= 0) {
+      $('.map-warning').removeClass('hidden');
+    }
+
     response.features.forEach(function(row) {
       lookup[row.properties[geoLayers[layer]['dbKey']]] = row.properties;
     });
@@ -525,8 +554,7 @@ function seedLayerCache(year) {
  * @returns {string} Textual information for the popup
  */
 function makePopup(props) {
-  var popup = '<h3 class="league-gothic">Internet Measurements in PA, lower house district '+ props.NAME +', in '+ $('#selectYear').val() + ' :</h3>'+
-    ' <p><strong>Download ('+ Math.round(props.download_count * 10) / 10 +' samples)</strong><br />'+
+  var popup = '<p><strong>Download ('+ Math.round(props.download_count * 10) / 10 +' samples)</strong><br />'+
     ' Median: ' + Math.round(props.download_median * 10) / 10 + ' Mbps <br />' +
     ' Average: ' + Math.round(props.download_avg * 10) / 10 + ' Mbps <br />' +
     ' Maximum: ' + props.download_max + ' Mbps<br /><br />' +
@@ -535,7 +563,7 @@ function makePopup(props) {
     ' Average: ' + Math.round(props.upload_avg * 10) / 10 + ' Mbps <br/>' +
     ' Maximum: ' + props.upload_max + ' Mbps<br /><br />' +
     '<strong>Average Round Trip Time:</strong> ' + Math.round(props.rtt_avg) + ' ms <br/></p>';
-    console.log(props);
+    console_log(props);
   return popup;
 }
 function makeBlankPopup() {
@@ -627,7 +655,9 @@ function runTest() {
   $('#icons').addClass('hidden');
   $('#header').removeClass('initial');
   $('#header').addClass('hidden');
-  window.scrollTo(0, 0);
+
+  let test_container_offset = $('#test-container').offset();
+  window.scrollTo(test_container_offset.left, test_container_offset.top);
 }
 function showMap() {
   $('#icons img').removeClass('selected');
@@ -665,7 +695,7 @@ $( window ).resize(function() {
 
 $(function() {
 /* Sets initial status on load for various divs */
-  $('#testSpeed, #approx-loc, #ndt-div, #ndt-results, #desktop-legend, .info.legend.leaflet-control, .leaflet-bottom.leaflet-left, .info.controls.leaflet-control, #mapview-icons, #socialshare, .leaflet-top.leaflet-left, .leaflet-top.leaflet-right, .leaflet-control-layers').addClass('hidden');
+  $('#testSpeed, #approx-loc, #ndt-div, #ndt-results, #desktop-legend, .info.legend.leaflet-control, .leaflet-bottom.leaflet-left, .info.controls.leaflet-control, #mapview-icons, .leaflet-top.leaflet-left, .leaflet-top.leaflet-right, .leaflet-control-layers').addClass('hidden');
   $('#container-test_loc').addClass('displayed');
   $('#container-service_at_home, #container-no_serv_reason, #container-household_num, #container-household_type, #container-household_type_other, #container-isp_user, #container-service_type, #container-download_speed, #container-other_download, #container-upload_speed, #container-other_upload, #container-service_cost').addClass('hidden');
   //$('.leaflet-top.leaflet-right').attr('id','layers-box');
@@ -737,11 +767,11 @@ function submitExtraData() {
     data: formData,
     statusCode: {
       201: function() {
-        console.log('Data submitted successfully.');
+        console_log('Data submitted successfully.');
       }
     },
     error: function(jqXHR, status, msg) {
-      console.log('Something went wrong: ' + status + ' ' + msg);
+      console_log('Something went wrong: ' + status + ' ' + msg);
     }
   });
 }
@@ -987,6 +1017,13 @@ $( document ).ready(function() {
         $('input[name]=other_upload').val('')
     }
   }
+  });
+
+
+  // Reload page link from map warning
+  $('.map-warning__reload').click(function(evt) {
+    window.location.reload();
+    evt.preventDefault();
   });
 
 });

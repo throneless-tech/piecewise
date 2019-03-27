@@ -18,10 +18,14 @@ html, body {
 }
 
 #map {
-	height: 100%;
-	width: 100%;
-	margin: 0;
-	padding: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  bottom: 0;
+  z-index: 4;
 }
 
 #sidebar {
@@ -1079,7 +1083,6 @@ a.leaflet-popup-close-button {
   left: 0;
   right: 0;
   top: 0;
-  bottom: 0;
 }
 #test-container {
   background:#fff;
@@ -1331,4 +1334,32 @@ a.leaflet-popup-close-button {
   #mobile-only-text {
       display:none !important;
   }
+}
+
+
+/*
+ * Warning overlay for map view(s)
+ */
+.map-warning {
+ background: rgba(255,255,255,0.75);
+ left: 0;
+ margin: 0;
+ max-width: calc(100% - 70px - 20px);
+ padding: 1.5em;
+ position: absolute;
+ top: 0;
+ width: 470px;
+ z-index: 6;
+}
+.map-warning.hidden { display: none; }
+.map-warning p {
+  font-size: 15px;
+  line-height: 1.25;
+  margin: 0;
+  padding: 0;
+}
+.map-warning p + p { margin-top: 0.625em; }
+
+@media(min-width: 500px) {
+  .map-warning { max-width: calc(100% - 110px - 20px); }
 }

@@ -46,7 +46,7 @@ piecewise_commit: mi_moonshot
 git_repo: "{{ remote }}/{{ project_name }}.git"
 # TO DO: may no longer be needed. confirm.
 
-bigquery_project_num: mlab-piecewise
+bigquery_project_num: measurement-lab
 # !REQUIRED!
 #
 # bigquery_project_num
@@ -179,7 +179,7 @@ aggregation_stats_table_name: "mi_house_districts_stats"
 
 geolayers:
   1:
-    shape_file: cb_2015_53_bg_500k.shp
+    shape_file: cb_2017_26_bg_500k.shp
     dbKey: geoid
     dbKeyDataType: string
     shape_projection: "EPSG:4326"
@@ -280,7 +280,7 @@ mapscript_json_type: "topojson"
 # In the future, support for other types of geodata, such as the geojson format may be
 # included in Piecewise. Currently, the mapscript json type should always be 'topojson'.
 
-mapscript_start_year: 2019
+mapscript_start_year: 2017
 mapscript_start_month: 1
 # # DEFAULT #
 #
@@ -319,17 +319,18 @@ mapscript_zoom_level: 8
 # on the website map controls.
 # # DEFAULT #
 mapscript_month_names:
-  1: 2019
-#   1: 2018
-#   2: 2017
-#   3: 2016
-#   4: 2015
-#   5: 2014
-#   6: 2013
-#   7: 2012
-#   8: 2011
-#   9: 2010
-#   10: 2009
+  1: Jan
+  2: Feb
+  3: Mar
+  4: Apr
+  5: May
+  6: Jun
+  7: Jul
+  8: Aug
+  9: Sep
+  10: Oct
+  11: Nov
+  12: Dec
 
 ####################
 # 3.2 Website Form #
@@ -390,6 +391,17 @@ mapscript_month_names:
 
 form_fields:
   1:
+    survey_uid_username:
+      field_type: text
+      page: 1
+      db_type: String
+      name: survey_uid_username
+      id: survey_uid_username
+      class: ''
+      text: "If this survey was assigned as part of a homework assignment, enter your school ID or username."
+      title: "If this survey was assigned as part of a homework assignment, enter your school ID or username."
+      required: yes
+  2:
     test_location:
       field_type: select_list
       page: 1
@@ -406,7 +418,7 @@ form_fields:
         d_library: "Library"
         e_work: "Work"
         f_other: "Other location"
-  2:
+  3:
     household_num:
       field_type: select_list
       db_type: String
@@ -428,7 +440,7 @@ form_fields:
         i_eight: "8"
         j_nine: "9"
         k_nineplus: "9+"
-  3:
+  4:
     household_minor_num:
       field_type: select_list
       db_type: String
@@ -450,7 +462,7 @@ form_fields:
         i_8: "8"
         j_9: "9"
         k_10: "9+"
-  4:
+  5:
     home_owner:
       field_type: select_list
       page: 1
@@ -465,7 +477,7 @@ form_fields:
         b_yes: "Own"
         c_no: "Rent"
         d_unknown: "Don't know"
-  5:
+  6:
     service_type:
       field_type: select_list
       page: 1
@@ -484,7 +496,7 @@ form_fields:
         f_shared_wifi: "Share neighbors wifi"
         g_no_access: "I don't have internet access at home"
         h_unknown: "Don't know"
-  6:
+  7:
     usage_homework:
       field_type: select_list
       page: 1
@@ -498,7 +510,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  7:
+  8:
     usage_work:
       field_type: select_list
       page: 1
@@ -512,7 +524,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  8:
+  9:
     usage_video:
       field_type: select_list
       page: 1
@@ -526,7 +538,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  9:
+  10:
     usage_stream_video:
       field_type: select_list
       page: 1
@@ -540,7 +552,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  10:
+  11:
     usage_gaming:
       field_type: select_list
       page: 1
@@ -554,7 +566,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  11:
+  12:
     service_cost:
       field_type: select_list
       page: 1
@@ -574,7 +586,7 @@ form_fields:
         g_101_150: "$101 - $150"
         h_>_151: "More than $151"
         i_no_service: "We do not have home subscription"
-  12:
+  13:
     service_bundle_not_bundled:
       field_type: select_list
       page: 1
@@ -588,7 +600,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  13:
+  14:
     service_bundle_cable_satellite:
       field_type: select_list
       page: 1
@@ -602,7 +614,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  14:
+  15:
     service_bundle_home_phone:
       field_type: select_list
       page: 1
@@ -616,7 +628,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  15:
+  16:
     service_bundle_cell_phone:
       field_type: select_list
       page: 1
@@ -630,7 +642,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  16:
+  17:
     service_bundle_home_security:
       field_type: select_list
       page: 1
@@ -644,7 +656,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  17:
+  18:
     service_bundle_unknown:
       field_type: select_list
       page: 1
@@ -658,7 +670,7 @@ form_fields:
         a_default: "------"
         b_yes: "Yes"
         c_no: "No"
-  18:
+  19:
     survey_wifi:
       field_type: select_list
       page: 1
@@ -673,7 +685,7 @@ form_fields:
         b_yes: "Yes"
         c_no: "No"
         d_unknown: "Don't know"
-  19:
+  20:
     service_satisfaction:
       field_type: select_list
       page: 1
@@ -691,30 +703,55 @@ form_fields:
         e_neutral: "3 - Neutral"
         f_satisfied: "4 - Satisfied"
         g_very_satisfied: "5 - Very satisfied"
-  20:
-    survey_uid_username:
-      field_type: text
-      page: 1
-      db_type: String
-      name: survey_uid_username
-      id: survey_uid_username
-      class: ''
-      text: "School ID or username"
-      title: "School ID or username"
-      required: yes
   21:
-    survey_address:
+    survey_address_street:
       field_type: text
       page: 1
       db_type: String
-      name: survey_address
-      id: survey_address
+      name: survey_address_street
+      id: survey_address_street
       class: ''
       text: "Street Address (Optional)"
       title: "Street Address (Optional)"
       size: 3
       required: no
   22:
+    survey_address_city:
+      field_type: text
+      page: 1
+      db_type: String
+      name: survey_address_city
+      id: survey_address_city
+      class: ''
+      text: "City (Optional)"
+      title: "City (Optional)"
+      size: 3
+      required: no
+  23:
+    survey_address_state:
+      field_type: text
+      page: 1
+      db_type: String
+      name: survey_address_state
+      id: survey_address_state
+      class: ''
+      text: "State (Optional)"
+      title: "State (Optional)"
+      size: 3
+      required: no
+  24:
+    survey_address_zip:
+      field_type: text
+      page: 1
+      db_type: String
+      name: survey_address_zip
+      id: survey_address_zip
+      class: ''
+      text: "Zip code (Optional)"
+      title: "Zip code (Optional)"
+      size: 3
+      required: no
+  25:
     survey_email_address:
       field_type: text
       page: 1
@@ -726,7 +763,7 @@ form_fields:
       title: "Email Address (Optional)"
       size: 1
       required: no
-  23:
+  26:
     education_level:
       field_type: select_list
       page: 1
@@ -744,8 +781,8 @@ form_fields:
         d_tech_trade_voc: "Technical, trade or vocational school AFTER high school"
         e_some_college: "Some college, no 4-year degree (includes associate degree)"
         f_college_grad: "College graduate (B.S., B.A., or other 4-year degree)"
-        g_post_grad: "Post-graduate training (toward a Masters/Ph.D., Law or Medical school)"
-  24:
+        g_post_grad: "Post-graduate training (Masters/Ph.D., Law or Medical school)"
+  27:
     household_income:
       field_type: select_list
       page: 1
@@ -795,8 +832,9 @@ instructions_text: >
 # before they may take the test.
 
 consent_message: >
-  I agree to the <a href="http://www.measurementlab.net/privacy/">M-Lab privacy policy</a>,
-  which includes retention and publication of IP addresses, in addition to speed test results.
+  I agree to the <a href="http://www.measurementlab.net/privacy/">M-Lab privacy policy</a>, and
+  the <a href="MinimalRiskConsentDocumentsubmittedtoIRB.html">research participant consent form</a>, which includes retention and publication
+  of IP addresses, in addition to speed test results.
 # #DEFAULT#
 #
 # Defines the message displayed next to the consent checkbox.
@@ -831,13 +869,12 @@ next_action_social_share_text: "Share this test with your friends and neighbors"
 # If you set any of these to 'none', they will be excluded from the website.
 # If you don't want any social share options, set all of the items below to 'none'
 # and also set 'next_action_social_share_text' to 'none' (without quotes) above.
-social_share_twitter: "https://twitter.com/meritnetwork?lang=en"
-social_share_gplus: "none" #"https://plus.google.com/share?url=http://www.seattle.gov/broadband-speed-test"
-social_share_facebook: "https://www.facebook.com/meritnetwork/"
-social_share_stumbleupon: "none" #"http://www.stumbleupon.com/submit?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test"
-social_share_reddit: "none" #"http://reddit.com/submit?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test"
-social_share_linkedin: "https://www.linkedin.com/company/merit-network"
-social_share_email: "none" #"mailto:?subject=Take%20the%20Seattle%20Broadband%20Speed Test&body=I%20just%20took%20the%20Seattle%20Broadband%20Speed%20Test,%20and%20you%20should%20too!%20Take%20the%20test%20and%20contribute%20to%20a%20map%20of%20broadband%20speeds%20across%20the%20city. http://www.seattle.gov/broadband-speed-test"
+social_share_twitter: "https://twitter.com/home?status=Check%20your%20broadband%20speed%20with%20the%20Michigan%20Moonshot%20Speed%20Test https%3A//mi.broadbandtest.us/"
+social_share_facebook: "https://www.facebook.com/sharer/sharer.php?u=https%3A//www.merit.edu/services/moonshot/"
+social_share_stumbleupon: none #"http://www.stumbleupon.com/submit?url=http://www.seattle.gov/broadband-speed-test&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Seattle%20Broadband%20Speed%20Test"
+social_share_reddit: "http://reddit.com/submit?url=http://mi.broadbandtest.us/&title=I%20tested%20my%20Internet%20speeds%20with%20the%20Michigan%20Moonshot%20Broadband%20Speed%20Test"
+social_share_linkedin: "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.merit.edu/services/moonshot/&title=Michigan%20Moonshot&summary=Check%20your%20broadband%20speed%20with%20the%20Michigan%20Moonshot%20Speed%20Test.%20Learn%20more%20about%20the%20Michigan%20Moonshot%20Citizen%20Scientist%20project.&source=Merit%20Network,%20inc."
+social_share_email: "mailto:?subject=Help%20bring%20internet%20to%20rural%20Michigan&body=Help%20connect%20rural%20Michigan%20to%20the%20internet%21%20Please%20consider%20completing%20this%20%2A2-minute%2A%20survey%20https%3A//mi.broadbandtest.us%20to%20add%20your%20connectivity%20availability%20to%20the%20Michigan%20Moonshot%20Citizen%20Scientist%20database.%0A%0A%20%20More%20than%20380%2C000%20homes%20in%20rural%20Michigan%20do%20not%20have%20access%20to%20broadband.%20%20Accurate%20connectivity%20data%20is%20the%20first%20step%20in%20assessing%20community%20needs%20and%20building%20support%20for%20funding%20sources.%20Current%20FCC%20data%20aggregation%20processes%20may%20misrepresent%20broadband%20availability.%20These%20can%20be%20overcome%20by%20collecting%20consumer-sourced%20data%20through%20surveys%20such%20as%20this%20one.%0A%0ALearn%20more%20about%20the%20Michigan%20Moonshot%20here%20https%3A//www.merit.edu/services/collaboration/moonshot/."
 # #DEFAULT#
 #
 
