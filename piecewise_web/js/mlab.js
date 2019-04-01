@@ -1026,4 +1026,6 @@ $( document ).ready(function() {
     evt.preventDefault();
   });
 
+  let participant_id = window.location.pathname.split('/')[1];
+  $('#survey_participant_id').val(participant_id);
 });

@@ -391,16 +391,16 @@ mapscript_month_names:
 
 form_fields:
   1:
-    survey_uid_username:
+    survey_participant_id:
       field_type: text
       page: 1
       db_type: String
-      name: survey_uid_username
-      id: survey_uid_username
+      name: survey_participant_id
+      id: survey_participant_id
       class: ''
       text: "If this survey was assigned as part of a homework assignment, enter your school ID or username."
       title: "If this survey was assigned as part of a homework assignment, enter your school ID or username."
-      required: yes
+      required: no
   2:
     test_location:
       field_type: select_list

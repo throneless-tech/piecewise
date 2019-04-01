@@ -62,6 +62,12 @@ server {
 		auth_basic_user_file {{base_path}}/piecewise/htpasswd;
 	}
 
+  # Allows for /[participant_id] to be in the path to grab out
+  # with javascript and record in the survey.
+  location ~ ^/[0-9]+$ {
+    try_files $uri /;
+  }
+
 	location / {
 		# First attempt to serve request as file, then
 		# as directory, then fall back to displaying a 404.

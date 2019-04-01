@@ -1363,3 +1363,7 @@ a.leaflet-popup-close-button {
 @media(min-width: 500px) {
   .map-warning { max-width: calc(100% - 110px - 20px); }
 }
+
+#container-survey_participant_id {
+  display: none;
+}
