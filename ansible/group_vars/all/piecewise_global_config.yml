@@ -833,7 +833,7 @@ instructions_text: >
 
 consent_message: >
   I agree to the <a href="http://www.measurementlab.net/privacy/">M-Lab privacy policy</a>, and
-  the <a href="MinimalRiskConsentDocumentsubmittedtoIRB.html">research participant consent form</a>, which includes retention and publication
+  the <a href="/MI-Moonshot-Consent.pdf">research participant consent form</a>, which includes retention and publication
   of IP addresses, in addition to speed test results.
 # #DEFAULT#
 #
