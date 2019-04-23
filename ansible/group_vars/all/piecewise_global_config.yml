@@ -452,16 +452,17 @@ form_fields:
       title: "Including yourself, how many of those living in your home are under the age of 18?"
       options:
         a_default: "------"
-        b_1: "1"
-        c_2: "2"
-        d_3: "3"
-        e_4: "4"
-        f_5: "5"
-        g_6: "6"
-        h_7: "7"
-        i_8: "8"
-        j_9: "9"
-        k_10: "9+"
+        b_0: "0"
+        c_1: "1"
+        d_2: "2"
+        e_3: "3"
+        f_4: "4"
+        g_5: "5"
+        h_6: "6"
+        i_7: "7"
+        j_8: "8"
+        k_9: "9"
+        l_10: "9+"
   5:
     home_owner:
       field_type: select_list
