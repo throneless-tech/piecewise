@@ -36,6 +36,7 @@ def ingest(config):
         time.sleep(10)
         job_status = check_job.execute()
     finish_time = time.time()
+    print query
     print ''
     print 'Took %d s to complete'.format(finish_time - start_time)
 
