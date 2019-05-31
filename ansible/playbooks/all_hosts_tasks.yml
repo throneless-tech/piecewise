@@ -1,21 +1,33 @@
 ---
 ## Obtain Piecewise, M-Lab's Telescope Utility, and the current MaxMind CSV
 - name: Deploy Piecewise Python code
+  become: yes
+  become_method: sudo
+  become_user: root
   copy:
     src: "../piecewise"
     dest: "{{ base_path }}/"
 
 - name: Deploy Piecewise Python web front-end
+  become: yes
+  become_method: sudo
+  become_user: root
   copy:
     src: "../piecewise_web"
     dest: "{{ base_path }}/"
 
 - name: Deploy Piecewise Python code
+  become: yes
+  become_method: sudo
+  become_user: root
   copy:
     src: "../collector"
     dest: "{{ base_path }}/"
 
 - name: Install required python modules
+  become: yes
+  become_method: sudo
+  become_user: root
   pip:
     requirements: "{{ item }}"
     state: latest
@@ -23,6 +35,9 @@
     - "{{ base_path }}/{{ project_name }}/requirements.txt"
 
 - name: Get the latest MaxMind CSV
+  become: yes
+  become_method: sudo
+  become_user: root
   unarchive:
     remote_src: yes
     src: https://geolite.maxmind.com/download/geoip/database/GeoLite2-ASN-CSV.zip
@@ -30,17 +45,26 @@
     creates: /opt/GeoIPASNum2.csv
 
 - name: Generate Letsencrypt certs
+  become: yes
+  become_method: sudo
+  become_user: root
   command: "certbot certonly --standalone -n -d {{ site_fqdn }} -m {{ site_contact }} --agree-tos"
   when: env == "production"
 
 ## Create SSL directory for self-signed Certificate Keys
 - name: Create private directory for SSL Keys
+  become: yes
+  become_method: sudo
+  become_user: root
   file:
     path: /etc/ssl/private
     state: directory
   when: env == "development"
 
 - name: create self-signed ssl cert/key - development only!
+  become: yes
+  become_method: sudo
+  become_user: root
   command: >
     openssl req -new -nodes -x509
     -subj "/C={{ site_country }}/ST={{ site_state }}/L={{ site_city }}/O={{ site_ou }}/CN={{ site_fqdn }}" -days 3650
@@ -51,6 +75,9 @@
 
 ## Deploy system configuration files common to all systems
 - name: Deploy common system configuration files
+  become: yes
+  become_method: sudo
+  become_user: root
   copy:
     src: "files/common/"
     dest: /
@@ -58,88 +85,125 @@
     group: root
 
 - name: Create /etc/piecewise directory
+  become: yes
+  become_method: sudo
+  become_user: root
   file:
     path: /etc/{{ project_name }}
     state: directory
 
 ## Logs
 - name: Create Piecewise log directory
+  become: yes
+  become_method: sudo
+  become_user: root
   file:
     path: /var/log/{{ project_name }}/
     state: directory
 
 ## Initialize the Piecewise database and setup its schema
 - name: Create the piecewise database in postgres
+  become: yes
+  become_method: sudo
+  become_user: postgres
   postgresql_db:
     name: "{{ database_name }}"
     state: present
-  become: true
-  become_user: postgres
 
 - name: Setup the piecewise database schema
-  command: psql -U {{ database_user }} -d {{ database_name }} -f {{ base_path }}/piecewise/setup.sql
-  become: true
+  become: yes
+  become_method: sudo
   become_user: postgres
+  command: psql -U {{ database_user }} -d {{ database_name }} -f {{ base_path }}/piecewise/setup.sql
 
 ## Apply local server files and customizations
 - name: Copy geo data to server
+  become: yes
+  become_method: sudo
+  become_user: root
   copy:
     src: "../local_customizations/geofiles"
     dest: "{{ site_path }}/"
 
 - name: Template extra_data.py
+  become: yes
+  become_method: sudo
+  become_user: root
   template:
     src: "templates/extra_data.py.j2"
     dest: "{{ base_path }}/{{ project_name }}/extra_data.py"
 
 - name: Add the file defining the map center
+  become: yes
+  become_method: sudo
+  become_user: root
   template:
     src: "templates/map_center.js.j2"
     dest: "{{ site_path }}/js/center.js"
 
 ## Add the site's index file, built from templated values
 - name: Add the map site index page
+  become: yes
+  become_method: sudo
+  become_user: root
   template:
     src: "templates/index.html.j2"
     dest: "{{ site_path }}/index.html"
 
 - name: Ingest census blocks to postgres
+  become: yes
+  become_method: sudo
+  become_user: postgres
   command: > 
     ogr2ogr -overwrite -f PostgreSQL -t_srs {{ shape_projection }} -nln {{ layer_name }}
     -nlt {{ geometry_type }} 'PG:user={{ database_user }} dbname={{ database_name }}'
     {{ site_path }}/geofiles/{{ shape_file }}
-  become: true
-  become_user: postgres
 
 - name: Install piecewise configuration
+  become: yes
+  become_method: sudo
+  become_user: root
   template:
     src: "templates/piecewise_config.j2"
     dest: /etc/piecewise/config.json
 
 - name: Update bigquery config
+  become: yes
+  become_method: sudo
+  become_user: root
   template:
     src: "templates/bigquery.py.j2"
     dest: "{{ base_path }}/piecewise/piecewise/bigquery.py"
 
 - name: Template aggregate.py
+  become: yes
+  become_method: sudo
+  become_user: root
   template:
     src: "templates/aggregate.py.j2"
     dest: "{{ base_path }}/piecewise/piecewise/aggregate.py"
 
 - name: Template wsgi.py
+  become: yes
+  become_method: sudo
+  become_user: root
   template:
     src: "templates/collector_wsgi.py.j2"
     dest: "{{ base_path }}/collector/collector/wsgi.py"
   debugger: on_failed
 
 - name: Restart uwsgi so piecewise config is detected
+  become: yes
+  become_method: sudo
+  become_user: root
   service:
     name: uwsgi
     state: restarted
 
 - name: Run extra_data.py in the /opt/piecewise directory
+  become: yes
+  become_method: sudo
+  become_user: postgres
   command: python extra_data.py arg1
   args:
     chdir: "{{ base_path }}/{{ project_name }}"
-  become: true
-  become_user: postgres

@@ -1,6 +1,9 @@
 ---
 ## Reload system daemons or services
 - name: Restart services for Debian systems
+  become: yes
+  become_method: sudo
+  become_user: root
   service:
     name: "{{ item }}"
     state: restarted
