@@ -13,6 +13,7 @@
     - nginx
     - uwsgi-plugin-python
     - git
+    - python-certbot-nginx
     - python-psycopg2
     - python-dev
     - python-pip
