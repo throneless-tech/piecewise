@@ -5,3 +5,7 @@
 venv/
 .DS_Store
 .DS_store
+
+.code-workspace*
+.vstags
+.vscode/
