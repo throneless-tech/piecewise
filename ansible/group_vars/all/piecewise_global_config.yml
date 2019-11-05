@@ -398,9 +398,576 @@ form_fields:
       name: survey_participant_id
       id: survey_participant_id
       class: ''
-      text: "If this survey was assigned as part of a homework assignment, enter your school ID or username."
-      title: "If this survey was assigned as part of a homework assignment, enter your school ID or username."
+      text: "Tax ID"
+      title: "Tax ID"
       required: no
+  2:
+    survey_device:
+      field_type: text
+      page: 1
+      db_type: String
+      name: survey_device
+      class: "" 
+      text: "Insert device question"
+      title: "Insert device question"
+      required: no
+  3:
+    survey_service_type:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_service_type
+      id: survey_service_type
+      class: ""
+      text: "To the best of your knowledge, how do you currently get internet access at your property?"
+      title: "To the best of your knowledge, how do you currently get internet access at your property?"
+      required: no
+      options:
+        a_default: "------"
+        b_fiber: "Fiber"
+        c_cable: "Cable"
+        d_dsl: "DSL"
+        e_mobile: "Celluar"
+        f_unknown: "Unknown"
+        g_no_access: "Do not have access at this property"
+  4:
+    survey_provider:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_provider
+      id: survey_provider
+      class: ""
+      text: "Which company provides your current internet service?"
+      title: "Which company provides your current internet service?"
+      required: no
+      options:
+        a_default: "------"
+        b_spectrum: "Charter/Spectrum"
+        c_att: "AT&T"
+        d_verizon: "Verizon"
+        e_hughes: "HughesNet"
+        f_comcast: "Comcast Xfinity"
+        g_dish: "Dish Network"
+        h_sprint: "Sprint / T-Mobile"
+        i_unknown: "Unknown"
+  5:
+    survey_subscribe_upload:
+      field_type: text
+      page: 1
+      db_type: String
+      name: survey_subscribe_upload
+      id: survey_subscribe_upload
+      class: ""
+      text: "To the best of your knowledge, what upload speed do you currently subscribe to?  (eg 10 Mbps down, 1 Mbps up)?  Please leave this blank if you do not know."
+      title: "To the best of your knowledge, what upload speed do you currently subscribe to?  (eg 10 Mbps down, 1 Mbps up)?  Please leave this blank if you do not know."
+      required: no
+  6:
+    survey_subscribe_download:
+      field_type: text
+      page: 1
+      db_type: String
+      name: survey_subscribe_download
+      id: survey_subscribe_download
+      class: ""
+      text: "To the best of your knowledge, what download speed do you currently subscribe to?  (eg 10 Mbps down, 1 Mbps up)?  Please leave this blank if you do not know."
+      title: "To the best of your knowledge, what download speed do you currently subscribe to?  (eg 10 Mbps down, 1 Mbps up)?  Please leave this blank if you do not know."
+      required: no
+  7:
+    survey_improve:
+      field_type: select_list 
+      page: 1
+      db_type: String
+      name: survey_improve
+      id: survey_improve
+      class: ""
+      text: "What would you most like to see improved on your current internet service?"
+      title: "What would you most like to see improved on your current internet service?"
+      required: no
+      options:
+        a_default: "------"
+        b_increase_speed: "Increate speed"
+        c_lower_price: "Lower price"
+        d_reliablity: "More reliable service"
+        e_service: "Better customer service"
+        f_nothing: "Nothing"
+        g_no_service: "I have no internet service"
+  8:
+    survey_current_cost:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_current_cost
+      id: survey_current_cost
+      class: ""
+      text: "How much does your internet service cost per month?"
+      title: "How much does your internet service cost per month?"
+      required: no
+      options:
+        a_default: "------"
+        b_less_than_25: "Less than $25/month"
+        c_25_to_50: "$25-50/month"
+        d_51_to_75: "$51-75/month"
+        e_76_to_100: "$76-100/month"
+        f_over_100: "$100+/month"
+        g_unknown: "I don't know"
+  9:
+    survey_max_cost:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_max_cost
+      id: survey_max_cost
+      class: ""
+      text: "What is the maximum monthly price you are willing to pay for 100 Mbps service?"
+      title: "How much does your internet service cost per month?"
+      required: no
+      options:
+        a_default: "------"
+        b_less_than_25: "Less than $25/month"
+        c_25_to_50: "$25-50/month"
+        d_51_to_75: "$51-75/month"
+        e_76_to_100: "$76-100/month"
+        f_over_100: "$100+/month"
+        g_unknown: "I don't know"
+  10:
+    survey_new_carrier:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_new_carrier
+      id: survey_new_carrier
+      class: ""
+      text: "For the price indicated above, how willing are you to select a new carrier for 100 Mbps service?"
+      title: "For the price indicated above, how willing are you to select a new carrier for 100 Mbps service?"
+      required: no
+      options:
+        a_default: "------"
+        b_not_willing: "Not at all willing"
+        c_somewhat_hesitant: "Somewhat hesitant"
+        d_neutral: "Neutral"
+        e_somewhat_willing: "Somewhat willing"
+        f_extremely_willing: "Extremely willing"
+  11:
+    survey_satisfaction:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_satisfaction
+      id: survey_satisfaction
+      class: ""
+      text: "Overall – considering performance, cost, and any other factors – how satisfied are you with your internet service provider?"
+      title: "Overall – considering performance, cost, and any other factors – how satisfied are you with your internet service provider?"
+      required: no
+      options:
+        a_default: "------"
+        b_very_satisfied: "Very satisfied"
+        c_satisfied: "Satisfied"
+        d_neutral: "Neutral"
+        e_dissatisfied: "Dissatisfied"
+        f_very_dissatisfied: "Very dissatisfied"
+        g_no_service: "I have no internet service"
+  12:
+    survey_usage_homework:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_usage_homework
+      id: survey_usage_homework
+      class: ""
+      text: "Homework"
+      title: "I can currently use my internet service to do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  13:
+    survey_usage_web_email:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_usage_web_email
+      id: survey_usage_web_email
+      class: ""
+      text: "Browser the web/email"
+      title: "I can currently use my internet service to do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  14:
+    survey_usage_education:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_usage_education
+      id: survey_usage_education
+      class: ""
+      text: "Continuing education"
+      title: "I can currently use my internet service to do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  15:
+    survey_usage_job_search:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_usage_job_search
+      id: survey_usage_job_search
+      class: ""
+      text: "Job search"
+      title: "I can currently use my internet service to do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  16:
+    survey_usage_remote_work:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_usage_remote_work
+      id: survey_usage_remote_work
+      class: ""
+      text: "Working remotely"
+      title: "I can currently use my internet service to do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  17:
+    survey_usage_social_media:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_usage_social_media
+      id: survey_usage_social_media
+      class: ""
+      text: "Social Media"
+      title: "I can currently use my internet service to do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  18:
+    survey_usage_shopping:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_usage_shopping
+      id: survey_usage_shopping
+      class: ""
+      text: "Online shopping"
+      title: "I can currently use my internet service to do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  19:
+    survey_usage_research:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_usage_research
+      id: survey_usage_research
+      class: ""
+      text: "Research"
+      title: "I can currently use my internet service to do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  20:
+    survey_usage_video_share:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_usage_video_share
+      id: survey_usage_video_share
+      class: ""
+      text: "Upload/share video"
+      title: "I can currently use my internet service to do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  21:
+    survey_usage_healthcare:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_usage_healthcare
+      id: survey_usage_healthcare
+      class: ""
+      text: "Healthcare"
+      title: "I can currently use my internet service to do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  22:
+    survey_usage_banking:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_usage_banking
+      id: survey_usage_banking
+      class: ""
+      text: "Online banking/bill pay"
+      title: "I can currently use my internet service to do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  23:
+    survey_usage_video_stream:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_usage_video_stream
+      id: survey_usage_video_stream
+      class: ""
+      text: "Watch/stream video"
+      title: "I can currently use my internet service to do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  24:
+    survey_usage_gaming:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_usage_gaming
+      id: survey_usage_gaming
+      class: ""
+      text: "Gaming"
+      title: "I can currently use my internet service to do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  25:
+    survey_usage_gov_services:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_usage_gov_services
+      id: survey_usage_gov_services
+      class: ""
+      text: "Government services"
+      title: "I can currently use my internet service to do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  26:
+    survey_better_access_homework:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_better_access_homework
+      id: survey_better_access_homework
+      class: ""
+      text: "Homework"
+      title: "If I had better internet access I would do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  27:
+    survey_better_access_web_email:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_better_access_web_email
+      id: survey_better_access_web_email
+      class: ""
+      text: "Browser the web/email"
+      title: "If I had better internet access I would do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  28:
+    survey_better_access_education:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_better_access_education
+      id: survey_better_access_education
+      class: ""
+      text: "Continuing education"
+      title: "If I had better internet access I would do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  29:
+    survey_better_access_job_search:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_better_access_job_search
+      id: survey_better_access_job_search
+      class: ""
+      text: "Job search"
+      title: "If I had better internet access I would do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  30:
+    survey_better_access_remote_work:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_better_access_remote_work
+      id: survey_better_access_remote_work
+      class: ""
+      text: "Working remotely"
+      title: "If I had better internet access I would do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  31:
+    survey_better_access_social_media:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_better_access_social_media
+      id: survey_better_access_social_media
+      class: ""
+      text: "Social Media"
+      title: "If I had better internet access I would do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  32:
+    survey_better_access_shopping:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_better_access_shopping
+      id: survey_better_access_shopping
+      class: ""
+      text: "Online shopping"
+      title: "If I had better internet access I would do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  33:
+    survey_better_access_research:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_better_acccess_research
+      id: survey_better_access_research
+      class: ""
+      text: "Research"
+      title: "If I had better internet access I would do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  34:
+    survey_better_access_video_share:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_better_access_video_share
+      id: survey_better_access_video_share
+      class: ""
+      text: "Upload/share video"
+      title: "If I had better internet access I would do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  35:
+    survey_better_access_healthcare:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_better_access_healthcare
+      id: survey_better_access_healthcare
+      class: ""
+      text: "Healthcare"
+      title: "If I had better internet access I would do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  36:
+    survey_better_access_banking:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_better_access_banking
+      id: survey_better_access_banking
+      class: ""
+      text: "Online banking/bill pay"
+      title: "If I had better internet access I would do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  37:
+    survey_better_access_video_stream:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_better_access_video_stream
+      id: survey_better_access_video_stream
+      class: ""
+      text: "Watch/stream video"
+      title: "If I had better internet access I would do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  38:
+    survey_better_acccess_gaming:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_better_access_gaming
+      id: survey_better_access_gaming
+      class: ""
+      text: "Gaming"
+      title: "If I had better internet access I would do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  39:
+    survey_better_acccess_gov_services:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_better_access_gov_services
+      id: survey_better_acccess_gov_services
+      class: ""
+      text: "Government services"
+      title: "If I had better internet access I would do the following online (select all that apply)"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+  40:
+    survery_sufficient_service:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_sufficient_service
+      id: survey_sufficient_service
+      class: ""
+      text: "In your opinion, is there sufficient internet service provider options available to you at your location"
 
 ####################
 # 3.3 Website Text #
