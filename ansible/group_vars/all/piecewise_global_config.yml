@@ -407,6 +407,7 @@ form_fields:
       page: 1
       db_type: String
       name: survey_device
+      id: survey_device
       class: "" 
       text: "Insert device question"
       title: "Insert device question"
