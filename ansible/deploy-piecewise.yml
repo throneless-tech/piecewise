@@ -13,9 +13,6 @@
       become: true
       become_user: root
       when: ((ansible_facts['distribution'] == "CentOS" or ansible_facts['distribution'] == "RedHat") and ansible_facts['distribution_major_version'] == "7")
-    - include_tasks: playbooks/all_hosts_tasks.yml
-      become: true
-      become_user: root
     - include_tasks: playbooks/debian_hosts_post_tasks.yml
       become: true
       become_user: root
@@ -32,5 +29,6 @@
       become: true
       become_user: root
       when: (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_major_version'] == "18")
-
-
+    - include_tasks: playbooks/all_hosts_tasks.yml
+      become: true
+      become_user: root
