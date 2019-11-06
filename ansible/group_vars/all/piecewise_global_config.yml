@@ -967,14 +967,66 @@ form_fields:
       name: survey_sufficient_service
       id: survey_sufficient_service
       class: ""
-      text: "In your opinion, is there sufficient internet service provider options available to you at your location"
+      text: "In your opinion, is there sufficient internet service provider options available to you at your location?"
+      title: "In your opinion, is there sufficient internet service provider options available to you at your location?"
+      options:
+        a_default: "------"
+        b_yes: "Yes"
+        c_no: "No"
+        d_maybe: "Maybe"
+        e_unknown: "I don't know"
+  41:
+    survey_no_residents:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_no_residents
+      id: survey_no_residents
+      class: ""
+      text: "If this is a residential address, how many persons live at this address?"
+      title: "If this is a residential address, how many persons live at this address?"
+      options:
+        a_default: "------"
+        b_0: "0"
+        b_1: "1"
+        b_2: "2"
+        b_3: "3"
+        b_4: "4"
+        b_5: "5"
+        b_6: "6"
+        b_7: "7"
+        b_8: "8"
+        b_9: "9+"
+  42:
+    survey_k12_students:
+      field_type: select_list
+      page: 1
+      db_type: String
+      name: survey_k12_students
+      id: survey_k12_students
+      class: ""
+      text: "If this is a residential address, how many persons live at this address?"
+      title: "If this is a residential address, how many persons live at this address?"
+      options:
+        a_default: "------"
+        b_0: "0"
+        b_1: "1"
+        b_2: "2"
+        b_3: "3"
+        b_4: "4"
+        b_5: "5"
+        b_6: "6"
+        b_7: "7"
+        b_8: "8"
+        b_9: "9+"
 
 ####################
 # 3.3 Website Text #
 ####################
 # The section below allows you to customize various text and other elements of the website.
 
-site_name: "Citizen Enabled Advances in Broadband Availability Data"
+site_name: "Washtenaw County Broadband Task Force"
+
 # #DEFAULT#
 #
 # Defines the HTML page title element
@@ -996,9 +1048,8 @@ instructions_text: >
 # before they may take the test.
 
 consent_message: >
-  I agree to the <a href="http://www.measurementlab.net/privacy/">M-Lab privacy policy</a>, and
-  the <a href="/MI-Moonshot-Consent.pdf">research participant consent form</a>, which includes retention and publication
-  of IP addresses, in addition to speed test results.
+  I agree to the <a href="http://www.measurementlab.net/privacy/">M-Lab privacy policy</a>, which includes retention and publication of IP addresses, in addition to speed test results.
+
 # #DEFAULT#
 #
 # Defines the message displayed next to the consent checkbox.
