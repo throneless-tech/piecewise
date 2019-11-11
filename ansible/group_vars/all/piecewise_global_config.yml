@@ -63,7 +63,7 @@ database_user_group: postgres
 #       the database user. These can be safely left as the default, unless you desire to
 #       change them.
 
-site_fqdn: wc.mi.broadbandtest.us
+site_fqdn: merit-piecewise-test03.merit.edu
 # !REQUIRED!
 #
 # site_fqdn
@@ -252,7 +252,7 @@ map_data_end_date: "Dec 31 2055 00:00:00"
 # 3.1 Website Geographic Information #
 ######################################
 
-topojson_file: cp_2018_26_bg_500k.topojson
+topojson_file: cb_2018_26_bg_500k.topojson
 # !REQUIRED!
 #
 # topojson_file   The file name of a topojson format geo file that is
@@ -575,7 +575,7 @@ form_fields:
       db_type: String
       name: survey_usage_homework
       id: survey_usage_homework
-      class: ""
+      class: "cb-usage"
       text: "Homework"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
@@ -589,7 +589,7 @@ form_fields:
       db_type: String
       name: survey_usage_web_email
       id: survey_usage_web_email
-      class: ""
+      class: "cb-usage"
       text: "Browser the web/email"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
@@ -603,7 +603,7 @@ form_fields:
       db_type: String
       name: survey_usage_education
       id: survey_usage_education
-      class: ""
+      class: "cb-usage"
       text: "Continuing education"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
@@ -617,7 +617,7 @@ form_fields:
       db_type: String
       name: survey_usage_job_search
       id: survey_usage_job_search
-      class: ""
+      class: "cb-usage"
       text: "Job search"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
@@ -631,7 +631,7 @@ form_fields:
       db_type: String
       name: survey_usage_remote_work
       id: survey_usage_remote_work
-      class: ""
+      class: "cb-usage"
       text: "Working remotely"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
@@ -645,7 +645,7 @@ form_fields:
       db_type: String
       name: survey_usage_social_media
       id: survey_usage_social_media
-      class: ""
+      class: "cb-usage"
       text: "Social Media"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
@@ -659,7 +659,7 @@ form_fields:
       db_type: String
       name: survey_usage_shopping
       id: survey_usage_shopping
-      class: ""
+      class: "cb-usage"
       text: "Online shopping"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
@@ -673,7 +673,7 @@ form_fields:
       db_type: String
       name: survey_usage_research
       id: survey_usage_research
-      class: ""
+      class: "cb-usage"
       text: "Research"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
@@ -687,7 +687,7 @@ form_fields:
       db_type: String
       name: survey_usage_video_share
       id: survey_usage_video_share
-      class: ""
+      class: "cb-usage"
       text: "Upload/share video"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
@@ -701,7 +701,7 @@ form_fields:
       db_type: String
       name: survey_usage_healthcare
       id: survey_usage_healthcare
-      class: ""
+      class: "cb-usage"
       text: "Healthcare"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
@@ -715,7 +715,7 @@ form_fields:
       db_type: String
       name: survey_usage_banking
       id: survey_usage_banking
-      class: ""
+      class: "cb-usage"
       text: "Online banking/bill pay"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
@@ -729,7 +729,7 @@ form_fields:
       db_type: String
       name: survey_usage_video_stream
       id: survey_usage_video_stream
-      class: ""
+      class: "cb-usage"
       text: "Watch/stream video"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
@@ -743,7 +743,7 @@ form_fields:
       db_type: String
       name: survey_usage_gaming
       id: survey_usage_gaming
-      class: ""
+      class: "cb-usage"
       text: "Gaming"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
@@ -757,7 +757,7 @@ form_fields:
       db_type: String
       name: survey_usage_gov_services
       id: survey_usage_gov_services
-      class: ""
+      class: "cb-usage"
       text: "Government services"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
@@ -771,7 +771,7 @@ form_fields:
       db_type: String
       name: survey_better_access_homework
       id: survey_better_access_homework
-      class: ""
+      class: "cb-ba"
       text: "Homework"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
@@ -785,7 +785,7 @@ form_fields:
       db_type: String
       name: survey_better_access_web_email
       id: survey_better_access_web_email
-      class: ""
+      class: "cb-ba"
       text: "Browser the web/email"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
@@ -799,7 +799,7 @@ form_fields:
       db_type: String
       name: survey_better_access_education
       id: survey_better_access_education
-      class: ""
+      class: "cb-ba"
       text: "Continuing education"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
@@ -813,7 +813,7 @@ form_fields:
       db_type: String
       name: survey_better_access_job_search
       id: survey_better_access_job_search
-      class: ""
+      class: "cb-ba"
       text: "Job search"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
@@ -827,7 +827,7 @@ form_fields:
       db_type: String
       name: survey_better_access_remote_work
       id: survey_better_access_remote_work
-      class: ""
+      class: "cb-ba"
       text: "Working remotely"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
@@ -841,7 +841,7 @@ form_fields:
       db_type: String
       name: survey_better_access_social_media
       id: survey_better_access_social_media
-      class: ""
+      class: "cb-ba"
       text: "Social Media"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
@@ -855,7 +855,7 @@ form_fields:
       db_type: String
       name: survey_better_access_shopping
       id: survey_better_access_shopping
-      class: ""
+      class: "cb-ba"
       text: "Online shopping"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
@@ -869,7 +869,7 @@ form_fields:
       db_type: String
       name: survey_better_acccess_research
       id: survey_better_access_research
-      class: ""
+      class: "cb-ba"
       text: "Research"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
@@ -883,7 +883,7 @@ form_fields:
       db_type: String
       name: survey_better_access_video_share
       id: survey_better_access_video_share
-      class: ""
+      class: "cb-ba"
       text: "Upload/share video"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
@@ -897,7 +897,7 @@ form_fields:
       db_type: String
       name: survey_better_access_healthcare
       id: survey_better_access_healthcare
-      class: ""
+      class: "cb-ba"
       text: "Healthcare"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
@@ -911,7 +911,7 @@ form_fields:
       db_type: String
       name: survey_better_access_banking
       id: survey_better_access_banking
-      class: ""
+      class: "cb-ba"
       text: "Online banking/bill pay"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
@@ -925,7 +925,7 @@ form_fields:
       db_type: String
       name: survey_better_access_video_stream
       id: survey_better_access_video_stream
-      class: ""
+      class: "cb-ba"
       text: "Watch/stream video"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
@@ -939,7 +939,7 @@ form_fields:
       db_type: String
       name: survey_better_access_gaming
       id: survey_better_access_gaming
-      class: ""
+      class: "cb-ba"
       text: "Gaming"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
@@ -953,7 +953,7 @@ form_fields:
       db_type: String
       name: survey_better_access_gov_services
       id: survey_better_acccess_gov_services
-      class: ""
+      class: "cb-ba"
       text: "Government services"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
