@@ -25,7 +25,7 @@ function console_log() {
 var formWatcher = function() {
     this.classMap = [
       '.cb-usage',
-      '.cb-service-bundle'
+      '.cb-ba'
     ];
 
     this.activate();
