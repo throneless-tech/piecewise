@@ -233,8 +233,10 @@ NDTjs.prototype.ndtC2sTest = function () {
     var currentTime = Date.now() / 1000.0;
     // Monitor the buffersize as it sends and refill if it gets too low.
     if (testConnection.bufferedAmount < 8192) {
-      testConnection.send(dataToSend);
-      totalSent += dataToSend.length;
+      if (testConnection.readyState == 1) {
+        testConnection.send(dataToSend);
+        totalSent += dataToSend.length;
+      }
     }
     if (that.updateInterval && currentTime > (testStart + nextCallback)) {
       that.results.c2sRate = 8 * (totalSent - testConnection.bufferedAmount)
