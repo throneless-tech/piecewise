@@ -120,104 +120,118 @@
         <input name="bigquery_key" id="bigquery_key" type="hidden" />
       </div>
       <div id="test-container">
-        <div id="ndt-div">
-          <div id="ndt-svg"></div>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div id="ndt-div">
+              <div id="ndt-svg"></div>
+            </div>
+          </div>
         </div>
-	    <div id="approx-loc">
-	      <div>
-          <h3 class="league-gothic">{{ run_test_heading }}</h3>
-          <p>Hit the "play" button to begin the speed test.</p>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div id="approx-loc">
+          <div>
+            <h3 class="league-gothic">{{ run_test_heading }}</h3>
+            <p>Hit the "play" button to begin the speed test.</p>
+          </div>
+          <div class="well">
+            <p>
+              Many factors may impact upload/download speed tests, at
+              any given test period. This speed test measures how well your current
+              connection works between your computer/device and the testing server
+              itself – providing a general measure of how fast (or slow) your
+              internet connection is.  This test doesn't necessarily mean that this
+              is the bandwidth you should always expect between you and anywhere
+              else.  Two things to ensure the most accurate test results:
+            </p>
+
+            <ol>
+              <li>Minimizing the "noise" during an internet speed test, which is what the several tips above help you do, certainly contributes to a more accurate speed test result.</li>
+              <li>Testing and retesting typically provide the best results</li>
+            </ol>
+
+            <p>
+              If you are seeing results that differ from other speed tests, the MLab <a href="https://www.merit.edu/services/moonshot/rural-broadband-faqs/">FAQ</a> provides helpful information to help understand why.
+            </p>
+
+            <p>
+              Results are an accumlation of all MLab tests. Any test taken with an
+              MLab testing application (i.e. the speed test within Google search
+              resutls) will be presented in these results.
+            </p>
+
+            <p>
+              The results displayed are aggregated every 24 hours. Therefore, new survey data will not be immediately available.
+            </p>
+
+            <p>
+              For the most accurate test results:
+              If possible, connect to the Internet directly via a cable, DSL, or fiber modem
+            </p>
+          </div>
+          <div id="ndt-status"></div>
+            </div>
+          </div>
         </div>
-        <div class="well">
-          <p>
-            Many factors may impact upload/download speed tests, at
-            any given test period. This speed test measures how well your current
-            connection works between your computer/device and the testing server
-            itself – providing a general measure of how fast (or slow) your
-            internet connection is.  This test doesn't necessarily mean that this
-            is the bandwidth you should always expect between you and anywhere
-            else.  Two things to ensure the most accurate test results:
-          </p>
 
-          <ol>
-            <li>Minimizing the "noise" during an internet speed test, which is what the several tips above help you do, certainly contributes to a more accurate speed test result.</li>
-            <li>Testing and retesting typically provide the best results</li>
-          </ol>
-
-          <p>
-            If you are seeing results that differ from other speed tests, the MLab <a href="https://www.merit.edu/services/moonshot/rural-broadband-faqs/">FAQ</a> provides helpful information to help understand why.
-          </p>
-
-          <p>
-            Results are an accumlation of all MLab tests. Any test taken with an
-            MLab testing application (i.e. the speed test within Google search
-            resutls) will be presented in these results.
-          </p>
-
-          <p>
-            The results displayed are aggregated every 24 hours. Therefore, new survey data will not be immediately available.
-          </p>
-
-          <p>
-            For the most accurate test results:
-            If possible, connect to the Internet directly via a cable, DSL, or fiber modem
-          </p>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div id="ndt-results" class="ndt-related">
+              <div class="container">
+                <div id="your-results">
+                  <h3 class="league-gothic">{{ test_result_heading }}</h3>
+                  <p>{{ download_result_label }} <span id="s2cRate"></span> {{ download_result_unit }}</p>
+                  <p>{{ upload_result_label }} <span id="c2sRate"></span> {{ upload_result_unit }}</p>
+                  <p>{{ rtt_result_label }} <span id="MinRTT"></span> {{ rtt_result_unit }}</p>
+                </div>
+                <div id="thankyou">
+                  <h3 class="league-gothic">{{ thank_you_heading }}</h3>
+                  <strong>{{ thank_you_message }}</strong><br /><br />
+                  <strong>{{ next_action_message }}</strong>
+                  <ul>
+                    <li><a href="#" onclick="showMap()">{{ next_action_show_map_text }}</a></li>
+                    <li><a href="{{ next_action_learn_about_link }}" target="_parent">{{ next_action_learn_about_text }}</a></li>
+                    <li>{{ next_action_social_share_text }}</li>
+                  </ul>
+                  <div id="socialshare">
+                  <!-- Social Button HTML -->
+                  {% if social_share_twitter is not none -%}
+                  <!-- Twitter -->
+                    <a href="{{ social_share_twitter }}"" target="_blank" class="share-btn twitter">
+                    <i class="fa fa-twitter"></i>
+                    </a>
+                  {% endif %}
+                  {%- if social_share_facebook is not none -%}
+                  <!-- Facebook -->
+                    <a href="{{ social_share_facebook }}" target="_blank" class="share-btn facebook">
+                    <i class="fa fa-facebook"></i>
+                    </a>
+                  {% endif %}
+                  {%- if social_share_reddit is not none -%}
+                  <!-- Reddit (url, title) -->
+                    <a href="{{ social_share_reddit }}" target="_blank" class="share-btn reddit">
+                    <i class="fa fa-reddit"></i>
+                    </a>
+                  {% endif %}
+                  {%- if social_share_linkedin is not none -%}
+                  <!-- LinkedIn -->
+                    <a href="{{ social_share_linkedin }}" target="_blank" class="share-btn linkedin">
+                    <i class="fa fa-linkedin"></i>
+                    </a>
+                  {% endif %}
+                  {%- if social_share_email is not none -%}
+                  <!-- Email -->
+                    <a href="{{ social_share_email }}" target="_blank" class="share-btn email">
+                    <i class="fa fa-envelope"></i>
+                    </a>
+                  {% endif -%}
+                  </div>
+                </div> <!-- thankyou div -->
+              </div>
+            </div>
+          </div>
         </div>
-	      <div id="ndt-status"></div>
-	    </div>
-	    <div id="ndt-results" class="ndt-related">
-	      <div class="container">
-	        <div id="your-results">
-	          <h3 class="league-gothic">{{ test_result_heading }}</h3>
-	          <p>{{ download_result_label }} <span id="s2cRate"></span> {{ download_result_unit }}</p>
-	          <p>{{ upload_result_label }} <span id="c2sRate"></span> {{ upload_result_unit }}</p>
-	          <p>{{ rtt_result_label }} <span id="MinRTT"></span> {{ rtt_result_unit }}</p>
-	        </div>
-	        <div id="thankyou">
-	          <h3 class="league-gothic">{{ thank_you_heading }}</h3>
-	          <strong>{{ thank_you_message }}</strong><br /><br />
-	          <strong>{{ next_action_message }}</strong>
-	          <ul>
-	            <li><a href="#" onclick="showMap()">{{ next_action_show_map_text }}</a></li>
-	            <li><a href="{{ next_action_learn_about_link }}" target="_parent">{{ next_action_learn_about_text }}</a></li>
-	            <li>{{ next_action_social_share_text }}</li>
-	          </ul>
-	          <div id="socialshare">
-	          <!-- Social Button HTML -->
-	          {% if social_share_twitter is not none -%}
-	          <!-- Twitter -->
-	            <a href="{{ social_share_twitter }}"" target="_blank" class="share-btn twitter">
-	            <i class="fa fa-twitter"></i>
-	            </a>
-	          {% endif %}
-	          {%- if social_share_facebook is not none -%}
-	          <!-- Facebook -->
-	            <a href="{{ social_share_facebook }}" target="_blank" class="share-btn facebook">
-	            <i class="fa fa-facebook"></i>
-	            </a>
-	          {% endif %}
-	          {%- if social_share_reddit is not none -%}
-	          <!-- Reddit (url, title) -->
-	            <a href="{{ social_share_reddit }}" target="_blank" class="share-btn reddit">
-	            <i class="fa fa-reddit"></i>
-	            </a>
-	          {% endif %}
-	          {%- if social_share_linkedin is not none -%}
-	          <!-- LinkedIn -->
-	            <a href="{{ social_share_linkedin }}" target="_blank" class="share-btn linkedin">
-	            <i class="fa fa-linkedin"></i>
-	            </a>
-	          {% endif %}
-	          {%- if social_share_email is not none -%}
-	          <!-- Email -->
-	            <a href="{{ social_share_email }}" target="_blank" class="share-btn email">
-	            <i class="fa fa-envelope"></i>
-	            </a>
-	          {% endif -%}
-	          </div>
-	        </div> <!-- thankyou div -->
-	      </div>
-	    </div>
 	  </div>
     </form>
     <div id="icons">
