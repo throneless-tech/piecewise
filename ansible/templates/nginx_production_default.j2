@@ -64,7 +64,7 @@ server {
 
   # Allows for /[participant_id] to be in the path to grab out
   # with javascript and record in the survey.
-  location ~ ^/[0-9]+/?$ {
+  location ~ ^/[0-9A-Za-z-]+/?$ {
     try_files $uri /;
   }
 
