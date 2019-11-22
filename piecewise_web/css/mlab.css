@@ -1364,6 +1364,6 @@ a.leaflet-popup-close-button {
   .map-warning { max-width: calc(100% - 110px - 20px); }
 }
 
-#container-survey_participant_id {
+#container-survey_tax_id {
   display: none;
 }
