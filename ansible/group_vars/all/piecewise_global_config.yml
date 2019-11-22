@@ -391,15 +391,15 @@ mapscript_month_names:
 
 form_fields:
   1:
-    survey_participant_id:
+    survey_tax_id:
       field_type: text
       page: 1
       db_type: String
-      name: survey_participant_id
-      id: survey_participant_id
+      name: survey_tax_id
+      id: survey_tax_id
       class: ''
-      text: "Tax ID"
-      title: "Tax ID"
+      text: "Enter your property tax ID or address (only show for general website participants)"
+      title: "Enter your property tax ID or address (only show for general website participants)"
       required: no
   2:
     survey_device:
@@ -409,9 +409,16 @@ form_fields:
       name: survey_device
       id: survey_device
       class: "" 
-      text: "Insert device question"
-      title: "Insert device question"
+      text: "What device are you using to complete this survey?"
+      title: "What device are you using to complete this survey?"
       required: no
+      options:
+        a_default: "------"
+        b_smartphone_home_wifi: "Smartphone to home wifi"
+        c_smartphone_cell_data: "Smartphone to cellular data plan"
+        d_computer_wired: "Computer  (wired internet)"
+        e_computer_tablet_wifi: "Computer/Tablet  (wifi)"
+        f_computer_table_hotspot: "Computer/Tablet (cellular hotspot)"
   3:
     survey_service_type:
       field_type: select_list
@@ -428,9 +435,9 @@ form_fields:
         b_fiber: "Fiber"
         c_cable: "Cable"
         d_dsl: "DSL"
-        e_mobile: "Celluar"
-        f_unknown: "Unknown"
-        g_no_access: "Do not have access at this property"
+        e_satellite: "Satellite"
+        f_mobile: "Celluar Data Plan"
+        g_unknown: "Unknown"
   4:
     survey_provider:
       field_type: select_list
@@ -492,7 +499,6 @@ form_fields:
         d_reliablity: "More reliable service"
         e_service: "Better customer service"
         f_nothing: "Nothing"
-        g_no_service: "I have no internet service"
   8:
     survey_current_cost:
       field_type: select_list
@@ -520,8 +526,8 @@ form_fields:
       name: survey_max_cost
       id: survey_max_cost
       class: ""
-      text: "What is the maximum monthly price you are willing to pay for 100 Mbps service?"
-      title: "How much does your internet service cost per month?"
+      text: "What is the maximum monthly price you are willing to pay for 100 Mbps (high speed internet) service?"
+      title: "What is the maximum monthly price you are willing to pay for 100 Mbps (high speed internet) service?"
       required: no
       options:
         a_default: "------"
@@ -549,6 +555,7 @@ form_fields:
         d_neutral: "Neutral"
         e_somewhat_willing: "Somewhat willing"
         f_extremely_willing: "Extremely willing"
+        g_unknown: "I don't know"
   11:
     survey_satisfaction:
       field_type: select_list
@@ -590,7 +597,7 @@ form_fields:
       name: survey_usage_web_email
       id: survey_usage_web_email
       class: "cb-usage"
-      text: "Browser the web/email"
+      text: "Browse the web/email"
       title: "I can currently use my internet service to do the following online (select all that apply)"
       options:
         a_default: "------"
@@ -786,7 +793,7 @@ form_fields:
       name: survey_better_access_web_email
       id: survey_better_access_web_email
       class: "cb-ba"
-      text: "Browser the web/email"
+      text: "Browse the web/email"
       title: "If I had better internet access I would do the following online (select all that apply)"
       options:
         a_default: "------"
@@ -1006,8 +1013,8 @@ form_fields:
       name: survey_k12_students
       id: survey_k12_students
       class: ""
-      text: "If this is a residential address, how many persons live at this address?"
-      title: "If this is a residential address, how many persons live at this address?"
+      text: "How many K-12 students are at this address?"
+      title: "How many K-12 students are at this address?"
       options:
         a_default: "------"
         b_0: "0"
@@ -1033,15 +1040,12 @@ site_name: "Washtenaw County Broadband Task Force"
 # Defines the HTML page title element
 
 intro_text: >
-  More than 380,000 homes in rural Michigan do not have access to broadband. Accurate connectivity data is the first step in assessing community needs and building support for funding sources. Current FCC data aggregation processes may misrepresent broadband availability. These can be overcome by collecting consumer-sourced data through surveys such as this one.
+  In an effort to expand broadband services to all residents in Washtenaw County the Washtenaw County Broadband Task Force has been formed. In the pursuit of grants to fund these infrastructure expansion efforts we need to collect data about broadband access available to residents. SURVEY DEADLINE: December 20, 2019.
 
 instructions_text: >
-  The Measurement Lab (M-Lab) platform is run by the scientific community.
-  We make all test results publicly available via the MeasurementLab.net website
-  to help promote Internet research. M-Lab's Network Diagnostic Tool collects a number
-  of measures of different facets of your Internet connection. The information published
-  includes each device’s IP address, but does not include personal identifying information
-  about you as an Internet user.
+  More than 380,000 homes in rural Michigan do not have access to broadband. Accurate connectivity data is the first step in assessing community needs and building support for funding sources. Current FCC data aggregation processes may misrepresent broadband availability. These can be overcome by collecting consumer-sourced data through surveys such as this one.
+
+  The Measurement Lab (M-Lab) platform is run by the scientific community. We make all test results publicly available via the MeasurementLab.net website to help promote Internet research. M-Lab's Network Diagnostic Tool collects a number of measures of different facets of your Internet connection. The information published includes each device’s IP address, but does not include personal identifying information about you as an Internet user.
 
 # #DEFAULT#
 #
