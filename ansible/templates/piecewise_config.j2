@@ -34,7 +34,7 @@
         { "type": "bbox", "bbox": [{{ map_bounding_box }}] },
         { "type": "raw", "query": "connection_spec.data_direction IS NOT NULL" },
         { "type": "raw", "query": "(web100_log_entry.snap.HCThruOctetsAcked >= 8192 OR web100_log_entry.snap.HCThruOctetsReceived >= 8192)" },
-        { "type": "raw", "query": "(web100_log_entry.snap.State == 1 OR (web100_log_entry.snap.State >= 5 AND web100_log_entry.snap.State <= 11))" },
+        { "type": "raw", "query": "(web100_log_entry.snap.State = 1 OR (web100_log_entry.snap.State >= 5 AND web100_log_entry.snap.State <= 11))" },
         { "type": "raw", "query": "((web100_log_entry.snap.SndLimTimeRwin + web100_log_entry.snap.SndLimTimeCwnd + web100_log_entry.snap.SndLimTimeSnd) >= 9000000 OR web100_log_entry.snap.Duration >= 9000000)" },
         { "type": "raw", "query": "((web100_log_entry.snap.SndLimTimeRwin + web100_log_entry.snap.SndLimTimeCwnd + web100_log_entry.snap.SndLimTimeSnd) < 600000000 OR web100_log_entry.snap.Duration < 600000000)" }
     ]

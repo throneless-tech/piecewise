@@ -148,8 +148,10 @@ class Aggregator(object):
                 "web100_log_entry.log_time AS time",
                 "connection_spec.client_geolocation.longitude AS longitude",
                 "connection_spec.client_geolocation.latitude AS latitude",
-                "PARSE_IP(connection_spec.client_ip) AS client_ip",
-                "PARSE_IP(connection_spec.server_ip) AS server_ip",
+                "CASE WHEN (connection_spec.client_af = 2 OR connection_spec.client_af = 0) "
+                "THEN NET.IPV4_TO_INT64(NET.IP_FROM_STRING(connection_spec.client_ip)) ELSE NULL END AS client_ip",
+                "CASE WHEN (connection_spec.server_af = 2 OR connection_spec.server_af = 0) "
+                "THEN NET.IPV4_TO_INT64(NET.IP_FROM_STRING(connection_spec.server_ip)) ELSE NULL END AS server_ip",
                 "web100_log_entry.snap.CountRTT AS countrtt",
                 "web100_log_entry.snap.SumRTT AS sumrtt",
                 "connection_spec.data_direction AS data_direction",
@@ -157,7 +159,7 @@ class Aggregator(object):
                 "8 * web100_log_entry.snap.HCThruOctetsAcked AS download_octets",
                 "web100_log_entry.snap.Duration AS upload_time",
                 "8 * web100_log_entry.snap.HCThruOctetsReceived AS upload_octets",
-                "CONCAT(String(web100_log_entry.snap.StartTimeStamp % 1000000), String(web100_log_entry.snap.LocalAddress)) AS bigquery_key",
+                "CONCAT(CAST(MOD(web100_log_entry.snap.StartTimeStamp,1000000) AS STRING), CAST(web100_log_entry.snap.LocalAddress AS STRING)) AS bigquery_key",
                 "test_id"
         ]
 
@@ -165,7 +167,7 @@ class Aggregator(object):
         tables = self._tables_for(self.filters)
 
         return '\n'.join([
-            'SELECT',
+            '#standardSQL SELECT',
             ', '.join(select_clause),
             'FROM ',
             ', '.join('[%s]'% t for t in tables),
@@ -187,7 +189,7 @@ class Aggregator(object):
                 before = time.gmtime(f.before)[:2]
                 valid_year_months = itertools.ifilter(lambda x: after <= x <= before, valid_year_months)
 
-        return ['plx.google:m_lab.ndt.all']
+        return ['measurement-lab.ndt.recommended']
 
     def bigquery_row_to_postgres_row(self, bq_row):
         bq_row = [f['v'] for f in bq_row['f']]
@@ -465,8 +467,7 @@ class TemporalFilter(Filter):
         self.before = before
 
     def bigquery_filter(self):
-        return ["IS_EXPLICITLY_DEFINED(web100_log_entry.log_time)",
-                "web100_log_entry.log_time > {0}".format(self.after),
+        return ["web100_log_entry.log_time > {0}".format(self.after),
                 "web100_log_entry.log_time < {0}".format(self.before)]
 
     def __repr__(self):

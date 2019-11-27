@@ -19,6 +19,7 @@ def ingest(config):
     metadata.create_all(engine)
 
     query = config.ingest_bigquery_query()
+    print query
     bigquery_service = piecewise.bigquery.client()
 
     start_time = time.time()
