@@ -63,7 +63,7 @@ database_user_group: postgres
 #       the database user. These can be safely left as the default, unless you desire to
 #       change them.
 
-site_fqdn: 45.56.109.241
+site_fqdn: merit-piecewise-test03.merit.edu
 # !REQUIRED!
 #
 # site_fqdn
