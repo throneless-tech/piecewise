@@ -148,9 +148,9 @@ class Aggregator(object):
                 "web100_log_entry.log_time AS time",
                 "connection_spec.client_geolocation.longitude AS longitude",
                 "connection_spec.client_geolocation.latitude AS latitude",
-                "CASE WHEN (connection_spec.client_af = 2 OR connection_spec.client_af = 0) "
+                "CASE WHEN connection_spec.client_af = 2 "
                 "THEN NET.IPV4_TO_INT64(NET.IP_FROM_STRING(connection_spec.client_ip)) ELSE NULL END AS client_ip",
-                "CASE WHEN (connection_spec.server_af = 2 OR connection_spec.server_af = 0) "
+                "CASE WHEN connection_spec.server_af = 2 "
                 "THEN NET.IPV4_TO_INT64(NET.IP_FROM_STRING(connection_spec.server_ip)) ELSE NULL END AS server_ip",
                 "web100_log_entry.snap.CountRTT AS countrtt",
                 "web100_log_entry.snap.SumRTT AS sumrtt",
