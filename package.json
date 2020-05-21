@@ -29,16 +29,19 @@
   "files": [
     "/dist"
   ],
+  "externals": [
+    "pg-native"
+  ],
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --fix ./src",
     "test": "jest --coverage --forceExit",
     "doc": "jsdoc -d ./dist/doc/ -r ./src/backend ./src/frontend ./src/worker",
     "build:imported-components": "imported-components src/frontend src/frontend/imported.js",
-    "build:backend": "cross-env BABEL_ENV=server parcel build src/backend/index.js -d dist/backend --public-url / --target=node",
-    "build:frontend": "cross-env BABEL_ENV=client parcel build src/frontend/index.html -d dist/frontend --public-url /static",
+    "build:backend": "cross-env BABEL_ENV=server parcel build src/backend/index.js --dist-dir dist/backend --public-url /",
+    "build:frontend": "cross-env BABEL_ENV=client parcel build src/frontend/index.html --dist-dir dist/frontend --target brower --public-url /static",
     "build": "rimraf dist && npm run build:backend && npm run build:imported-components && npm run build:frontend && rimraf dist/imported.js",
-    "build:backend:dev": "cross-env BABEL_ENV=server parcel build src/backend/index.js -d dist/backend --public-url / --target=node --no-minify",
-    "build:frontend:dev": "cross-env BABEL_ENV=client parcel build src/frontend/index.html dist/imported.js -d dist/frontend --public-url /static --no-minify",
+    "build:backend:dev": "cross-env BABEL_ENV=server parcel build src/backend/index.js --dist-dir dist/backend --public-url / --target main --no-minify",
+    "build:frontend:dev": "cross-env BABEL_ENV=client parcel build src/frontend/index.html src/frontend/imported.js --dist-dir dist/frontend --target browser --no-minify",
     "build:dev": "concurrently -p \"[{name}]\" -n \"BACKEND,FRONTEND\" -c \"bgBlue.bold,bgMagenta.bold,bgGreen.bold\" \"npm run build:backend:dev\" \"npm run build:frontend:dev\"",
     "start:backend": "node dist/backend",
     "start": "npm run start:backend",
@@ -102,6 +105,7 @@
     "multistream": "^4.0.0",
     "node-fetch": "^2.6.0",
     "papaparse": "^5.2.0",
+    "parcel": "^2.0.0-alpha.3.2",
     "passport-local": "^1.0.0",
     "pg": "^8.0.3",
     "pg-range": "^1.1.0",
@@ -152,7 +156,9 @@
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.3",
     "parcel-bundler": "^1.12.4",
+    "parcel-plugin-externals": "^0.4.0",
     "parcel-plugin-shebang": "^1.2.8",
+    "pg-native": "^3.0.0",
     "postcss-loader": "^3.0.0",
     "precss": "^4.0.0",
     "prettier": "1.17.1",
@@ -165,11 +171,36 @@
     "tcp-port-used": "^1.0.1",
     "xml-loader": "^1.2.1"
   },
+  "targets": {
+    "main": {
+      "publicUrl": "/",
+      "context": "node",
+      "engines": {
+        "node": ">=12.0"
+      }
+    },
+    "browser": {
+      "publicUrl": "/static",
+      "context": "browser",
+      "engines": {
+        "browsers": [
+          "> 2%",
+          "not dead"
+        ]
+      }
+    }
+  },
   "babel": {
     "plugins": [
       [
         "react-imported-component/babel"
       ]
+    ],
+    "exclude": [
+      "/mapbox-gl/"
+    ],
+    "ignore": [
+      "./src/frontend/data"
     ],
     "env": {
       "test": {
@@ -182,8 +213,7 @@
             {
               "targets": {
                 "browsers": "last 2 Firefox versions, last 2 Chrome versions, last 2 Edge versions, last 2 Safari versions"
-              },
-              "exclude" : ["/mapbox-gl"]
+              }
             }
           ]
         ],
@@ -210,6 +240,19 @@
         ]
       },
       "client": {
+        "presets": [
+          [
+            "@babel/preset-env"
+          ],
+          [
+            "@babel/preset-react",
+            {
+              "targets": {
+                "browsers": "last 2 Firefox versions, last 2 Chrome versions, last 2 Edge versions, last 2 Safari versions"
+              }
+            }
+          ]
+        ],
         "plugins": [
           [
             "react-imported-component/babel"
