@@ -1,5 +1,5 @@
 // base imports
-import React, { useState, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -25,6 +25,7 @@ import Typography from '@material-ui/core/Typography';
 // module imports
 import ChromeScreengrab from '../assets/images/chrome-location.jpg';
 import FirefoxScreengrab from '../assets/images/firefox-location.jpg';
+import Loading from './Loading.jsx';
 import NDTjs from '../assets/js/ndt-browser-client.js';
 import ThanksDialog from './utils/ThanksDialog.jsx';
 
@@ -83,8 +84,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Basic(props) {
+export default function Basic() {
   const classes = useStyles();
+  const [settings, setSettings] = React.useState({});
 
   // handle geolocation consent
   const [locationValue, setLocationValue] = React.useState('yes');
@@ -95,12 +97,24 @@ export default function Basic(props) {
 
   // handle mlab privacy consent
   const [consentState, setConsentState] = React.useState({ checked: false });
+  const [helperText, setHelperText] = React.useState({
+    consent: '',
+  });
 
   const handleConsentChange = event => {
     setConsentState({
       ...consentState,
       [event.target.name]: event.target.checked,
     });
+    if (!event.target.checked) {
+      setHelperText({
+        consent: "Please confirm your consent to M-Lab's privacy policy.",
+      });
+    } else {
+      setHelperText({
+        consent: '',
+      });
+    }
   };
 
   const consentError = consentState.checked !== true;
@@ -118,6 +132,10 @@ export default function Basic(props) {
       //} else {
       //  runTests();
       //}
+    } else {
+      setHelperText({
+        consent: "Please confirm your consent to M-Lab's privacy policy.",
+      });
     }
   };
 
@@ -187,10 +205,6 @@ export default function Basic(props) {
     };
   }
 
-  function error(error) {
-    window.alert(error.message);
-  }
-
   function getNdtServer() {
     if (!ndtServer) {
       const xhr = new XMLHttpRequest(),
@@ -225,159 +239,203 @@ export default function Basic(props) {
     NDT_client.startTest();
   }
 
+  const processError = res => {
+    let errorString;
+    if (res.statusCode && res.error && res.message) {
+      errorString = `HTTP ${res.statusCode} ${res.error}: ${res.message}`;
+    } else if (res.statusCode && res.status) {
+      errorString = `HTTP ${res.statusCode}: ${res.status}`;
+    } else {
+      errorString = 'Error in response from server.';
+    }
+    return errorString;
+  };
+
+  // fetch settings api data
+  const [error, setError] = React.useState(null);
+  const [isLoaded, setIsLoaded] = React.useState(false);
+
   React.useEffect(() => {
     getNdtServer();
     console.log('Using M-Lab Server ' + ndtServer);
+    let status;
+    fetch('/api/v1/settings')
+      .then(res => {
+        status = res.status;
+        return res.json();
+      })
+      .then(settings => {
+        if (status === 200) {
+          setSettings(settings.data);
+          return;
+        } else {
+          const error = processError(settings);
+          throw new Error(` in response from server: ${error}`);
+        }
+      })
+      .catch(error => {
+        // setError(error);
+        console.error(error.name + error.message);
+        setIsLoaded(true);
+      });
   }, [ndtServer]);
 
-  return (
-    <Container maxWidth="lg">
-      <Paper className={classes.paper} elevation={0}>
-        <Box mb={3}>
-          <Typography
-            className={classes.h1}
-            color="primary"
-            variant="h4"
-            component="h1"
-          >
-            Piecewise Broadband Speed Test
-          </Typography>
-          <Typography
-            className={classes.sub1a}
-            variant="subtitle1"
-            component="p"
-            gutterBottom
-          >
-            Sample subtitle
-          </Typography>
-          <Typography
-            className={classes.h2}
-            color="primary"
-            variant="h5"
-            component="h2"
-          >
-            Sharing your location
-          </Typography>
-          <Typography
-            className={classes.body1}
-            variant="body1"
-            component="p"
-            gutterBottom
-          >
-            To get the most accurate location data, we ask you to allow your
-            browser to share your location. This is not essential but it is very
-            helpful for creating more accurate maps. Depending on your browser,
-            you'll see a window similar to the images below, requesting your
-            consent to share your location. If you are using Private Browsing
-            mode or Incognito mode, you may need to disable that preference for
-            this website.
-          </Typography>
-        </Box>
-        <Box mb={3}>
-          <Grid container spacing={2} justify="center">
-            <Grid item>
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  image={FirefoxScreengrab}
-                  title="Screenshot of geography location request in Firefox."
-                />
-                <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Screenshot of geography location request in Firefox.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item>
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  image={ChromeScreengrab}
-                  title="Screenshot of geography location request in Chrome."
-                />
-                <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    Screenshot of geography location request in Chrome.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          </Grid>
-        </Box>
-        <Box mb={3}>
-          <FormControl component="fieldset">
-            <Hidden>
-              <FormLabel component="legend">
-                Do you want to use your browser location?
-              </FormLabel>
-            </Hidden>
-            <RadioGroup
-              aria-label="location-choice"
-              name="location"
-              value={locationValue}
-              onChange={handleLocationChange}
-            >
-              <FormControlLabel
-                value="yes"
-                control={<Radio />}
-                label="Use my browser location"
-                className={classes.FormControlLabel}
-              />
-              <FormControlLabel
-                value="no"
-                control={<Radio />}
-                label="Do not use my location"
-                className={classes.FormControlLabel}
-                name="useBrowserLocation"
-              />
-            </RadioGroup>
-          </FormControl>
-          <div>
-            <FormControl required error={consentError}>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={consentState.checked}
-                    onChange={handleConsentChange}
-                    name="checked"
-                    color="primary"
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <Loading />;
+  } else {
+    return (
+      <Suspense>
+        <Container maxWidth="lg">
+          <Paper className={classes.paper} elevation={0}>
+            <Box mb={3}>
+              <Typography
+                className={classes.h1}
+                color="primary"
+                variant="h4"
+                component="h1"
+              >
+                Piecewise Broadband Speed Test
+              </Typography>
+              <Typography
+                className={classes.sub1a}
+                variant="subtitle1"
+                component="p"
+                gutterBottom
+              >
+                Sample subtitle
+              </Typography>
+              <Typography
+                className={classes.h2}
+                color="primary"
+                variant="h5"
+                component="h2"
+              >
+                Sharing your location
+              </Typography>
+              <Typography
+                className={classes.body1}
+                variant="body1"
+                component="p"
+                gutterBottom
+              >
+                To get the most accurate location data, we ask you to allow your
+                browser to share your location. This is not essential but it is very
+                helpful for creating more accurate maps. Depending on your browser,
+                you'll see a window similar to the images below, requesting your
+                consent to share your location. If you are using Private Browsing
+                mode or Incognito mode, you may need to disable that preference for
+                this website.
+              </Typography>
+            </Box>
+            <Box mb={3}>
+              <Grid container spacing={2} justify="center">
+                <Grid item>
+                  <Card>
+                    <CardMedia
+                      className={classes.media}
+                      image={FirefoxScreengrab}
+                      title="Screenshot of geography location request in Firefox."
+                    />
+                    <CardContent>
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                      >
+                        Screenshot of geography location request in Firefox.
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+                <Grid item>
+                  <Card>
+                    <CardMedia
+                      className={classes.media}
+                      image={ChromeScreengrab}
+                      title="Screenshot of geography location request in Chrome."
+                    />
+                    <CardContent>
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                      >
+                        Screenshot of geography location request in Chrome.
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              </Grid>
+            </Box>
+            <Box mb={3}>
+              <FormControl component="fieldset">
+                <Hidden>
+                  <FormLabel component="legend">
+                    Do you want to use your browser location?
+                  </FormLabel>
+                </Hidden>
+                <RadioGroup
+                  aria-label="location-choice"
+                  name="location"
+                  value={locationValue}
+                  onChange={handleLocationChange}
+                >
+                  <FormControlLabel
+                    value="yes"
+                    control={<Radio />}
+                    label="Use my browser location"
+                    className={classes.FormControlLabel}
                   />
-                }
-                label="*I agree to the M-Lab privacy policy, which includes retention and publication of IP addresses, in addition to speed test results."
-              />
-              <FormHelperText>This field is required</FormHelperText>
-            </FormControl>
-          </div>
-          <Box m={2} mx="auto" className={classes.centerText}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleClickOpen}
-            >
-              Take the Test
-            </Button>
-          </Box>
-        </Box>
-        <ThanksDialog open={open} onClose={handleClose} />
-      </Paper>
-      {/*
-      <MUICookieConsent
-        cookieName="piecewiseCookieConsent"
-        componentType="Snackbar" // default value is Snackbar
-        message="This site uses cookies.... bla bla..."
-      />
-      */}
-    </Container>
-  );
+                  <FormControlLabel
+                    value="no"
+                    control={<Radio />}
+                    label="Do not use my location"
+                    className={classes.FormControlLabel}
+                    name="useBrowserLocation"
+                  />
+                </RadioGroup>
+              </FormControl>
+              <div>
+                <FormControl required error={consentError}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={consentState.checked}
+                        onChange={handleConsentChange}
+                        name="checked"
+                        color="primary"
+                      />
+                    }
+                    label="*I agree to the M-Lab privacy policy, which includes retention and publication of IP addresses, in addition to speed test results."
+                  />
+                  <FormHelperText>{helperText.consent}</FormHelperText>
+                </FormControl>
+              </div>
+              <Box m={2} mx="auto" className={classes.centerText}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleClickOpen}
+                >
+                  Take the Test
+                </Button>
+              </Box>
+            </Box>
+            <ThanksDialog open={open} onClose={handleClose} />
+          </Paper>
+          {/*
+          <MUICookieConsent
+            cookieName="piecewiseCookieConsent"
+            componentType="Snackbar" // default value is Snackbar
+            message="This site uses cookies.... bla bla..."
+          />
+          */}
+        </Container>
+      </Suspense>
+    );
+  }
 }
 
 Basic.propTypes = {
