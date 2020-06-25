@@ -2,6 +2,7 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom';
 
 // material-ui imports
 import Box from '@material-ui/core/Box';
@@ -27,7 +28,6 @@ import ChromeScreengrab from '../assets/images/chrome-location.jpg';
 import FirefoxScreengrab from '../assets/images/firefox-location.jpg';
 import Loading from './Loading.jsx';
 import NDTjs from '../assets/js/ndt-browser-client.js';
-import ThanksDialog from './utils/ThanksDialog.jsx';
 
 const useStyles = makeStyles(theme => ({
   input: {
@@ -86,6 +86,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Basic() {
   const classes = useStyles();
+  const history = useHistory();
   const [settings, setSettings] = React.useState({});
 
   // handle geolocation consent
@@ -124,23 +125,22 @@ export default function Basic() {
 
   const handleClickOpen = () => {
     if (!consentError) {
-      setOpen(true);
-      //if (locationValue === 'yes') {
-      //  if ('geolocation' in navigator) {
-      //    navigator.geolocation.getCurrentPosition(success, error);
-      //  }
-      //} else {
-      //  runTests();
-      //}
+      if (locationValue === 'yes') {
+       if ('geolocation' in navigator) {
+         navigator.geolocation.getCurrentPosition(success, error);
+       }
+      }
+      history.push({
+        pathname: '/survey',
+        state: {
+          locationConsent: locationValue,
+        },
+      });
     } else {
       setHelperText({
         consent: "Please confirm your consent to M-Lab's privacy policy.",
       });
     }
-  };
-
-  const handleClose = () => {
-    setOpen(false);
   };
 
   // handle NDT test
@@ -423,7 +423,6 @@ export default function Basic() {
                 </Button>
               </Box>
             </Box>
-            <ThanksDialog open={open} onClose={handleClose} />
           </Paper>
           {/*
           <MUICookieConsent

@@ -1,16 +1,16 @@
 // base imports
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+
+// material-ui imports
 import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-
-// material ui imports
-import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 // module imports
 import FormRenderer from './utils/FormRenderer.jsx';
@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Survey(props) {
   const classes = useStyles();
+  const locationConsent = props.location.state.locationConsent;
   const [openModal, setOpenModal] = React.useState(false);
   const [modalText, setModalText] = React.useState('');
   const [modalDebug, setModalDebug] = React.useState('');
@@ -98,7 +99,7 @@ export default function Survey(props) {
   return (
     <Container maxWidth="lg">
       <Paper className={classes.paper} elevation={0}>
-        <NdtWidget />
+        <NdtWidget locationConsent={locationConsent} />
         <FormRenderer
           onSave={ev => uploadFormData(ev.formData)}
           onLoad={downloadForm}
@@ -119,3 +120,7 @@ export default function Survey(props) {
     </Container>
   );
 }
+
+Survey.propTypes = {
+  location: PropTypes.object.isRequired,
+};
