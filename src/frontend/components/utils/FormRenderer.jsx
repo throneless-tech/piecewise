@@ -1,28 +1,53 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import './FormRenderer.css';
 
 const FormRenderer = props => {
   const { onSave, onLoad } = props;
   const [form, setForm] = React.useState(null);
   const formContainer = React.useRef(null);
 
+  const handleSave = event => {
+    console.log('in handle save: ', event);
+    if (event) {
+      event.preventDefault();
+    }
+    console.log(event);
+  };
+
+  const saveAction = action => {
+    console.log('in saveAction: ', action);
+    action.preventDefault();
+  };
+
   useEffect(() => {
     const initializeForm = ({ setForm, formContainer }) => {
       let renderer;
+      const options = {
+        renderContainer: formContainer.current,
+        debug: true,
+        actions: {
+          click: {
+            btn: saveAction,
+          },
+        },
+        events: {
+          onSave: handleSave,
+        },
+      };
       import('formeo')
         .then(({ FormeoRenderer }) => {
-          const options = {
-            renderContainer: formContainer.current,
-            style:
-              'https://draggable.github.io/formeo/assets/css/formeo.min.css',
-            debug: true,
-          };
-          if (onSave) {
-            options.events = { onSave: onSave };
-          }
+          // if (onSave) {
+          //   options.actions = {
+          //     click: {
+          //       btn: saveAction,
+          //     },
+          //   };
+          //   options.events = { onSave: handleSave };
+          // }
           renderer = new FormeoRenderer(options);
-          console.log('render: ', renderer);
           setForm(renderer);
+          console.log('renderer: ', renderer);
           return onLoad();
         })
         .then(res => renderer.render(res.data))
@@ -34,16 +59,14 @@ const FormRenderer = props => {
     if (!form) {
       initializeForm({ setForm, formContainer });
     }
-  }, []);
+  }, [form]);
 
   return (
     <div>
       <form
         className="formeo-renderer"
         ref={el => (formContainer.current = el)}
-      >
-        <input type="submit" value="Submit" />
-      </form>
+      />
     </div>
   );
 };

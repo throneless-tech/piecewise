@@ -152,32 +152,32 @@ export default function NdtWidget(props) {
       mlabNsUrl = '/api/v1/mlabns';
     }
 
-    if (locationConsent === 'yes') {
-     if ('geolocation' in navigator) {
-       navigator.geolocation.getCurrentPosition(success, error);
-     }
-    }
-
-    fetch(mlabNsUrl)
-      .then(res => {
-        console.debug('Raw response: ', res);
-        if (res.status === 200) {
-          return res.json();
-        } else {
-          throw new Error(`Error ${res.status}: ${res.statusText}`);
-        }
-      })
-      .then(data => {
-        console.debug('Received response from MLab NS: ', data);
-        //const meter = new NDTmeter(selector);
-        const meter = new NdtHandler(onProgress, onFinish);
-        runNdt({ server: data.fqdn, meter: meter });
-        return data;
-      })
-      .catch(err => {
-        console.error('M-Lab NS lookup failed: ', err.message);
-        window.alert('M-Lab NS lookup failed. Please refresh the page.');
-      });
+    // if (locationConsent === 'yes') {
+    //  if ('geolocation' in navigator) {
+    //    navigator.geolocation.getCurrentPosition(success, error);
+    //  }
+    // }
+    //
+    // fetch(mlabNsUrl)
+    //   .then(res => {
+    //     console.debug('Raw response: ', res);
+    //     if (res.status === 200) {
+    //       return res.json();
+    //     } else {
+    //       throw new Error(`Error ${res.status}: ${res.statusText}`);
+    //     }
+    //   })
+    //   .then(data => {
+    //     console.debug('Received response from MLab NS: ', data);
+    //     //const meter = new NDTmeter(selector);
+    //     const meter = new NdtHandler(onProgress, onFinish);
+    //     runNdt({ server: data.fqdn, meter: meter });
+    //     return data;
+    //   })
+    //   .catch(err => {
+    //     console.error('M-Lab NS lookup failed: ', err.message);
+    //     window.alert('M-Lab NS lookup failed. Please refresh the page.');
+    //   });
   }, []);
 
   return (

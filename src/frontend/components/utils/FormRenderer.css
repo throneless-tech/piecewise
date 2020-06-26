@@ -1,0 +1,38 @@
+.formeo-renderer {
+  font-size: 1.2rem;
+}
+
+.f-btn-group button {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.f-field-group {
+  margin-bottom: 20px;
+}
+
+.f-field-group label {
+  display: block;
+  font-weight: bold;
+}
+
+.f-checkbox label, .f-radio label {
+  display: inline-block;
+  font-weight: normal;
+}
+
+.f-field-group input {
+  padding: 5px;
+  /* width: 100%; */
+}
+
+.f-field-group select {
+  padding: 5px;
+  width: 100%;
+}
+
+.f-field-group textarea {
+  height: 100px;
+  width: 100%;
+}

@@ -40,7 +40,9 @@ export default function Survey(props) {
     return [text, debug];
   };
 
-  const uploadFormData = formData => {
+  const uploadFormData = event => {
+    event.preventDefault();
+    console.log('in upload form data: f', formData);
     let status;
     const json = JSON.stringify(formData);
     fetch('/api/v1/submissions', {
@@ -97,11 +99,12 @@ export default function Survey(props) {
   };
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="md">
       <Paper className={classes.paper} elevation={0}>
         <NdtWidget locationConsent={locationConsent} />
         <FormRenderer
-          onSave={ev => uploadFormData(ev.formData)}
+          className={classes.form}
+          onSave={ev => uploadFormData(ev)}
           onLoad={downloadForm}
         />
       </Paper>
